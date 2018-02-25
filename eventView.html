@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Set Availability - Doodle Clone</title>
+  <title>View or Accept Events</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="chooseTimesStyle.css">
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="javaScriptFiles/event.js"></script>
 
-<body onload="gettingData(); init(); initTimes();">
+
   <div class="header">
     <span class="nav menu">
         <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
@@ -129,30 +129,6 @@ YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
     <div id="chart_div"></div>
     <div id="table_div"></div>
   </div>
-  <span class="availability allTimes">
-        <div class="times">
-          <div class="timesList">
-            <h3>Available Times:</h3>
-            <div class="availableTimesListHTML" id="availableTimesList">
-            </div>
-          </div>
-          <div class="timesList">
-            <h3 class="lastChosen">Last time chosen:<br><span id="chosen"><br></span></h3>
-  </div>
-  <div class="timesList">
-    <h3>Chosen Times:</h3>
-    <div class="chosenTimesListHTML" id="chosenTimesList">
-    </div>
-  </div>
-  </div>
-  <div>
-    <br>
-    <form name="Availability">
-      <input type="text" placeholder="Attendee's Name" name="attendee" maxlength="64" id="aNameBox">
-      <button type="button" onclick="eventSubmit(); submitAvail(); sendAvail(personName, highlightedEvent, selectedList);" id="setAvail">Submit Availability</button>
-    </form>
-  </div>
-  </span>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
