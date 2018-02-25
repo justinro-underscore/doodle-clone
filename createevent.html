@@ -25,9 +25,6 @@
     </div>
     <br>
       <div>
-      <div class="Event_list">
-        <h3>Choose An Event:</h3>
-      </div>
       <span class="availability">
         <div class="times">
           <div class="timesList">
@@ -50,18 +47,16 @@
            <input type="text" name="admin" placeholder="Creator name" maxlength="064" required=true type=string id="lName">
            <br>
            <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
-            <button type="button" onclick="eventSubmit();enteringEvent(selectedList);appendEvent(valid, nEvent, eDate)">Create Event</button>
+           <button type="button" onclick="eventSubmit();enteringEvent(selectedList);appendEvent(valid, nEvent, eDate)">Create Event</button>
          </form>
        </div>
      </span>
-     </div>
      </div>
      <div>
        <ul id="avail_List">
 
        </ul>
      </div>
-   </span>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
