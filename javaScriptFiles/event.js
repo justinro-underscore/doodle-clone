@@ -15,24 +15,12 @@ let loadEvents = () => {
 
     function handleQueryResponse(response) {
         let data = response.getDataTable();
-        let cols = data.getNumberOfRows();
+        let rows = data.getNumberOfRows();
         
-        for (let i = 0; i < cols; i++) {
+        for (let i = 0; i < rows; i++) {
             let event = JSON.parse(data.getValue(i, 2));
-            events[event["nameOfEvent"]] = event;
+            events[event["dateOfEvent"] + '/' + event["nameOfEvent"]] = event;
         }
-        
-        let table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(data, {
-            showRowNumber: true,
-            width: '100%',
-            height: '100%'
-        });
-
-        google.visualization.events.addListener(table, 'select', function () {
-            let row = table.getSelection()[0].row;
-            alert('You selected ' + data.getValue(row, 1));
-        });
     }
 };
 

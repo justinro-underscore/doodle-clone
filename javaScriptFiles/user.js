@@ -15,9 +15,9 @@
 
    function handleQueryResponse(response) {
        let data = response.getDataTable();
-       let cols = data.getNumberOfRows();
+       let rows = data.getNumberOfRows();
 
-       for (let i = 0; i < cols; i++) {
+       for (let i = 0; i < rows; i++) {
          let user = JSON.parse(data.getValue(i, 2));
          users[user["username"]] = user;
        }
