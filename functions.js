@@ -26,9 +26,6 @@ window.onclick = function(event) {
 }
 
 function init() { //function called on page load. sets up page:
-  addButtonEvents(); //Code that runs when time slots are clicked
-  populateTimeSlots(); //set initial button inner html values from each button's ID
-  populateButtonHTML(); //addjusts the buttons' html to the time mode
   populateEventList(); //adds events in local storage to list of events
   addListEvents(); //adds a bunch of onclick-events to the list items. (see immediately below)
 }
@@ -75,29 +72,6 @@ function submitAvail() { //sets global eveals
 
   var shortening = document.querySelector(".highlighted").innerHTML;//just shortens, or else this would be a massive line of code
   highlightedEvent = shortening.substr(0, shortening.indexOf('-')).slice(0, -1); //sets the event name that is marked for availability
-}
-
-function addButtonEvents() { //add selecting event to time slot buttons
-  for(var i = 0; i < buttons.length; i++){
-    buttons[i].addEventListener("click", function(){
-    	this.classList.toggle("selected"); //toggles green background color.
-    });
-  }
-}
-
-function populateTimeSlots() {
-  buttons.forEach(function(element) {//for each time slot button...
-    timeSlots.push(element.id); //adds the time slot button ID (formatted "HH:MM") to timeSlots
-  })
-}
-
-function eventSubmit() { //send
-  selectedList = []; //resets selected list array
-  for(var i = 0; i < buttons.length; i++) { //for all time slot buttons...
-    if(buttons[i].classList.contains("selected")) { //if the time slot is marked...
-      selectedList.push(timeSlots[i]); //add it to the availability array
-    }
-  }
 }
 
 function showAvailability(event) {
@@ -158,7 +132,8 @@ function appendEvent(isValid, eventName, eventDate) { //adds new event item to e
 function populateEventList() { //gets local storage events and populates event list
   if (events.numOfEvents > 0) {
     for(var i = 0; i < events.numOfEvents; i++) { //for each event in local storage ...
-      eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].nameOfEvent + " - " + events.arrayOfEvents[i].dateOfEvent + "</h4>" //add an h4 with the event's name and date
+
+      // eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].nameOfEvent + " - " + events.arrayOfEvents[i].dateOfEvent + "</h4>" //add an h4 with the event's name and date
     }
   }
 }

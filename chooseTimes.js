@@ -25,7 +25,7 @@ function initTimes()
         // Adds the time to the array and the HTML list
         availableTimes.push(id);
         let newTime = document.createElement("a");
-        newTime.setAttribute("href", "#");
+        newTime.setAttribute("href", "javascript:void(0);"); // https://stackoverflow.com/questions/8260546/make-a-html-link-that-does-nothing-literally-nothing/8260561
         newTime.setAttribute("onclick", "addTime()");
         newTime.setAttribute("id", id);
         newTime.innerHTML = id;
@@ -49,7 +49,7 @@ function addTime()
   let chosenTimesList = document.getElementById("chosenTimesList");
   // Create the new time anchor
   let newTime = document.createElement("a");
-  newTime.setAttribute("href", "#");
+  newTime.setAttribute("href", "javascript:void(0);");
   newTime.setAttribute("onclick", "removeTime()");
   newTime.setAttribute("id", id);
   newTime.innerHTML = id;
@@ -85,7 +85,7 @@ function removeTime()
   let chosenTimesList = document.getElementById("availableTimesList");
   // Create the new time anchor
   let newTime = document.createElement("a");
-  newTime.setAttribute("href", "#");
+  newTime.setAttribute("href", "javascript:void(0);");
   newTime.setAttribute("onclick", "addTime()");
   newTime.setAttribute("id", id);
   newTime.innerHTML = id;
@@ -143,4 +143,9 @@ function sortTimes(a, b)
   }
   else
     return(aHr - bHr);
+}
+
+function getEventTimes()
+{
+  return chosenTimes;
 }
