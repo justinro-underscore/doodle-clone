@@ -17,15 +17,14 @@ function createEvent(eventObj) {
 function createUser(userObj) {
     'use strict';
     let request;
-    let userData = JSON.stringify(userData);
+    let userData = JSON.stringify(userObj);
     
     request = $.ajax({
         url: "https://script.google.com/macros/s/AKfycbzft_iTCdt-tMZVntY38OVfU-Q-UIXYjP-kja7xm1iGVNJQ10w0/exec",
         type: "post",
         data: {
             'Username' : userObj["username"],
-            'Password' : userObj["password"],
-            'isAdmin' : userData
+            'Userdata' : userData
         }
     });
 }
