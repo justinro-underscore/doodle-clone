@@ -7,20 +7,20 @@ class User
     this.password = password;
     this.isAdmin = isAdmin;
   }
-}
 
-//getters
-get userName()
-{
-  return this.userName;
-}
+  //getters
+  get userName()
+  {
+    return this.userName;
+  }
 
-get password()
-{
-  return this.password;
-}
+  get password()
+  {
+    return this.password;
+  }
 
-get isAdmin()
-{
-  this.isAdmin; 
+  get isAdmin()
+  {
+    this.isAdmin;
+  }
 }
