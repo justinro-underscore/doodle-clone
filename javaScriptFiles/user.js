@@ -1,28 +1,27 @@
-let users = {};
+ let users = {};
 
-let loadUsers = () => {
-     google.charts.load('current', {
-         packages: ['corechart', 'table']
-     });
+ let loadUsers = () => {
+   google.charts.load('current', {
+       packages: ['corechart', 'table', 'sankey']
+   });
 
-     // Set a callback to run when the Google Visualization API is loaded.
-     google.charts.setOnLoadCallback(drawChart);
+   // Set a callback to run when the Google Visualization API is loaded.
+   google.charts.setOnLoadCallback(drawChart);
 
-     function drawChart() {
+   function drawChart() {
        let query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/1L3BWW7stFlYas5xWW9hYDcXEImqOLKXyyU8H7OztyMw/edit#gid=0");
        query.send(handleQueryResponse);
-     }
+   }
 
-     function handleQueryResponse(response) {
-         var data = response.getDataTable();
-         console.log(data);
-         //TODO: for each of these we add to events obj
-         //On create new event add to event obj && push event to sheets
-         let userData = data.hc;
-         userData.forEach(function(user) {
-             users[user["username"]] = user["userdata"]
-         });
-     }
-};
+   function handleQueryResponse(response) {
+       let data = response.getDataTable();
+       let cols = data.getNumberOfRows();
 
-loadUsers();
+       for (let i = 0; i < cols; i++) {
+         let user = JSON.parse(data.getValue(i, 2));
+         users[user["username"]] = user;
+       }
+   }
+ };
+
+ loadUsers();
