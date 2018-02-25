@@ -8,7 +8,7 @@
   </head>
   <script src="newDataFile.js"> </script>
   <script src="chooseTimes.js"> </script>
-  <body onload="gettingData(); init(); initTimes();">
+  <body onload="init(); initTimes();">
     <div class="header">
       <span class="nav menu">
           <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
@@ -21,9 +21,8 @@
           <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
       </span>
       <h1>Create an Event!</h1>
-      <h2 class="kHeaders">The event creator's selected times will be outlined in blue! View event availability below!</h2>
-    </div>
-    <br>
+      </div>
+      <br>
       <div>
       <span class="availability">
         <div class="times">
@@ -43,11 +42,11 @@
         </div>
        <div>
          <form name = "eventMaker">
-           <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
+           <input type="text" name="eventName" placeholder="Event name" maxlength="064" required=true type=string id="evName">
            <input type="text" name="admin" placeholder="Creator name" maxlength="064" required=true type=string id="lName">
            <br>
            <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
-           <button type="button" onclick="eventSubmit();enteringEvent(selectedList);appendEvent(valid, nEvent, eDate)">Create Event</button>
+           <button type="button" onclick="enteringEvent();">Create Event</button> <!-- appendEvent(valid, nEvent, eDate) -->
          </form>
        </div>
      </span>

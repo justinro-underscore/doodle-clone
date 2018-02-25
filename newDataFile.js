@@ -1,109 +1,108 @@
-var events = {
+var events = { // WHY IS THIS HERE
   arrayOfEvents: [],
   numOfEvents: 0
 };
 
-var eventInfo = {
-  creator: "",
-  nameOfEvent: "",
-  dateOfEvent: "",
-  timeSlots: [],
-  numOfTimeSlots: 0,
-  peopleAttending: [],//holds personInfo personsInfo.personsAvailability
-  numOfPeopleAttending: 0
-};
-
-var personInfo = {
-  personsName: "",
-  personsAvailability: []
-};
-
-var data;
-var maker = "";
-var nEvent = "";
-var eDate = "";
+let data;
+let maker = "";
+let nEvent = "";
+let eDate = "";
 var valid = true;
 
 function getData(){
   data = document.forms["eventMaker"];
   maker = data["admin"].value;
-  nEvent = data["event_name"].value;
+  nEvent = data["eventName"].value;
   eDate = data["date"].value;
 }
 
-function addEvent(arrayOfSlots){
-  var eventInfo = {
+// Checks all user input
+function checkData()
+{
+  // TODO Check user
+  if(nEvent.length == 0) // Check event name
+  {
+    alert("Error: Please enter an event name!");
+    return false;
+  }
+  if(!dupMeet()) // Check for duplicates
+  {
+    alert("Error: Event already exists!")
+    return(false);
+  }
+  if(maker.length == 0) // Check for creator name
+  {
+    alert("Error: Please enter a creator name!");
+    return false;
+  }
+  if(getEventTimes().length == 0)
+  {
+    alert("Error: Please select time(s) for event!");
+    return false;
+  }
+  return(checkDate()); // Checks the date
+}
+
+// Adds the event to the array of events
+function addEvent(){
+  let eventInfo = {
     creator: maker,
     nameOfEvent: nEvent,
     dateOfEvent: eDate,
-    timeSlots: arrayOfSlots,
-    numOfTimeSlots: arrayOfSlots.length,
+    timeSlots: getEventTimes(),
+    numOfTimeSlots: getEventTimes().length,
     peopleAttending: [],
     numOfPeopleAttending: 0
   };
-  var personInfo = {
+  let personInfo = {
     personsName: eventInfo.creator,
-    personsAvailability: arrayOfSlots
+    personsAvailability: getEventTimes()
   };
-  if(checkDate() === false){
-    alert("Please re-enter the date of the event.")
-    return(false);
-  }
-  else if(dupMeet() === false){
-    alert("Please re-enter the event's name.")
-    return(false);
-  }
-  else {
-    eventInfo.peopleAttending.push(personInfo);
-    eventInfo.numOfPeopleAttending++;
-    events.arrayOfEvents.push(eventInfo);
-    events.numOfEvents++;
-    return(true);
-  }
+  eventInfo.peopleAttending.push(personInfo);
+  eventInfo.numOfPeopleAttending++;
+  events.arrayOfEvents.push(eventInfo);
+  events.numOfEvents++;
 }
 
+// Checks the date
 function checkDate()
 {
-    console.log("Entered CheckDate()");
-    console.log(eDate);
-    console.log(eDate.slice(5,7) + "/" + eDate.slice(8,10));
-
-    if(eDate.slice(5,7) == "01" && eDate.slice(8,10) == "01"){
-        //New Year's Day.
-        alert("No meetings permitted to be scheduled on New Year's Day.");
-        return (false);
-    }
-    else if(eDate.slice(5,7) == "07" && eDate.slice(8,10) == "04"){
-        //Independence Day
-        alert("No meetings permitted to be scheduled on Independence Day.");
-        return (false);
-    }
-    else if(eDate.slice(5,7) == "12" && eDate.slice(8,10) == "25"){
-        //Christmas Day
-        alert("No meetings permitted to be scheduled on Christmas Day.");
-        return (false);
-    }
-    else {
-      return(true);
-    }
+  if(eDate.length == 0) // If user enters in an invalid date, the eDate variable will be empty
+  {
+    alert("Error: Please choose a valid date.");
+    return (false);
+  }
+  if(eDate.slice(5,7) == "01" && eDate.slice(8,10) == "01"){
+    //New Year's Day.
+    alert("Error: No meetings permitted to be scheduled on New Year's Day.");
+    return (false);
+  }
+  else if(eDate.slice(5,7) == "07" && eDate.slice(8,10) == "04"){
+    //Independence Day
+    alert("Error: No meetings permitted to be scheduled on Independence Day.");
+    return (false);
+  }
+  else if(eDate.slice(5,7) == "12" && eDate.slice(8,10) == "25"){
+    //Christmas Day
+    alert("Error: No meetings permitted to be scheduled on Christmas Day.");
+    return (false);
+  }
+  return(true);
 }
 
 function dupMeet(){
   //checks if any duplicate events have been created.
   //This is done by checking if there is an event with the same name already created.
-    for(var i = 0; i < events.numOfEvents; i++){
-        if(events.arrayOfEvents[i].nameOfEvent === nEvent){
-            alert("This event has already been created!");
-            return(false);
-        }
-        else{
-            return(true);
-        }
+  for(let i = 0; i < events.numOfEvents; i++){
+    if(events.arrayOfEvents[i].nameOfEvent == nEvent){
+        return(false);
     }
+  }
+  return(true);
 }
 
 function searchingForEvents(name){
-  for(var i = 0; i < events.numOfEvents; i++){
+  for(let i = 0; i < events.numOfEvents; i++){
     if(name == events.arrayOfEvents[i].nameOfEvent){
       return(i);
     }
@@ -111,13 +110,17 @@ function searchingForEvents(name){
   return(-1);
 }
 
-function enteringEvent(popTimeSlots){
-  getData();
-  if(addEvent(popTimeSlots) === true){
+// Enters the event into the event array
+function enteringEvent(){
+  getData(); // Fill the data
+  if(checkData()) // Check user input
+  {
+    addEvent(); // Add the event
+    alert('The Event "' + nEvent + '" was created!');
     valid = true;
-    alert('The Event "'+nEvent+'" was created!');
   }
-  else {
+  else
+  {
     valid = false;
   }
 }
@@ -131,17 +134,4 @@ function sendAvail(person, evName, array){
   events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
   events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
   alert('Person added to '+evName+' event.')
-}
-function storeData(){
-  localStorage.setItem("objectString", JSON.stringify(events));
-}
-function gettingData(){
-  if(localStorage.getItem("objectString") !== null){
-      var stringObj = localStorage.getItem("objectString");
-      var lastObj = JSON.parse(stringObj)
-      events = lastObj;
-      console.log(lastObj);
-  }
-  else {
-  }
 }
