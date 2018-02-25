@@ -1,5 +1,5 @@
 # <a name = "Top"></a>Product Backlog 
- Team Mekmbers: Justin Roderman, Harrison Luo, Varun Chadha, Noah Brabec, Alex Kunz
+ Team Members: Justin Roderman, Harrison Luo, Varun Chadha, Noah Brabec, Alex Kunz
 
 |Feature/Improvement                            | Complexity(1-5)   | Time Commitment | Priority |
 | --------------------------------------------- |:-----------------:|:---------------:|---------:|
