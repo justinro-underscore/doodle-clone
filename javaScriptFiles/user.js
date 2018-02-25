@@ -8,3 +8,19 @@ class User
     this.isAdmin = isAdmin;
   }
 }
+
+//getters
+get userName()
+{
+  return this.userName;
+}
+
+get password()
+{
+  return this.password;
+}
+
+get isAdmin()
+{
+  this.isAdmin; 
+}
