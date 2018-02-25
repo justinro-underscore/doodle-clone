@@ -62,6 +62,8 @@ function addEvent(){
   eventInfo.numOfPeopleAttending++;
   events.arrayOfEvents.push(eventInfo);
   events.numOfEvents++;
+
+  postEvent(eventInfo);
 }
 
 // Checks the date
