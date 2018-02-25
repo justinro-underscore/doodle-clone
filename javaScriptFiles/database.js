@@ -12,6 +12,9 @@ function postEvent(eventObj) {
             'EventData' : eventData
         }
     });
+    request.always(() => {
+      addEventToEvents(eventObj);
+    });
 }
 
 function postUser(userObj) {

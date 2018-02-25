@@ -16,12 +16,34 @@ let loadEvents = () => {
     function handleQueryResponse(response) {
         let data = response.getDataTable();
         let rows = data.getNumberOfRows();
-        
+
         for (let i = 0; i < rows; i++) {
             let event = JSON.parse(data.getValue(i, 2));
             events[event["dateOfEvent"] + '/' + event["nameOfEvent"]] = event;
         }
     }
+    console.log(events);
 };
 
 loadEvents();
+
+function addEventToEvents(eventInfo)
+{
+  events[eventInfo["dateOfEvent"] + '/' + eventInfo["nameOfEvent"]] = eventInfo;
+}
+
+function getEventsByDate(eventDate)
+{
+  eventsOnDate = {};
+  for(let i in events)
+  {
+    if(events[i].dateOfEvent == eventDate)
+      eventsOnDate.push(events[i]);
+  }
+  return eventsOnDate;
+}
+
+function getEvent(eventName, eventDate)
+{
+  return(events[eventDate + "/" + eventName]);
+}

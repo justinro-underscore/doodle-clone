@@ -1,8 +1,3 @@
-var events = { // WHY IS THIS HERE
-  arrayOfEvents: [],
-  numOfEvents: 0
-};
-
 let data;
 let maker = "";
 let nEvent = "";
@@ -25,7 +20,7 @@ function checkData()
     alert("Error: Please enter an event name!");
     return false;
   }
-  if(!dupMeet()) // Check for duplicates
+  if(getEvent(nEvent, eDate) != undefined) // Check for duplicates
   {
     alert("Error: Event already exists!")
     return(false);
@@ -60,8 +55,8 @@ function addEvent(){
   };
   eventInfo.peopleAttending.push(personInfo);
   eventInfo.numOfPeopleAttending++;
-  events.arrayOfEvents.push(eventInfo);
-  events.numOfEvents++;
+  // events.arrayOfEvents.push(eventInfo);
+  // events.numOfEvents++;
 
   postEvent(eventInfo);
 }
@@ -92,25 +87,25 @@ function checkDate()
   return(true);
 }
 
-function dupMeet(){
-  //checks if any duplicate events have been created.
-  //This is done by checking if there is an event with the same name already created.
-  for(let i = 0; i < events.numOfEvents; i++){
-    if(events.arrayOfEvents[i].nameOfEvent == nEvent){
-        return(false);
-    }
-  }
-  return(true);
-}
+// function dupMeet(){
+//   //checks if any duplicate events have been created.
+//   //This is done by checking if there is an event with the same name already created.
+//   for(let i = 0; i < events.numOfEvents; i++){
+//     if(events.arrayOfEvents[i].nameOfEvent == nEvent){
+//         return(false);
+//     }
+//   }
+//   return(true);
+// }
 
-function searchingForEvents(name){
-  for(let i = 0; i < events.numOfEvents; i++){
-    if(name == events.arrayOfEvents[i].nameOfEvent){
-      return(i);
-    }
-  }
-  return(-1);
-}
+// function searchingForEvents(name){
+//   for(let i = 0; i < events.numOfEvents; i++){
+//     if(name == events.arrayOfEvents[i].nameOfEvent){
+//       return(i);
+//     }
+//   }
+//   return(-1);
+// }
 
 // Enters the event into the event array
 function enteringEvent(){
@@ -133,7 +128,7 @@ function sendAvail(person, evName, array){
     personsName: person,
     personsAvailability: array
   };
-  events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
-  events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
+  // events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
+  // events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
   alert('Person added to '+evName+' event.')
 }
