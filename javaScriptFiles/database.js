@@ -23,8 +23,8 @@ function postUser(userObj) {
         url: "https://script.google.com/macros/s/AKfycbzft_iTCdt-tMZVntY38OVfU-Q-UIXYjP-kja7xm1iGVNJQ10w0/exec",
         type: "post",
         data: {
-            'Username' : userObj["username"],
-            'Userdata' : userData
+            'username' : userObj["username"],
+            'userdata' : userData
         }
     });
 }
