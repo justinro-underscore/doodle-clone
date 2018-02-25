@@ -25,3 +25,13 @@
  };
 
  loadUsers();
+
+ function addUserToUsers(userInfo)
+ {
+   users[userInfo["username"]] = userInfo;
+ }
+
+ function getUser(username)
+ {
+   return(users[username]);
+ }

@@ -30,4 +30,7 @@ function postUser(userObj) {
             'userdata' : userData
         }
     });
+    request.always(() => {
+      addUserToUsers(userObj);
+    });
 }
