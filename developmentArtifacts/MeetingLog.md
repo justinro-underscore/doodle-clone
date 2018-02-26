@@ -25,10 +25,10 @@ Team Members: Varun Chadha, Justin Roderman, Noah Brabec, Harrison Luo, Alex Kun
         ◦ Rework the backend (Varun, Harrison and Justin)
             ▪ Loading/saving user (Varun, Alex, Justin) c
             ▪ Loading/saving event (Justin, Varun) c
-	    ▪ Displaying events (Harrison) p
         ◦ Get rid of unnecessary files (Noah) c
         ◦ Refactor the frontend 
             ▪ Implement time selector (Justin) c
+		▪ Displaying events (Harrison) p
         ◦ Create login page (Alex) p
 	◦ Create Create user page (Alex) c
         ◦ Finish review of previous team’s code base (Alex and Noah) c
