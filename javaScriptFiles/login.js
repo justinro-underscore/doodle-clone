@@ -1,7 +1,10 @@
 function login() {
-    //access the correct user object(?)
-    //getuser using the the getuser function
-    //make sure password the same
-    //send them to index.html
-    //store the admin value of the user who logs in and who the person is to see who created the events
+    let inputUsername = document.getElementById("username").value;
+    let inputPassword = document.getElementById("password").value;
+    if(validateLogin(inputUsername, inputPassword)){
+       location.href = 'index.html'; //maybe rename login and index html files
+    }
+    else{
+        alert("Incorrect username/password");
+    }
 }
