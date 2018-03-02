@@ -1,6 +1,6 @@
 let events = {};
 
-//TODO: change this shit
+//TODO: change this
 let data;
 let maker = "";
 let nEvent = "";
@@ -26,15 +26,14 @@ let loadEvents = () => {
 
         for (let i = 0; i < rows; i++) {
             let event = JSON.parse(data.getValue(i, 2));
-            events[event.dateOfEvent + '/' + event.nameOfEvent] = event;
+            events[event.date + '/' + event.name] = event;
         }
     }
-    console.log(events);
 };
 
 function addEventToEvents(eventInfo)
 {
-  events[eventInfo.dateOfEvent + '/' + eventInfo.nameOfEvent] = eventInfo;
+  events[eventInfo.date + '/' + eventInfo.name] = eventInfo;
 }
 
 function getEventsByDate(eventDate)
@@ -42,7 +41,7 @@ function getEventsByDate(eventDate)
   eventsOnDate = {};
   for(let i in events)
   {
-    if(events[i].dateOfEvent == eventDate)
+    if(events[i].date == eventDate)
       eventsOnDate.push(events[i]);
   }
   return eventsOnDate;
@@ -85,20 +84,25 @@ function addEvent(){
 
   let eventInfo = {
     creator: maker,
-    nameOfEvent: nEvent,
-    dateOfEvent: eDate,
+    name: nEvent,
+    date: eDate,
     timeSlots: getEventTimes(),
+<<<<<<< HEAD
     numOfTimeSlots: getEventTimes().length,
     peopleAttending: [],
     numOfPeopleAttending: 0,
     id: eventId
+=======
+    attendees: [],
+    numOfattendees: 0
+>>>>>>> updated event obj names and fixed functionr ref errors - vchadha
   };
   let personInfo = {
     personsName: eventInfo.creator,
     personsAvailability: getEventTimes()
   };
-  eventInfo.peopleAttending.push(personInfo);
-  eventInfo.numOfPeopleAttending++;
+  eventInfo.attendees.push(personInfo);
+  eventInfo.numOfattendees++;
   // events.arrayOfEvents.push(eventInfo);
   // events.numOfEvents++;
 
@@ -134,7 +138,7 @@ function checkDate()
 // Enters the event into the event array
 function enteringEvent(){
   getData(); // Fill the data
-  if(checkData()) // Check user input
+  if(checkEventData()) // Check user input
   {
     addEvent(); // Add the event
     alert('The Event "' + nEvent + '" was created!');
@@ -152,8 +156,8 @@ function sendAvail(person, evName, array){
     personsName: person,
     personsAvailability: array
   };
-  // events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
-  // events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
+  // events.arrayOfEvents[eventIndex].attendees.push(personInfo);
+  // events.arrayOfEvents[eventIndex].numOfattendees++;
   alert('Person added to '+evName+' event.')
 }
 

@@ -87,9 +87,9 @@ function showAvailability(event) {
     availAtts.attendees = [];
     availAtts.time = timeID.id;
 
-    for(var i = 0; i < event.numOfPeopleAttending; i++) {
-      if(event.peopleAttending[i].personsAvailability.includes(availAtts.time)) {
-        availAtts.attendees.push(event.peopleAttending[i].personsName)
+    for(var i = 0; i < event.numOfattendees; i++) {
+      if(event.attendees[i].personsAvailability.includes(availAtts.time)) {
+        availAtts.attendees.push(event.attendees[i].personsName)
       }
     }
 
@@ -133,7 +133,7 @@ function populateEventList() { //gets local storage events and populates event l
   if (events.numOfEvents > 0) {
     for(var i = 0; i < events.numOfEvents; i++) { //for each event in local storage ...
 
-      // eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].nameOfEvent + " - " + events.arrayOfEvents[i].dateOfEvent + "</h4>" //add an h4 with the event's name and date
+      // eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].name + " - " + events.arrayOfEvents[i].date + "</h4>" //add an h4 with the event's name and date
     }
   }
 }

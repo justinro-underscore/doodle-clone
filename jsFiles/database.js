@@ -7,8 +7,8 @@ function postEvent(eventObj) {
     url: "https://script.google.com/macros/s/AKfycbx5YzphchZuPi_D0U8FsleFgj8ngyDYb_nOkRCLh9iDZz4louOk/exec",
     type: "post",
     data: {
-      'EventDate': eventObj.dateOfEvent,
-      'EventName': eventObj.nameOfEvent,
+      'EventDate': eventObj.date,
+      'EventName': eventObj.name,
       'EventData': eventData
     }
   });

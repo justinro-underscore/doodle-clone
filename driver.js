@@ -10,16 +10,16 @@ function findAttendees(index)
 
     for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
     {
-        for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
+        for(var j = 0; j < meeting.numOfattendees; j++)//loop through each attendee of the meeting.
         {
             meeting.timeSlots[i].attend = [];
-            for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
+            for(var k = 0; k < meeting.attendees[j].personsAvailability.length; k++)//loop through attendee's avail TS.
             {
                 //if an attendee's available time slot matches the ith timeslot of the meeting
                 //that attendee is pushed to that timeslot's attendee array created at line
-                if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
+                if(meeting.attendees[j].personsAvailability[k] == meeting.timeSlots[i])
                 {
-                    meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
+                    meeting.timeSlots[i].attend.push(meeting.attendees[j]);
                 }
             }
         }
