@@ -23,7 +23,7 @@ let loadEvents = () => {
         for (let i = 0; i < rows; i++) {
             currRowNum = i + row_offset;
             let event = JSON.parse(data.getValue(i, 2));
-            event["rowId"] = currRowNum;
+            event.rowId = currRowNum;
             events.push(event);
         }
     }
@@ -33,7 +33,7 @@ loadEvents();
 
 function addEventToEvents(eventObj) {
     currRowNum++;
-    eventObj["rowId"] = currRowNum;
+    eventObj.rowId = currRowNum;
     events.push(eventObj);
 }
 
