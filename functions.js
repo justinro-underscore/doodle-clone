@@ -9,24 +9,7 @@ var twelveHourMode = false; //boolean for what time mode user wants
 var personName = ""; //global variables to be passed out
 var highlightedEvent = "";//this too.
 
-function dropdownMenu() {
-    document.getElementById("dropdown").classList.toggle("show"); //Shows or does not show the menu onclick
-}
-
-window.onclick = function(event) {
-  if(!event.target.matches('.dropmenu')) {
-    var dropwdowns = document.getElementsByClassName("dd-items"); //the two other .html files
-    for (var i = 0; i<dropwdowns.length; i++) {
-      var openDD = dropwdowns[i]; //we misspelled dropdowns but now we're rolling with it
-      if (openDD.classList.contains('show')) {
-        openDD.classList.remove('show');
-      }
-    }
-  }
-};
-
-function init() { //function called on page load. sets up page:
-  populateEventList(); //adds events in local storage to list of events
+function init() { //function called on page load. sets up page
   addListEvents(); //adds a bunch of onclick-events to the list items. (see immediately below)
 }
 
@@ -99,41 +82,6 @@ function showAvailability(event) {
   for(var k = 0; k < slotList.length; k++) {
     if(slotList[k].attendees.length > 0) {
       availList.innerHTML += "<li>" + slotList[k].time + " - " + attendees.join(', ') + "</li>";
-    }
-  }
-}
-
-function populateButtonHTML() {
-  for(var i = 0; i < buttons.length; i++) {
-    if(twelveHourMode) { //case for 12 hour mode
-      if(Number(buttons[i].id.substring(0,2)) - 12 >= 0) { //if the time is after noon...
-        buttons[i].innerHTML = String(Number(buttons[i].id.substring(0,2)) - 12) + buttons[i].id.substring(2,6) + " PM"; //adjusts times to 12-hour mode.
-      }
-      else {
-        buttons[i].innerHTML += " AM";
-      }
-    } //case for 24 hour mode
-    else {
-      buttons[i].innerHTML = buttons[i].id;
-    }
-  }
-}
-
-function toggleMode() { //when the change time mode button is pressed
-  twelveHourMode = !twelveHourMode; //change global time mode boolean
-  populateButtonHTML(); //change the time slot buttons' html
-}
-
-function appendEvent(isValid, eventName, eventDate) { //adds new event item to event list
-  if(isValid) eventList.innerHTML += "<h4>" + eventName + " - " + eventDate + "</h4>";
-  addListEvents(); //adds new event to this event list item
-}
-
-function populateEventList() { //gets local storage events and populates event list
-  if (events.numOfEvents > 0) {
-    for(var i = 0; i < events.numOfEvents; i++) { //for each event in local storage ...
-
-      // eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].name + " - " + events.arrayOfEvents[i].date + "</h4>" //add an h4 with the event's name and date
     }
   }
 }
