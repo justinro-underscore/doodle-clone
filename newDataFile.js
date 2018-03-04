@@ -40,6 +40,8 @@ function checkData()
 
 // Adds the event to the array of events
 function addEvent(){
+  let eventId = new Date().getTime();
+
   let eventInfo = {
     creator: maker,
     nameOfEvent: nEvent,
@@ -47,7 +49,8 @@ function addEvent(){
     timeSlots: getEventTimes(),
     numOfTimeSlots: getEventTimes().length,
     peopleAttending: [],
-    numOfPeopleAttending: 0
+    numOfPeopleAttending: 0,
+    id: eventId
   };
   let personInfo = {
     personsName: eventInfo.creator,
