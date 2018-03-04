@@ -52,7 +52,7 @@ function addEventToEvents(eventObj) {
 
 function getEventsByDate(eventDate) {
     return events.filter(function (event) {
-        if (event.dateOfEvent == eventDate) {
+        if (event.date == eventDate) {
             return event;
         }
     });
@@ -60,7 +60,7 @@ function getEventsByDate(eventDate) {
 
 function getEvent(eventName, eventDate) {
     return events.filter(function (event) {
-        if (event.dateOfEvent == eventDate && event.nameOfEvent == eventName) {
+        if (event.date == eventDate && event.name == eventName) {
             return event;
         }
     })[0];
@@ -68,6 +68,7 @@ function getEvent(eventName, eventDate) {
 
 function findEventsById(eventId) {
     return events.filter(function (event) {
+
         if (event.id == eventId) {
             return event;
         }
