@@ -41,6 +41,12 @@ function openCreateInfo(id)
     eventInfo.setAttribute("style", "color: white")
     eventInfo.innerHTML += "Name: " + eventSelected.name + "<br>";
     eventInfo.innerHTML += "Date(s): " + eventSelected.date + "<br>";
+    let attendees = eventSelected.attendees;
+    eventInfo.innerHTML += "Attendees:<br>";
+    for(let i in attendees)
+    {
+      eventInfo.innerHTML += "&emsp;" + attendees[i].personsName + ": " + attendees[i].personsAvailability + "<br>";
+    }
     divElem.append(eventInfo);
   }
   else
@@ -82,6 +88,12 @@ function openAttendInfo(id)
     eventInfo.setAttribute("style", "color: white")
     eventInfo.innerHTML += "Name: " + eventSelected.name + "<br>";
     eventInfo.innerHTML += "Date(s): " + eventSelected.date + "<br>";
+    let attendees = eventSelected.attendees;
+    eventInfo.innerHTML += "Attendees:<br>";
+    for(let i in attendees)
+    {
+      eventInfo.innerHTML += "&emsp;" + attendees[i].personsName + ": " + attendees[i].personsAvailability + "<br>";
+    }
     divElem.append(eventInfo);
   }
   else
