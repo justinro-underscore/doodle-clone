@@ -26,7 +26,8 @@ function initTimes()
         // Adds the time to the array and the HTML list
         availableTimes.push(time);
         let newTime = document.createElement("a");
-        newTime.setAttribute("href", "javascript:void(0);"); // https://stackoverflow.com/questions/8260546/make-a-html-link-that-does-nothing-literally-nothing/8260561
+        // Adapted from - stackoverflow.com/questions/8260546/make-a-html-link-that-does-nothing-literally-nothing/8260561
+        newTime.setAttribute("href", "javascript:void(0);");
         newTime.setAttribute("onclick", "addTime()");
         newTime.setAttribute("id", id);
         newTime.setAttribute("name", time); // This is a sort of hidden attribute for the 24-hour mode, even if we are in 12-hour mode

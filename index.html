@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <title>Landing Page - Doodle Clone</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
 
-    <div class="header">
-      <span class="nav menu">
-          <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
-          <div id="dropdown" class="dd-items">
-              <a href="createevent.html">Create Event</a>
-              <a href="setavail.html">Set Availability</a>
-                <a href="eventView.html">View/Accept Event</a>
-          </div>
-      </span>
-      <span class="nav button_container">
-        <button class="dropmenu"><a href="documentation/index.html">Documentation</a></button>
-      </span>
+<head>
+  <title>Doodle Clone - Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+</head>
 
-      <h1>Welcome to our Doodle Clone!</h1>
-      <h2 class="kHeaders">EECS 448 Monday Lab - Spring 2018</h2>
-    </div>
-    <br>
-    <div id="credits">
-      <h2>Authors:</h2><br>
-      <p>Kyle Berkley</p><br>
-      <p>Ron Huff</p><br>
-      <p>Weiting Wei</p><br>
-      <p>Surabhi Khachar</p><br>
-      <p>Diego Garcia</p>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="functions.js"></script>
-  </body>
+<body onload="loadUsers()">
+  <div class="header">
+    <h1>Login</h1>
+    <form>
+      <!//influenced by https://www.w3schools.com/tags/tag_input.asp//> Username:
+      <br>
+      <input style="color: black" type="text" id="username"><br> Password:
+      <br>
+      <input style="color: black" type="password" id="password"><br><br>
+      <input style="color: black" type="submit" onclick="login(event)" value="Log in">
+      <input style="color: black" type="reset"><br>
+      <input class="button" style="color: black" type="button" onclick="location.href = 'createUser.html';" value="Create User">
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="jsFiles/database.js"></script>
+  <script src="jsFiles/userManager.js"></script>
+</body>
 </html>

@@ -1,7 +1,7 @@
 var buttons = document.querySelectorAll(".time"); //array of time time slots
 var eventList = document.querySelector(".Event_list"); //DOM object for the event list
 var eventItems = document.querySelectorAll("h4"); //event list's items
-var availList = document.querySelector("#avail_List") //event's list of availabilities
+var availList = document.querySelector("#avail_List"); //event's list of availabilities
 var timeSlots = [];
 let slotList = [];
 var selectedList = [];
@@ -9,24 +9,7 @@ var twelveHourMode = false; //boolean for what time mode user wants
 var personName = ""; //global variables to be passed out
 var highlightedEvent = "";//this too.
 
-function dropdownMenu() {
-    document.getElementById("dropdown").classList.toggle("show"); //Shows or does not show the menu onclick
-}
-
-window.onclick = function(event) {
-  if(!event.target.matches('.dropmenu')) {
-    var dropwdowns = document.getElementsByClassName("dd-items"); //the two other .html files
-    for (var i = 0; i<dropwdowns.length; i++) {
-      var openDD = dropwdowns[i]; //we misspelled dropdowns but now we're rolling with it
-      if (openDD.classList.contains('show')) {
-        openDD.classList.remove('show');
-      }
-    }
-  }
-}
-
-function init() { //function called on page load. sets up page:
-  populateEventList(); //adds events in local storage to list of events
+function init() { //function called on page load. sets up page
   addListEvents(); //adds a bunch of onclick-events to the list items. (see immediately below)
 }
 
@@ -47,7 +30,7 @@ function addListEvents() {
       for(let j = 0; j < thisTimeSlots.length; j++) {
         buttons.forEach(function(element) {
           if(element.innerHTML === thisTimeSlots[j]) element.classList.add("chosen"); //outline which times the creator chose
-        })
+        });
       }
 
       showAvailability(events.arrayOfEvents[searchingForEvents(h4event)]);
@@ -68,7 +51,7 @@ function removeChosen() {
 }
 
 function submitAvail() { //sets global eveals
-  personName = document.forms["Availability"]["attendee"].value; //gets the name of the attendee.
+  personName = document.forms.Availability.attendee.value; //gets the name of the attendee.
 
   var shortening = document.querySelector(".highlighted").innerHTML;//just shortens, or else this would be a massive line of code
   highlightedEvent = shortening.substr(0, shortening.indexOf('-')).slice(0, -1); //sets the event name that is marked for availability
@@ -81,59 +64,24 @@ function showAvailability(event) {
   let availAtts = {
     time: "",
     attendees: []
-  }
+  };
 
   buttons.forEach(function(timeID) {
     availAtts.attendees = [];
     availAtts.time = timeID.id;
 
-    for(var i = 0; i < event.numOfPeopleAttending; i++) {
-      if(event.peopleAttending[i].personsAvailability.includes(availAtts.time)) {
-        availAtts.attendees.push(event.peopleAttending[i].personsName)
+    for(var i = 0; i < event.numOfattendees; i++) {
+      if(event.attendees[i].personsAvailability.includes(availAtts.time)) {
+        availAtts.attendees.push(event.attendees[i].personsName);
       }
     }
 
-    slotlist.push(availAtts)
+    slotlist.push(availAtts);
   });
 
   for(var k = 0; k < slotList.length; k++) {
     if(slotList[k].attendees.length > 0) {
       availList.innerHTML += "<li>" + slotList[k].time + " - " + attendees.join(', ') + "</li>";
-    }
-  }
-}
-
-function populateButtonHTML() {
-  for(var i = 0; i < buttons.length; i++) {
-    if(twelveHourMode) { //case for 12 hour mode
-      if(Number(buttons[i].id.substring(0,2)) - 12 >= 0) { //if the time is after noon...
-        buttons[i].innerHTML = String(Number(buttons[i].id.substring(0,2)) - 12) + buttons[i].id.substring(2,6) + " PM"; //adjusts times to 12-hour mode.
-      }
-      else {
-        buttons[i].innerHTML += " AM";
-      }
-    } //case for 24 hour mode
-    else {
-      buttons[i].innerHTML = buttons[i].id;
-    }
-  }
-}
-
-function toggleMode() { //when the change time mode button is pressed
-  twelveHourMode = !twelveHourMode; //change global time mode boolean
-  populateButtonHTML(); //change the time slot buttons' html
-}
-
-function appendEvent(isValid, eventName, eventDate) { //adds new event item to event list
-  if(isValid) eventList.innerHTML += "<h4>" + eventName + " - " + eventDate + "</h4>";
-  addListEvents(); //adds new event to this event list item
-}
-
-function populateEventList() { //gets local storage events and populates event list
-  if (events.numOfEvents > 0) {
-    for(var i = 0; i < events.numOfEvents; i++) { //for each event in local storage ...
-
-      // eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].nameOfEvent + " - " + events.arrayOfEvents[i].dateOfEvent + "</h4>" //add an h4 with the event's name and date
     }
   }
 }

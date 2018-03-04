@@ -1,20 +1,60 @@
+let events = {};
+
+//TODO: change this
 let data;
 let maker = "";
 let nEvent = "";
 let eDate = "";
 var valid = true;
 
-function getData(){
-  data = document.forms["eventMaker"];
-  maker = data["admin"].value;
-  nEvent = data["eventName"].value;
-  eDate = data["date"].value;
+let loadEvents = () => {
+    google.charts.load('current', {
+        packages: ['corechart', 'table', 'sankey']
+    });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        let query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/1f7v5k0XmaXdCAGkO9DGnv6uTzkAl_FjHHpg4jV9lTgI/edit#gid=0");
+        query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+        let data = response.getDataTable();
+        let rows = data.getNumberOfRows();
+
+        for (let i = 0; i < rows; i++) {
+            let event = JSON.parse(data.getValue(i, 2));
+            events[event.date + '/' + event.name] = event;
+        }
+    }
+};
+
+function addEventToEvents(eventInfo)
+{
+  events[eventInfo.date + '/' + eventInfo.name] = eventInfo;
+}
+
+function getEventsByDate(eventDate)
+{
+  eventsOnDate = {};
+  for(let i in events)
+  {
+    if(events[i].date == eventDate)
+      eventsOnDate.push(events[i]);
+  }
+  return eventsOnDate;
+}
+
+function getEvent(eventName, eventDate)
+{
+  return(events[eventDate + "/" + eventName]);
 }
 
 // Checks all user input
-function checkData()
+function checkEventData()
 {
-  // TODO Check user
   if(nEvent.length == 0) // Check event name
   {
     alert("Error: Please enter an event name!");
@@ -44,20 +84,18 @@ function addEvent(){
 
   let eventInfo = {
     creator: maker,
-    nameOfEvent: nEvent,
-    dateOfEvent: eDate,
+    name: nEvent,
+    date: eDate,
     timeSlots: getEventTimes(),
-    numOfTimeSlots: getEventTimes().length,
-    peopleAttending: [],
-    numOfPeopleAttending: 0,
-    id: eventId
+    attendees: [],
+    numOfattendees: 0
   };
   let personInfo = {
     personsName: eventInfo.creator,
     personsAvailability: getEventTimes()
   };
-  eventInfo.peopleAttending.push(personInfo);
-  eventInfo.numOfPeopleAttending++;
+  eventInfo.attendees.push(personInfo);
+  eventInfo.numOfattendees++;
   // events.arrayOfEvents.push(eventInfo);
   // events.numOfEvents++;
 
@@ -90,30 +128,10 @@ function checkDate()
   return(true);
 }
 
-// function dupMeet(){
-//   //checks if any duplicate events have been created.
-//   //This is done by checking if there is an event with the same name already created.
-//   for(let i = 0; i < events.numOfEvents; i++){
-//     if(events.arrayOfEvents[i].nameOfEvent == nEvent){
-//         return(false);
-//     }
-//   }
-//   return(true);
-// }
-
-// function searchingForEvents(name){
-//   for(let i = 0; i < events.numOfEvents; i++){
-//     if(name == events.arrayOfEvents[i].nameOfEvent){
-//       return(i);
-//     }
-//   }
-//   return(-1);
-// }
-
 // Enters the event into the event array
 function enteringEvent(){
   getData(); // Fill the data
-  if(checkData()) // Check user input
+  if(checkEventData()) // Check user input
   {
     addEvent(); // Add the event
     alert('The Event "' + nEvent + '" was created!');
@@ -131,7 +149,14 @@ function sendAvail(person, evName, array){
     personsName: person,
     personsAvailability: array
   };
-  // events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
-  // events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
+  // events.arrayOfEvents[eventIndex].attendees.push(personInfo);
+  // events.arrayOfEvents[eventIndex].numOfattendees++;
   alert('Person added to '+evName+' event.')
+}
+
+function getData(){
+  data = document.forms["eventMaker"];
+  maker = data["admin"].value;
+  nEvent = data["eventName"].value;
+  eDate = data["date"].value;
 }
