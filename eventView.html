@@ -3,6 +3,7 @@
 
 <head>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <title>Set Availability - Doodle Clone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
@@ -10,6 +11,9 @@
 </head>
 =======
     <title>Set Availability - Doodle Clone</title>
+=======
+    <title>View your Events - Doodle Clone</title>
+>>>>>>> Event View Details
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="chooseTimesStyle.css">
@@ -22,7 +26,7 @@
 <script src="chooseTimes.js">
 </script>
 
-<body onload="init(); initTimes();">
+<body>
     <div class="header">
         <span class="nav menu">
         <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
@@ -34,7 +38,7 @@
         <span class="nav button_container">
         <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
       </span>
-        <h1>Set Your Availability!</h1>
+        <h1>See the Events for a specific day</h1>
         <h2 class="kHeaders">The event creator's selected times will be outlined in blue!</h2>
     </div>
 
@@ -68,8 +72,12 @@
         <div id="rightcolumn" class="yui3-u " align="center" style="margin-left:auto;margin-right:auto;width:340px;">
             <div id="links" style="padding-left:20px;color:white">
                 <!-- The buttons are created simply by assigning the correct CSS class -->
+<<<<<<< HEAD
                 <br> Selected date: <span id="selecteddate"></span>
 >>>>>>> Added the view events functunality and will soon update with the accepting events properties
+=======
+                <br> Selected date: <span id="selecteddate"><br><br></span>
+>>>>>>> Event View Details
 
 <body onload="gettingData(); init(); initTimes();">
   <header>
@@ -185,10 +193,10 @@
 
         //https://yuilibrary.com/yui/docs/calendar/#javascript
     </script>
-
+    <br><br>
     <div class="Event_list">
-        <h3>Choose An Event:</h3>
-        <div id="EventListDisplay">
+        <h3 align="center">Choose An Event:</h3>
+        <div align="center" id="EventListDisplay">
         </div>
     </div>
     <div id="charts">
