@@ -147,6 +147,15 @@ function addEvent(){
   postEvent(eventInfo);
 }
 
+function addMultiEvent() {
+  if ($('#multidayEvent').is(':checked')) {
+    let multiEvent = $('<input type="date" name="date" maxlength="10" required=true type=string id="evDate2">');
+    $('#dates').append(multiEvent);
+  } else {
+    $('#evDate2').remove();
+  }
+}
+
 // Checks the date
 function checkDate()
 {
@@ -201,7 +210,7 @@ function sendAvail(person, evName, array){
 
 function getData(){
   data = document.forms["eventMaker"];
-  maker = data["admin"].value;
+  maker = getCurrUser().username;
   nEvent = data["eventName"].value;
   eDate = data["date"].value;
 }

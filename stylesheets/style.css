@@ -90,17 +90,6 @@ p {
   list-style: none;
 }
 
-#evName {
-  margin: 0;
-  width: 49%;
-  float: left;
-}
-
-#evDate {
-  float: left;
-  width: 49%;
-}
-
 #lName {
   margin: 0;
   width: 49%;

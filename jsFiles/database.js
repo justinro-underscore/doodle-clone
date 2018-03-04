@@ -13,7 +13,7 @@ function postEvent(eventObj) {
     }
   });
   request.always(() => {
-    addEventToEvents(eventObj);
+    loadEvents();
   });
 }
 
@@ -31,6 +31,6 @@ function postUser(userObj) {
     }
   });
   request.always(() => {
-    addUserToUsers(userObj);
+    loadUsers();
   });
 }
