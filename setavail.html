@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 
 <head>
-  <title>Set Availability - Doodle Clone</title>
+  <title>View Events - Doodle Clone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-  <link rel="stylesheet" type="text/css" href="stylesheets/chooseTimesStyle.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/eventViewing.css">
+
 </head>
 
-<body onload="init(); initTimes();">
+<body>
   <header>
     <nav class="navbar navbar-expand-md fixed-top bg-primary-blue">
       <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -17,7 +18,7 @@
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event Actions</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="createEvent.html">Create Event</a>
-              <a class="dropdown-item" href="eventView.html">View Events</a>
+              <a class="dropdown-item" href="setavail.html">Set Availability</a>
               <a class="dropdown-item" href="profile.html">See Profile</a>
             </div>
           </li>
@@ -33,46 +34,116 @@
         <a class="navbar-brand" href="home.html"><img src="res/logo_full.png"></a>
       </div>
     </nav>
-
     <h1 class="kHeaders">Set Your Availability!</h1>
   </header>
 
-  <br>
+  <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+  <!-- Add an additional blue button style -->
+  <style>
+    .yui3-button {
+      margin: 10px 0px 10px 0px;
+      color: #fff;
+      background-color: #3476b7;
+
+
+    }
+
+    .center {
+      margin: auto;
+      width: 60%;
+      border: 3px solid #73AD21;
+      padding: 10px;
+    }
+  </style>
+
+  <div align="center" id="demo" class="yui3-skin-sam yui3-g" style="margin-left:auto;margin-right:auto;width:340px;">
+    <!-- You need this skin class -->
+
+    <div align="center" id="leftcolumn" class="yui3-u" style="margin-left:auto;margin-right:auto;width:340px;">
+      <!-- Container for the calendar -->
+      <div id="mycalendar" align="center" style="margin-left:auto;margin-right:auto;width:340px;"></div>
+    </div>
+    <div id="rightcolumn" class="yui3-u " align="center" style="margin-left:auto;margin-right:auto;width:340px;">
+      <div id="links" style="padding-left:20px;color:white">
+        <!-- The buttons are created simply by assigning the correct CSS class -->
+        <br> Selected date: <span id="selecteddate"></span>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    YUI().use('calendar', 'datatype-date', 'cssbutton', function(Y) {
+
+      // Create a new instance of calendar, placing it in
+      // #mycalendar container, setting its width to 340px,
+      // the flags for showing previous and next month's
+      // dates in available empty cells to true, and setting
+      // the date to today's date.
+      var calendar = new Y.Calendar({
+        contentBox: "#mycalendar",
+        width: '340px',
+        showPrevMonth: true,
+        showNextMonth: true,
+        date: new Date()
+      }).render();
+
+      // Get a reference to Y.DataType.Date
+      var dtdate = Y.DataType.Date;
+
+      // Listen to calendar's selectionChange event.
+      calendar.on("selectionChange", function(ev) {
+
+        // Get the date from the list of selected
+        // dates returned with the event (since only
+        // single selection is enabled by default,
+        // we expect there to be only one date)
+        var newDate = ev.newSelection[0];
+        listOfEvents(dtdate.format(newDate));
+        // Format the date and output it to a DOM
+        // element.
+        Y.one("#selecteddate").setHTML(dtdate.format(newDate));
+      });
+
+
+      // When the 'Show Previous Month' link is clicked,
+      // modify the showPrevMonth property to show or hide
+      // previous month's dates
+      Y.one("#togglePrevMonth").on('click', function(ev) {
+        ev.preventDefault();
+        calendar.set('showPrevMonth', !(calendar.get("showPrevMonth")));
+      });
+
+      // When the 'Show Next Month' link is clicked,
+      // modify the showNextMonth property to show or hide
+      // next month's dates
+      Y.one("#toggleNextMonth").on('click', function(ev) {
+        ev.preventDefault();
+        calendar.set('showNextMonth', !(calendar.get("showNextMonth")));
+      });
+    });
+
+    //https://yuilibrary.com/yui/docs/calendar/#javascript
+  </script>
 
   <div class="Event_list">
     <h3>Choose An Event:</h3>
+    <div id="EventListDisplay"></div>
+  </div>
+  <div id="charts">
+    <div id="chart_div"></div>
+    <div id="table_div"></div>
   </div>
 
-  <span class="availability allTimes">
-        <div class="times">
-          <div class="timesList">
-            <h3>Available Times:</h3>
-            <div class="availableTimesListHTML" id="availableTimesList">
-            </div>
-          </div>
-          <div class="timesList">
-            <h3 class="lastChosen">Last time chosen:<br><span id="chosen"><br></span></h3>
-  </div>
-  <div class="timesList">
-    <h3>Chosen Times:</h3>
-    <div class="chosenTimesListHTML" id="chosenTimesList">
-    </div>
-  </div>
-  </div>
-  <div>
-    <br>
-    <form name="Availability">
-      <button type="button" onclick="eventSubmit(); submitAvail(); sendAvail(personName, highlightedEvent, selectedList);" id="setAvail">Submit Availability</button>
-    </form>
-  </div>
-  </span>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="jsFiles/chooseTimes.js">
-  </script>
   <script src="jsFiles/eventManager.js"></script>
+  <script src="jsFiles/eventAccept.js"></script>
+
+  <script src="jsFiles/chooseTimes.js"></script>
   <script src="functions.js"></script>
   <script src="driver.js"></script>
 </body>
