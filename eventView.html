@@ -2,13 +2,14 @@
 <html>
 
 <head>
-  <title>Set Availability - Doodle Clone</title>
+  <title>View Events - Doodle Clone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-  <link rel="stylesheet" type="text/css" href="stylesheets/chooseTimesStyle.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/eventViewing.css">
+
 </head>
 
-<body onload="gettingData(); init(); initTimes();">
+<body>
   <header>
     <nav class="navbar navbar-expand-md fixed-top bg-primary-blue">
       <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -98,7 +99,7 @@
         // single selection is enabled by default,
         // we expect there to be only one date)
         var newDate = ev.newSelection[0];
-
+        listOfEvents(dtdate.format(newDate));
         // Format the date and output it to a DOM
         // element.
         Y.one("#selecteddate").setHTML(dtdate.format(newDate));
@@ -127,6 +128,7 @@
 
   <div class="Event_list">
     <h3>Choose An Event:</h3>
+    <div id="EventListDisplay"></div>
   </div>
   <div id="charts">
     <div id="chart_div"></div>
@@ -137,6 +139,8 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="jsFiles/eventManager.js"></script>
+  <script src="jsFiles/eventView.js"></script>
+
   <script src="jsFiles/chooseTimes.js"></script>
   <script src="functions.js"></script>
   <script src="driver.js"></script>
