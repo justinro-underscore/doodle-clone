@@ -119,7 +119,7 @@ function checkEventData()
     alert("Error: Please select time(s) for event!");
     return false;
   }
-  return(checkDate()); // Checks the date
+  return(checkDate(eDate)); // Checks the date
 }
 
 // Adds the event to the array of events
@@ -149,32 +149,45 @@ function addEvent(){
 
 function addMultiEvent() {
   if ($('#multidayEvent').is(':checked')) {
-    let multiEvent = $('<input type="date" name="date" maxlength="10" required=true type=string id="evDate2">');
-    $('#dates').append(multiEvent);
+    let multiBreak = $('<br id="multiBreak"/>');
+    let multiLabel = $('<label id="multiLabel" for"evDate2">End Date</label>');
+    let multiEvent = $('<input type="date" oninput="checkMultiDate()" name="date" maxlength="10" required=true type=string id="evDate2">');
+    $('#dates').append(multiBreak, multiLabel, multiEvent);
   } else {
     $('#evDate2').remove();
+    $('#multiLabel').remove();
+    $('#multiBreak').remove();
   }
 }
 
+function checkMultiDate() {
+    let evDate1 = $('#evDate');
+    let evDate2 = $('#evDate2');
+
+    checkDate(evDate1);
+    checkDate(evDate2);
+    //TODO: compare dates
+}
+
 // Checks the date
-function checkDate()
+function checkDate(date)
 {
-  if(eDate.length == 0) // If user enters in an invalid date, the eDate variable will be empty
+  if(date.length == 0) // If user enters in an invalid date, the date variable will be empty
   {
     alert("Error: Please choose a valid date.");
     return (false);
   }
-  if(eDate.slice(5,7) == "01" && eDate.slice(8,10) == "01"){
+  if(date.slice(5,7) == "01" && date.slice(8,10) == "01"){
     //New Year's Day.
     alert("Error: No meetings permitted to be scheduled on New Year's Day.");
     return (false);
   }
-  else if(eDate.slice(5,7) == "07" && eDate.slice(8,10) == "04"){
+  else if(date.slice(5,7) == "07" && date.slice(8,10) == "04"){
     //Independence Day
     alert("Error: No meetings permitted to be scheduled on Independence Day.");
     return (false);
   }
-  else if(eDate.slice(5,7) == "12" && eDate.slice(8,10) == "25"){
+  else if(date.slice(5,7) == "12" && date.slice(8,10) == "25"){
     //Christmas Day
     alert("Error: No meetings permitted to be scheduled on Christmas Day.");
     return (false);
