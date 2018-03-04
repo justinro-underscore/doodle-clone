@@ -55,7 +55,14 @@ h3 {
 }
 
 p {
-  line-height: 80%;
+  color:white;
+  margin-left: 30px;
+  margin-right: 25px;
+  padding: 10px;
+  border: 2px
+  solid lightgray;
+  color: white;
+  text-align: left;
 }
 
 #credits {
