@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Doodle Clone - Login</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="login.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Login</h1>
+                <form action="/action_page.php"> <!//influenced by https://www.w3schools.com/tags/tag_input.asp//>
+                  Username:<br>
+                  <input style="color: black" type="text" id="username"><br>
+                  Password:<br>
+                  <input style="color: black" type="password" id="password"><br><br>
+                  <input style="color: black" type="button" onclick="login()" value="Log in">
+                  <input style="color: black" type="reset"><br>
+                    <input class="button" style="color: black" type="button" onclick="location.href = 'createUser.html';" value="Create User">
+                </form>
+        </div>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="javaScriptFiles/database.js"></script>
+        <script src="javaScriptFiles/user.js"></script>
+        <script src="javaScriptFiles/login.js"></script>
+    </body>
+</html>

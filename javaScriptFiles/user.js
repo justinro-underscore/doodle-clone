@@ -1,5 +1,7 @@
  let users = {};
 
+let currentUser = {}; //maybe change where the currentUser is being instantiated 
+
  let loadUsers = () => {
    google.charts.load('current', {
        packages: ['corechart', 'table', 'sankey']
@@ -25,3 +27,24 @@
  };
 
  loadUsers();
+
+ function addUserToUsers(userInfo)
+ {
+   users[userInfo["username"]] = userInfo;
+ }
+
+ function getUser(username)
+ {
+   return(users[username]);
+ }
+
+function validateLogin(username, password){
+    let loginUser = getUser(username);
+    if(loginUser != null){
+        if(loginUser.password == password){
+            currentUser = loginUser;
+            return true;
+        }
+    }
+    return false;
+}
