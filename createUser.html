@@ -8,16 +8,17 @@
     <body>
         <div class="header">
             <h1>Create User</h1>
-                <form action="/action_page.php"> <!-- influenced by https://www.w3schools.com/tags/tag_input.asp// -->
-                  Username:<br>
-                  <input style="color: black" type="text" id="username"><br>
-                  Password:<br>
-                  <input style="color: black" type="password" id="password"><br>
-                  <input type="checkbox" id="isAdmin" value="true">Is admin<br>
-                  <input style="color: black" type="button" onclick="createUser()" value="Create">
-                  <input style="color: black" type="reset"><br>
-                  <input class="button" style="color: black" type="button" onclick="location.href = 'index.html';" value="Login">
-                </form>
+            <form action="/action_page.php"> <!-- influenced by https://www.w3schools.com/tags/tag_input.asp// -->
+              Username:<br>
+              <input style="color: black" type="text" id="username"><br>
+              Password:<br>
+              <input style="color: black" type="password" id="password"><br>
+              <input type="checkbox" id="isAdmin" value="true">Is admin<br>
+              <input style="color: black" type="button" onclick="createUser()" value="Create">
+              <input style="color: black" type="reset"><br>
+              <input class="button" style="color: black" type="button" onclick="location.href = 'index.html';" value="Login">
+            </form>
+            <p style="color: red" id="createUserErrorMessage"></p>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

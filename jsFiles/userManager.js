@@ -1,8 +1,15 @@
- let users = {};
+let users = {};
+
+if (localStorage.getItem("users") == null) {
+    loadUsers();
+} else {
+    users = JSON.parse(localStorage.getItem("users"));
+}
 
  let currentUser = {}; //maybe change where the currentUser is being instantiated
 
  let loadUsers = () => {
+//      let users = {};
    google.charts.load('current', {
      packages: ['corechart', 'table', 'sankey']
    });
@@ -23,6 +30,8 @@
        let user = JSON.parse(data.getValue(i, 2));
        users[user.username] = user;
      }
+       
+       localStorage.setItem("users", JSON.stringify(users));
    }
  };
 
@@ -52,11 +61,11 @@
    let inputIsAdmin = false;
    //make sure there is a username and password
    if (inputUsername === "") {
-     alert("You need a username");
+       document.getElementById("createUserErrorMessage").innerHTML = "You need a username";
      return false;
    }
    if (inputPassword === "") {
-     alert("You need a password");
+     document.getElementById("createUserErrorMessage").innerHTML = "You need a password";
      return false;
    }
    if ($('#isAdmin').is(':checked')) {
@@ -64,7 +73,7 @@
    }
    //make sure the usename isn't already taken
    if (getUser(inputUsername) != undefined) {
-     alert("The username is already taken");
+     document.getElementById("createUserErrorMessage").innerHTML = "The username is already taken";
      return false;
    }
    //create user object
@@ -75,10 +84,8 @@
    };
    //post it to the google sheets
    postUser(inputUserObject);
-   //tell the user that the account was created
-   alert("User " + inputUsername + " created!");
    //go back to the login page after successful create user
-   location.href = 'login.html';
+   location.href = 'index.html';
  }
 
  function login(event) {
@@ -90,6 +97,6 @@
    if (validateLogin(inputUsername, inputPassword)) {
      window.location.href = 'home.html';
    } else {
-     alert("Incorrect username/password");
+       document.getElementById("loginErrorMessage").innerHTML = "Incorrect username/password";
    }
  }
