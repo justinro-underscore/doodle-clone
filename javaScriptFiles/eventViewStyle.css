@@ -1,0 +1,31 @@
+a:visited {
+    color: lightblue;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:link{
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+    color: lightblue;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+}
+p{
+    border: 1px solid powderblue;
+    padding: 30px;
+    color : white;
+}
+/* p {
+  margin-left: 30px;
+  margin-right: 25px;
+  padding: 10px;
+  border: 2px
+  solid lightgray;
+  color: white;
+  text-align: left;
+} */

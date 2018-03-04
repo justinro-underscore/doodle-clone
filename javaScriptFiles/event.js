@@ -34,3 +34,23 @@ function getEventsByDate(eventDate) {
     }
     return eventsOnDate;
 }
+
+// function getEventByName(eventName, eventDate) // TODO Change to id
+// {
+//   let eventsOnDate = getEventsByDate(eventDate);
+//   for(let i in eventsOnDate)
+//   {
+//     if(eventsOnDate[i]["nameOfEvent"] == eventName)
+//       return eventsOnDate[i];
+//   }
+//   return null;
+// }
+
+function getEventByName(eventName) // TODO GET RID OF THIS MONSTROSITY
+{
+  for (let i in events) {
+      if (events[i].nameOfEvent == eventName)
+          return events[i];
+  }
+  return null;
+}
