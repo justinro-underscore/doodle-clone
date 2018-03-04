@@ -33,16 +33,16 @@ Team Members: Varun Chadha, Justin Roderman, Noah Brabec, Harrison Luo, Alex Kun
 	◦ Create Create user page (Alex) (complete)
         ◦ Finish review of previous team’s code base (Alex and Noah) (complete)
 
-Meeting 4: 3/4/18, 12:15pm, Justin’s Apartment
+#### Meeting 4: 3/4/18, 12:15pm, Justin’s Apartment
 
-Discuss even futher breakdown of tasks
+	Discuss even futher breakdown of tasks
 	Harry working on view events, profile page
 	Varun working on multi-day events, loading events, miscellaneous tasks
 	Justin working on create event, load events, profile page, miscellaneous help
 	Noah working on turning our artifacts and readme into sweet, sweet markdown
 	Alex working on login/create user error handling and stress testing
 
-Tasks
+	Tasks
 	Frontend:
 		View event (harry) (complete)
 		Login/create user error messages (Alex) (complete)
