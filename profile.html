@@ -2,17 +2,20 @@
 <html>
 
 <head>
-  <title>Create Event - Doodle Clone</title>
+  <title>Profile - Doodle Clone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/chooseTimesStyle.css">
 </head>
 
-<body onload="init(); initTimes();">
+<body onload="init()">
   <header>
     <nav class="navbar navbar-expand-md fixed-top bg-primary-blue">
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event Actions</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -23,63 +26,34 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="documentation/index.html">Documnentation</a>
+            <a class="nav-link" href="documentation/index.html">Documnentation <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">Log Out <span class="sr-only">(current)</span></a>
           </li>
         </ul>
-        <a class="navbar-brand" href="home.html"><img src="res/logo_full.png"></a>
+        <a class="navbar-brand" href="#"><img src="res/logo_full.png"></a>
       </div>
     </nav>
-    <h1 class="kHeaders">Create an Event!</h1>
+    <h1 class="kHeaders" id="welcome">Welcome, User!</h1>
   </header>
 
   <br>
 
-  <div>
-    <span class="availability">
-        <div class="times">
-          <div class="timesList">
-            <h3>Available Times:</h3>
-            <div class="availableTimesListHTML" id="availableTimesList">
-            </div>
-          </div>
-          <div class="timesList">
-            <h3 class="lastChosen">Last time chosen:<br><span id="chosen"><br></span></h3>
-  </div>
-  <div class="timesList">
-    <h3>Chosen Times:</h3>
-    <div class="chosenTimesListHTML" id="chosenTimesList">
-    </div>
-  </div>
-  </div>
-  <div>
-    <form name="eventMaker">
-      <input type="text" name="eventName" placeholder="Event name" maxlength="064" required=true type=string id="evName">
-      <input type="text" name="admin" placeholder="Creator name" maxlength="064" required=true type=string id="lName">
-      <br>
-      <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
-      <button type="button" onclick="enteringEvent();">Create Event</button>
-      <!-- appendEvent(valid, nEvent, eDate) -->
-    </form>
-  </div>
-  </span>
-  </div>
-  <div>
-    <ul id="avail_List">
+  <div id="createdEvents">
 
-    </ul>
+  </div>
+  <br>
+  <div id="attendingEvents">
+    
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="jsFiles/database.js"></script>
   <script src="jsFiles/eventManager.js"></script>
-  <script src="functions.js"></script>
-  <script src="driver.js"></script>
-  <script src="jsFiles/chooseTimes.js"></script>
+  <script src="jsFiles/userManager.js"></script>
+  <script src="jsFiles/profile.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,14 @@ let nEvent = "";
 let eDate = "";
 var valid = true;
 
-let loadEvents = () => {
+if (localStorage.getItem("events") == null) {
+  loadEvents();
+} else {
+  events = JSON.parse(localStorage.getItem("events"));
+}
+
+function loadEvents() {
+    events = [];
     google.charts.load('current', {
         packages: ['corechart', 'table', 'sankey']
     });
@@ -20,7 +27,6 @@ let loadEvents = () => {
         let query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/1f7v5k0XmaXdCAGkO9DGnv6uTzkAl_FjHHpg4jV9lTgI/edit#gid=0");
         query.send(handleQueryResponse);
     }
-
     function handleQueryResponse(response) {
         //row number in spreadsheet = i + row_offset (due to header and current id num)
         let row_offset = 2;
@@ -33,6 +39,8 @@ let loadEvents = () => {
             event.rowId = currRowNum;
             events.push(event);
         }
+
+        localStorage.setItem("events", JSON.stringify(events));
     }
 };
 
@@ -60,9 +68,31 @@ function getEvent(eventName, eventDate) {
 
 function findEventsById(eventId) {
     return events.filter(function (event) {
-        if (event.id == id) {
+        if (event.id == eventId) {
             return event;
         }
+    });
+}
+
+function getCreatedEventsByUser(user)
+{
+    return events.filter(function (event) {
+        if (event.creator == user.username) {
+            return event;
+        }
+    });
+}
+
+function getAttendingEventsByUser(user)
+{
+    return events.filter(function (event) {
+        let attendees = event.attendees;
+        if(attendees.filter(function (attendee) {
+            if (attendee.personsName == user.username && event.creator != user.username) {
+                return event;
+            }
+        }).length != 0)
+            return event;
     });
 }
 

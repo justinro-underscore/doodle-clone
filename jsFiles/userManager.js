@@ -8,8 +8,9 @@ if (localStorage.getItem("users") == null) {
 
  let currentUser = {}; //maybe change where the currentUser is being instantiated
 
- let loadUsers = () => {
-//      let users = {};
+ function loadUsers()
+ {
+   users = [];
    google.charts.load('current', {
      packages: ['corechart', 'table', 'sankey']
    });
@@ -30,7 +31,7 @@ if (localStorage.getItem("users") == null) {
        let user = JSON.parse(data.getValue(i, 2));
        users[user.username] = user;
      }
-       
+
        localStorage.setItem("users", JSON.stringify(users));
    }
  };
@@ -47,11 +48,16 @@ if (localStorage.getItem("users") == null) {
    let loginUser = getUser(username);
    if (loginUser != null) {
      if (loginUser.password == password) {
-       currentUser = loginUser;
+       localStorage.setItem("currentUser", JSON.stringify(loginUser));
        return true;
      }
    }
    return false;
+ }
+
+ function getCurrUser()
+ {
+   return JSON.parse(localStorage.getItem("currentUser"));
  }
 
  function createUser() {
