@@ -1,4 +1,5 @@
-let events = {};
+let events = [];
+let currRowNum = 0;
 
 //TODO: change this
 let data;
@@ -21,35 +22,48 @@ let loadEvents = () => {
     }
 
     function handleQueryResponse(response) {
+        //row number in spreadsheet = i + row_offset (due to header and current id num)
+        let row_offset = 2;
         let data = response.getDataTable();
         let rows = data.getNumberOfRows();
 
         for (let i = 0; i < rows; i++) {
+            currRowNum = i + row_offset;
             let event = JSON.parse(data.getValue(i, 2));
-            events[event.date + '/' + event.name] = event;
+            event.rowId = currRowNum;
+            events.push(event);
         }
     }
 };
 
-function addEventToEvents(eventInfo)
-{
-  events[eventInfo.date + '/' + eventInfo.name] = eventInfo;
+function addEventToEvents(eventObj) {
+    currRowNum++;
+    eventObj.rowId = currRowNum;
+    events.push(eventObj);
 }
 
-function getEventsByDate(eventDate)
-{
-  eventsOnDate = {};
-  for(let i in events)
-  {
-    if(events[i].date == eventDate)
-      eventsOnDate.push(events[i]);
-  }
-  return eventsOnDate;
+function getEventsByDate(eventDate) {
+    return events.filter(function (event) {
+        if (event.dateOfEvent == eventDate) {
+            return event;
+        }
+    });
 }
 
-function getEvent(eventName, eventDate)
-{
-  return(events[eventDate + "/" + eventName]);
+function getEvent(eventName, eventDate) {
+    return events.filter(function (event) {
+        if (event.dateOfEvent == eventDate && event.nameOfEvent == eventName) {
+            return event;
+        }
+    })[0];
+}
+
+function findEventsById(eventId) {
+    return events.filter(function (event) {
+        if (event.id == id) {
+            return event;
+        }
+    });
 }
 
 // Checks all user input
