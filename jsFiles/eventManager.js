@@ -87,15 +87,8 @@ function addEvent(){
     name: nEvent,
     date: eDate,
     timeSlots: getEventTimes(),
-<<<<<<< HEAD
-    numOfTimeSlots: getEventTimes().length,
-    peopleAttending: [],
-    numOfPeopleAttending: 0,
-    id: eventId
-=======
     attendees: [],
     numOfattendees: 0
->>>>>>> updated event obj names and fixed functionr ref errors - vchadha
   };
   let personInfo = {
     personsName: eventInfo.creator,
