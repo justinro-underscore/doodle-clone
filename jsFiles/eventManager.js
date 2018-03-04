@@ -102,7 +102,8 @@ function addEvent(){
     date: eDate,
     timeSlots: getEventTimes(),
     attendees: [],
-    numOfattendees: 0
+    numOfattendees: 0,
+    id: eventId
   };
   let personInfo = {
     personsName: eventInfo.creator,
