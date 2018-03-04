@@ -1,7 +1,7 @@
 var buttons = document.querySelectorAll(".time"); //array of time time slots
 var eventList = document.querySelector(".Event_list"); //DOM object for the event list
 var eventItems = document.querySelectorAll("h4"); //event list's items
-var availList = document.querySelector("#avail_List") //event's list of availabilities
+var availList = document.querySelector("#avail_List"); //event's list of availabilities
 var timeSlots = [];
 let slotList = [];
 var selectedList = [];
@@ -23,7 +23,7 @@ window.onclick = function(event) {
       }
     }
   }
-}
+};
 
 function init() { //function called on page load. sets up page:
   populateEventList(); //adds events in local storage to list of events
@@ -47,7 +47,7 @@ function addListEvents() {
       for(let j = 0; j < thisTimeSlots.length; j++) {
         buttons.forEach(function(element) {
           if(element.innerHTML === thisTimeSlots[j]) element.classList.add("chosen"); //outline which times the creator chose
-        })
+        });
       }
 
       showAvailability(events.arrayOfEvents[searchingForEvents(h4event)]);
@@ -68,7 +68,7 @@ function removeChosen() {
 }
 
 function submitAvail() { //sets global eveals
-  personName = document.forms["Availability"]["attendee"].value; //gets the name of the attendee.
+  personName = document.forms.Availability.attendee.value; //gets the name of the attendee.
 
   var shortening = document.querySelector(".highlighted").innerHTML;//just shortens, or else this would be a massive line of code
   highlightedEvent = shortening.substr(0, shortening.indexOf('-')).slice(0, -1); //sets the event name that is marked for availability
@@ -81,7 +81,7 @@ function showAvailability(event) {
   let availAtts = {
     time: "",
     attendees: []
-  }
+  };
 
   buttons.forEach(function(timeID) {
     availAtts.attendees = [];
@@ -89,11 +89,11 @@ function showAvailability(event) {
 
     for(var i = 0; i < event.numOfattendees; i++) {
       if(event.attendees[i].personsAvailability.includes(availAtts.time)) {
-        availAtts.attendees.push(event.attendees[i].personsName)
+        availAtts.attendees.push(event.attendees[i].personsName);
       }
     }
 
-    slotlist.push(availAtts)
+    slotlist.push(availAtts);
   });
 
   for(var k = 0; k < slotList.length; k++) {

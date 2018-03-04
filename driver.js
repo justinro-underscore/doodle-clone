@@ -6,7 +6,7 @@
 //findAttendees() will add available persons to each meeting's timeslot they have indicated they are available for.
 function findAttendees(index)
 {
-    var meeting = events.arrayOfEvents[index]
+    var meeting = events.arrayOfEvents[index];
 
     for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
     {
