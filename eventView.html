@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<<<<<<< HEAD
   <title>Set Availability - Doodle Clone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
@@ -54,10 +55,50 @@
       padding: 10px;
     }
   </style>
+=======
+    <title>View your Events - Doodle Clone</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="chooseTimesStyle.css">
+    <link rel="stylesheet" type="text/css" href="javaScriptFiles/eventViewStyle.css">
+
+
+</head>
+<!--TODO: refactor or delete-->
+<!--<script src="newDataFile.js"></script>-->
+<script src="chooseTimes.js">
+</script>
+
+<body>
+    <div class="header">
+        <span class="nav menu">
+        <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
+        <div id="dropdown" class="dd-items">
+          <a href="index.html" onclick="storeData()">Landing Page</a>
+          <a href="createevent.html" onclick="storeData()">Create Event</a>
+        </div>
+      </span>
+        <span class="nav button_container">
+        <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
+      </span>
+        <h1>See the Events for a specific day</h1>
+        <h2 class="kHeaders">The event creator's selected times will be outlined in blue!</h2>
+    </div>
+
+<!--    TODO: move to own script file-->
+    <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+    <!-- Add an additional blue button style -->
+    <style>
+        .yui3-button {
+            margin: 10px 0px 10px 0px;
+            color: #fff;
+            background-color: #3476b7;
+>>>>>>> 81023d281b439bd207bb7430e709cf086ae371b8
 
   <div align="center" id="demo" class="yui3-skin-sam yui3-g" style="margin-left:auto;margin-right:auto;width:340px;">
     <!-- You need this skin class -->
 
+<<<<<<< HEAD
     <div align="center" id="leftcolumn" class="yui3-u" style="margin-left:auto;margin-right:auto;width:340px;">
       <!-- Container for the calendar -->
       <div id="mycalendar" align="center" style="margin-left:auto;margin-right:auto;width:340px;"></div>
@@ -134,14 +175,111 @@
     <div id="chart_div"></div>
     <div id="table_div"></div>
   </div>
+=======
+        }
+
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+        }
+    </style>
+
+    <div align="center" id="demo" class="yui3-skin-sam yui3-g" style="margin-left:auto;margin-right:auto;width:340px;">
+        <!-- You need this skin class -->
+
+        <div align="center" id="leftcolumn" class="yui3-u" style="margin-left:auto;margin-right:auto;width:340px;">
+            <!-- Container for the calendar -->
+            <div id="mycalendar" align="center" style="margin-left:auto;margin-right:auto;width:340px;"></div>
+        </div>
+        <div id="rightcolumn" class="yui3-u " align="center" style="margin-left:auto;margin-right:auto;width:340px;">
+            <div id="links" style="padding-left:20px;color:white">
+                <!-- The buttons are created simply by assigning the correct CSS class -->
+                <br> Selected date: <span id="selecteddate"><br><br></span>
+
+            </div>
+        </div>
+    </div>
+
+<!-- TODO: move to script file -->
+    <script type="text/javascript">
+        YUI().use('calendar', 'datatype-date', 'cssbutton', function(Y) {
+
+            // Create a new instance of calendar, placing it in
+            // #mycalendar container, setting its width to 340px,
+            // the flags for showing previous and next month's
+            // dates in available empty cells to true, and setting
+            // the date to today's date.
+            var calendar = new Y.Calendar({
+                contentBox: "#mycalendar",
+                width: '340px',
+                showPrevMonth: true,
+                showNextMonth: true,
+                date: new Date()
+            }).render();
+
+            // Get a reference to Y.DataType.Date
+            var dtdate = Y.DataType.Date;
+
+            // Listen to calendar's selectionChange event.
+            calendar.on("selectionChange", function(ev) {
+                // Get the date from the list of selected
+                // dates returned with the event (since only
+                // single selection is enabled by default,
+                // we expect there to be only one date)
+                let newDate = ev.newSelection[0];
+                listOfEvents(dtdate.format(newDate));
+                // Format the date and output it to a DOM
+                // element.
+                Y.one("#selecteddate").setHTML(dtdate.format(newDate));
+            });
+
+
+            // When the 'Show Previous Month' link is clicked,
+            // modify the showPrevMonth property to show or hide
+            // previous month's dates
+            Y.one("#togglePrevMonth").on('click', function(ev) {
+                ev.preventDefault();
+                calendar.set('showPrevMonth', !(calendar.get("showPrevMonth")));
+            });
+
+            // When the 'Show Next Month' link is clicked,
+            // modify the showNextMonth property to show or hide
+            // next month's dates
+            Y.one("#toggleNextMonth").on('click', function(ev) {
+                ev.preventDefault();
+                calendar.set('showNextMonth', !(calendar.get("showNextMonth")));
+            });
+        });
+
+        //https://yuilibrary.com/yui/docs/calendar/#javascript
+    </script>
+    <br><br>
+    <div class="Event_list">
+        <h3 align="center">Choose An Event:</h3>
+        <div align="center" id="EventListDisplay">
+        </div>
+    </div>
+    <div id="charts">
+        <div id="chart_div"></div>
+        <div id="table_div"></div>
+    </div>
+>>>>>>> 81023d281b439bd207bb7430e709cf086ae371b8
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<<<<<<< HEAD
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="jsFiles/eventManager.js"></script>
 <script src="jsFiles/chooseTimes.js"></script>
 <script src="jsFiles/eventView.js"></script>
+=======
+<script src="javaScriptFiles/event.js"></script>
+<script src="javaScriptFiles/eventView.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+>>>>>>> 81023d281b439bd207bb7430e709cf086ae371b8
 <script src="functions.js"></script>
 <script src="driver.js"></script>
 
