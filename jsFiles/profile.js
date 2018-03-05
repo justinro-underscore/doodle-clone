@@ -35,19 +35,17 @@ function populateCreatedEvents(user) {
     for (let i in createdEventsList) {
       let eventCreate = createdEventsList[i];
 
-
       let eventCreateTag = document.createElement("a");
       eventCreateTag.setAttribute("href", "javascript:void(0);");
-      eventCreateTag.setAttribute("onclick", "openCreateInfo('" + eventCreate.id + "," + eventCreate.date+ "," + eventCreate.name+"')");
-      //(divElem.innerHTML);
-      if(!divElem.innerHTML.includes(eventCreate.name))
-      {
-      eventCreateTag.innerHTML = "<h4>" + eventCreate.name + "</h4>";
-      divElem.append(eventCreateTag);
-      let eventCreateDiv = document.createElement("div");
-      eventCreateDiv.setAttribute("id", eventCreate.id + "div" +eventCreate.date);
-      divElem.append(eventCreateDiv);
-    }
+      eventCreateTag.setAttribute("onclick", "openCreateInfo('" + eventCreate.id + "," + eventCreate.date + "," + eventCreate.name + "')");
+
+      if (!divElem.innerHTML.includes(eventCreate.id)) {
+        eventCreateTag.innerHTML = "<h4>" + eventCreate.name + "</h4>";
+        divElem.append(eventCreateTag);
+        let eventCreateDiv = document.createElement("div");
+        eventCreateDiv.setAttribute("id", eventCreate.id + "div" + eventCreate.date);
+        divElem.append(eventCreateDiv);
+      }
     }
   }
 
@@ -58,47 +56,42 @@ function populateCreatedEvents(user) {
  * @param  {String} theID event Data (id, date, and name)
  * @return none
  */
-function openCreateInfo(theID)
-{
+function openCreateInfo(theID) {
   let eventData = theID.split(',');
   //(eventData);
-  let eventNAME =eventData[2];
+  let eventNAME = eventData[2];
   let eventDATE = eventData[1];
   let eventID = eventData[0];
-  let divElem = document.getElementById(eventID + "div" +eventDATE );
-  if(divElem.innerHTML == "")
-  {
+  let divElem = document.getElementById(eventID + "div" + eventDATE);
+  if (divElem.innerHTML == "") {
     let eventSelected = findEventsById(eventID); // TODO make it so that it gets the current day selected
     let eventInfo = document.createElement("p");
     eventInfo.innerHTML += "<b>Name: </b>" + eventNAME + "<br>";
 
-    for(let i in eventSelected)
-    {
+    for (let i in eventSelected) {
       eventInfo.innerHTML += "<b>Date: </b>" + eventSelected[i].date + "<br>";
       let attendees = eventSelected[i].attendees;
       eventInfo.innerHTML += "<b>Attendees:</b><br>";
 
       let table = document.createElement("table");
-      table.setAttribute("class","table table-bordered");
-      table.setAttribute("class" , "table table-striped");
+      table.setAttribute("class", "table table-bordered");
+      table.setAttribute("class", "table table-striped");
 
       table.setAttribute("style", "width: 90%");
       table.setAttribute("align", "center");
       table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
-      for(let i in attendees)
-      {
+      for (let i in attendees) {
         table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + showTimes(attendees[i].personsAvailability) + "</td></tr>";
       }
       eventInfo.append(table);
       divElem.append(eventInfo);
     }
-  }
-    else {
-      {
-        divElem.innerHTML = "";
-      }
+  } else {
+    {
+      divElem.innerHTML = "";
     }
   }
+}
 
 
 /**
@@ -116,57 +109,50 @@ function populateAttendingEvents(user) {
       let eventAttend = attendingEventsList[i];
       let eventAttendTag = document.createElement("a");
       eventAttendTag.setAttribute("href", "javascript:void(0);");
-      eventAttendTag.setAttribute("onclick", "openAttendInfo('" + eventAttend.id+ "," + eventAttend.date+ "," +eventAttend.name+ "')");
-      if(!divElem.innerHTML.includes(eventAttend.name))
-      {
-      eventAttendTag.innerHTML = "<h4>" + eventAttend.name + "</h4>";
-      divElem.append(eventAttendTag);
-      let eventAttendDiv = document.createElement("div");
-      eventAttendDiv.setAttribute("id", eventAttend.id + "div");
-      divElem.append(eventAttendDiv);
-    }
+      eventAttendTag.setAttribute("onclick", "openAttendInfo('" + eventAttend.id + "," + eventAttend.date + "," + eventAttend.name + "')");
+      if (!divElem.innerHTML.includes(eventAttend.id)) {
+        eventAttendTag.innerHTML = "<h4>" + eventAttend.name + "</h4>";
+        divElem.append(eventAttendTag);
+        let eventAttendDiv = document.createElement("div");
+        eventAttendDiv.setAttribute("id", eventAttend.id + "div");
+        divElem.append(eventAttendDiv);
+      }
     }
   }
 }
 
-function openAttendInfo(theID)
-{
+function openAttendInfo(theID) {
   let eventData = theID.split(',');
   //(eventData);
-  let eventNAME =eventData[2];
+  let eventNAME = eventData[2];
   let eventDATE = eventData[1];
   let eventID = eventData[0];
   let divElem = document.getElementById(eventID + "div");
-  if(divElem.innerHTML == "")
-  {
+  if (divElem.innerHTML == "") {
     let eventSelected = findEventsById(eventID); // TODO make it so that it gets the current day selected
     let eventInfo = document.createElement("p");
     eventInfo.innerHTML += "<b>Name: </b>" + eventNAME + "<br>";
 
-    for(let i in eventSelected)
-    {
-          eventInfo.innerHTML += "<b>Date: </b>" + eventSelected[i].date + "<br>";
+    for (let i in eventSelected) {
+      eventInfo.innerHTML += "<b>Date: </b>" + eventSelected[i].date + "<br>";
       let attendees = eventSelected[i].attendees;
       eventInfo.innerHTML += "<b>Attendees:</b><br>";
 
       let table = document.createElement("table");
-      table.setAttribute("class","table table-bordered");
-      table.setAttribute("class" , "table table-striped");
+      table.setAttribute("class", "table table-bordered");
+      table.setAttribute("class", "table table-striped");
 
       table.setAttribute("style", "width: 90%");
       table.setAttribute("align", "center");
       table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
-      for(let i in attendees)
-      {
+      for (let i in attendees) {
         table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + showTimes(attendees[i].personsAvailability) + "</td></tr>";
       }
       eventInfo.append(table);
       divElem.append(eventInfo);
     }
 
-  }
-  else
-  {
+  } else {
 
     divElem.innerHTML = "";
   }
