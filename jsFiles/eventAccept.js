@@ -1,6 +1,5 @@
 let availableTimesListEvent = [];
 let chosenTimesListEvent = [];
-
 let taskListEvent = [];
 let dateChosen;
 
@@ -16,26 +15,27 @@ function listOfEvents(date) {
     eventsListing.innerHTML = "<h3>No events are scheduled on this date!</h3>";
 
   for (let i in eventsByDate) {
-    theDate = date;
+    if(document.getElementById(eventsByDate[i].date + "/" + eventsByDate[i].name) == undefined)
+    {
+      let divElem2 = document.createElement("div");
+      divElem2.innerHTML += "<hr>";
+      eventsList.append(divElem2);
 
-    let divElem2 = document.createElement("div");
-    divElem2.innerHTML += "<hr>";
-    eventsList.append(divElem2);
+      let eventTitle = document.createElement("a");
 
-    let eventTitle = document.createElement("a");
+      eventTitle.setAttribute("href", "javascript:void(0);");
+      eventTitle.setAttribute("onclick", "populateDiv('" + eventsByDate[i].name + "," + eventsByDate[i].date + "," + eventsByDate[i].id + "')");
+      // TODO Might want to change name to id later
+      eventTitle.setAttribute("id", eventsByDate[i].date + "/" + eventsByDate[i].name);
+      eventTitle.innerHTML = "<font size= 6><b>" + eventsByDate[i]["name"] + "</b>";
+      eventsList.append(eventTitle);
+      eventsList.innerHTML += "<br><br>";
+      let divElem = document.createElement("div");
+      divElem.setAttribute("id", eventsByDate[i].date + "/" + eventsByDate[i].name + "div"); // TODO Might want to change name to id later
+      eventsList.append(divElem);
 
-    eventTitle.setAttribute("href", "javascript:void(0);");
-    eventTitle.setAttribute("onclick", "populateDiv('" + eventsByDate[i].name + "," + eventsByDate[i].date + "," + eventsByDate[i].id + "')");
-    // TODO Might want to change name to id later
-    eventTitle.setAttribute("id", eventsByDate[i].date + "/" + eventsByDate[i].name);
-    eventTitle.innerHTML = "<font size= 6><b>" + eventsByDate[i]["name"] + "</b>";
-    eventsList.append(eventTitle);
-    eventsList.innerHTML += "<br><br>";
-    let divElem = document.createElement("div");
-    divElem.setAttribute("id", eventsByDate[i].date + "/" + eventsByDate[i].name + "div"); // TODO Might want to change name to id later
-    eventsList.append(divElem);
-
-    eventsList.append(divElem2);
+      eventsList.append(divElem2);
+    }
   }
 }
 /**
@@ -241,14 +241,12 @@ function populateAccept(idEvent) {
   if (idEvent.indexOf("para") != -1)
     idEvent = parseInt("" + idEvent.substring(0, idEvent.indexOf("para")));
 
-  console.log(idEvent);
   let button = document.getElementById(idEvent + "button");
   button.parentNode.removeChild(button);
 
   removeLists();
 
-  let eventChosen = getEvent(eventName, eventDate);
- // TODO change for mult days
+  let eventChosen = findEventsByIdAndDate(idEvent, dateChosen);
 
   let information = document.getElementById(idEvent + "para");
   let newDivElem = document.createElement("div");

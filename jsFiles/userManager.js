@@ -109,7 +109,7 @@ function createUser() {
   postUser(inputUserObject);
   // Tell user that the new user was created
   let page = document.getElementById("createUserHTML");
-  page.innerHTML = "<h1><br>User \"" + inputUsername + "\" successfully created!<br><a href='index.html'>Click here</a> to go back to the login page!</h1>";
+  page.innerHTML = "<h1><br>User \"" + inputUsername + "\" successfully created!<br>Please wait a few seconds before <a href='index.html'>clicking here</a> to go back to the login page!</h1>";
 }
 
 /**

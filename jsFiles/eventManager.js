@@ -210,6 +210,23 @@ function getAttendingEventsByUser(user) {
 }
 
 /**
+ * Returns array of events attended by user
+ * @param  {User} user user to check
+ * @return {Array}      array of events attended by user
+ */
+function getAttendingEventsByUserWithoutCreator(user) {
+  return events.filter(function(event) {
+    let attendees = event.attendees;
+    if (attendees.filter(function(attendee) {
+        if (attendee.personsName == user.username && event.creator != user.username) {
+          return event;
+        }
+      }).length != 0)
+      return event;
+  });
+}
+
+/**
  * Validates user input for creating event
  * @return {Boolean} true if all user input is valid
  */

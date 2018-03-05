@@ -108,7 +108,7 @@ function openCreateInfo(theID)
  */
 function populateAttendingEvents(user) {
   let divElem = document.getElementById("attendingEvents");
-  let attendingEventsList = getAttendingEventsByUser(user);
+  let attendingEventsList = getAttendingEventsByUserWithoutCreator(user);
   //(attendingEventsList)
   if (attendingEventsList.length != 0) {
     divElem.innerHTML += "<h3>Attending Events</h3>";
@@ -119,7 +119,7 @@ function populateAttendingEvents(user) {
       eventAttendTag.setAttribute("onclick", "openAttendInfo('" + eventAttend.id+ "," + eventAttend.date+ "," +eventAttend.name+ "')");
       if(!divElem.innerHTML.includes(eventAttend.name))
       {
-      eventAttendTag.innerHTML = eventAttend.name;
+      eventAttendTag.innerHTML = "<h4>" + eventAttend.name + "</h4>";
       divElem.append(eventAttendTag);
       let eventAttendDiv = document.createElement("div");
       eventAttendDiv.setAttribute("id", eventAttend.id + "div");
