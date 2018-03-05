@@ -40,6 +40,7 @@ Similar to choosing what times you available for, you can also select tasks that
 Admin users can do everything that normal users can do but they can also add new users and they can create events. 
 #### <a name="createUser"></a>Creating Users
 On the bottom of the login page there is a button called create user. If you click that it will take you to a similar looking page but from here you can enter a new username, a password, and select whether the new user should have admin privaleges or not. Then when you click submit a new user with that information will be generated. Username's are unique so if you get a pop up saying the name is taken try a different name and click submit again. 
+
 ![alt text][creatingUserScreen]
 
 #### <a name="createEvent"></a>Creating Events
@@ -52,6 +53,6 @@ As an admin user you have the unique ability to create events. You can do this b
 [eventInfo]: documentation/resources/readmePics/calendarSelected.png
 [votingScreen]: documentation/resources/readmePics/selectingEvent.png
 [taskScreen]: file/path/here.png
-[creatingUserScreen]: file/path/here.png
+[creatingUserScreen]: documentation/resources/readmePics/createUser.png
 [creatingEventScreen]: documentation/resources/readmePics/createEventScreen.png
 [calendarPage]: documentation/resources/readmePics/viewEventScreen.png
