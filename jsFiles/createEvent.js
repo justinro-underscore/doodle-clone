@@ -2,7 +2,10 @@ let availableTimes = [];
 let chosenTimes = [];
 let taskList = [];
 
-// Initializes the times lists
+/**
+ * Initializes the times list
+ * @return {Null} Return nothing
+ */
 function initTimes()
 {
   if(!checkAdminStatus())
@@ -45,7 +48,9 @@ function initTimes()
   }
 }
 
-// Removes the time from the available time list and puts it in the chosen time list
+/**
+ * Removes the time from the available time list and puts it in the chosen time list
+ */
 function addTime()
 {
   let chosenTime = document.activeElement;
@@ -83,7 +88,10 @@ function addTime()
   lastChosen.innerHTML = "--- " + id + " -->";
 }
 
-// Removes the time from the chosen time list and puts it in the available time list
+/**
+ * Removes the time from the chosen time list and puts it in the available time list
+ * @return {None} Returns nothing
+ */
 function removeTime()
 {
   let chosenTime = document.activeElement;
@@ -121,7 +129,12 @@ function removeTime()
   lastChosen.innerHTML = "<-- " + id + " ---";
 }
 
-// To be used to sort the times
+/**
+ * Sorts two times
+ * @param  {string} a a time
+ * @param  {string} b a time
+ * @return {string}   a time
+ */
 function sortTimes(a, b)
 {
   // Next check hour
@@ -136,12 +149,18 @@ function sortTimes(a, b)
   else
     return(aHr - bHr);
 }
-
+/**
+ * Gets the chosen times
+ * @return {time} Returns the list of chosenTimes
+ */
 function getEventTimes()
 {
   return chosenTimes;
 }
 
+/**
+ * Allows users to add tasks to events
+ */
 function addTask()
 {
   let taskObj = {
@@ -189,6 +208,11 @@ function addTask()
   }
 }
 
+/**
+ * Lets the user click on the task on the create screen
+ * @param  {string} taskId the id of the task
+ * @return {string}        a id value
+ */
 function chooseTask(taskId)
 {
   let task = document.getElementById("task" + taskId);
@@ -214,6 +238,11 @@ function chooseTask(taskId)
   }
 }
 
+/**
+ * Lets the user remove the task on the create screen
+ * @param  {task object} task the task we want to delete
+ * @return {None} return nothing
+ */
 function removeTask(task)
 {
   console.log(task);
@@ -224,6 +253,10 @@ function removeTask(task)
   document.getElementById("errorMessageTask").innerHTML = "";
 }
 
+/**
+ * Gets the list of tasks
+ * @return {task list} the list of tasks
+ */
 function getTasks()
 {
   return taskList;
