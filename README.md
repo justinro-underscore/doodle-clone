@@ -51,7 +51,7 @@ As an admin user you have the unique ability to create events. You can do this b
 [landingPage]: documentation/resources/readmePics/menuBar.png
 [loginScreen]: documentation/resources/readmePics/loginScreen.png
 [eventInfo]: documentation/resources/readmePics/calendarSelected.png
-[votingScreen]: documentation/resources/readmePics/selectingEvent.png
+[votingScreen]: documentation/resources/readmePics/votingScreen.png
 [taskScreen]: file/path/here.png
 [creatingUserScreen]: documentation/resources/readmePics/createUser.png
 [creatingEventScreen]: documentation/resources/readmePics/createEventScreen.png
