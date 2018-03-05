@@ -16,7 +16,8 @@ General Users are anyone who uses the Doodle-Clone service. They will be able to
 > If this is the first time using the doodle-clone service, please see the [Creating Users](#createUser) section on how to set up a first time user.
 
 When you first open the page you will be prompted with a screen that has an entry field for both a username and a password. This is where you'll enter the credentials provided to you by your [admin](#admin).
-![alt text][loginScreen]
+
+![Alt text][loginScreen]
 
 After you type them in you will be presented with the landing page where you have full access to all of the sites functionality. At the top is where you will find the navigation bar and the drop down menu. 
 ![alt text][landingPage]
@@ -39,20 +40,19 @@ Similar to choosing what times you available for, you can also select tasks that
 Admin users can do everything that normal users can do but they can also add new users and they can create events. 
 #### <a name="createUser"></a>Creating Users
 On the bottom of the login page there is a button called create user. If you click that it will take you to a similar looking page but from here you can enter a new username, a password, and select whether the new user should have admin privaleges or not. Then when you click submit a new user with that information will be generated. Username's are unique so if you get a pop up saying the name is taken try a different name and click submit again. 
+
 ![alt text][creatingUserScreen]
 
 #### <a name="createEvent"></a>Creating Events
 As an admin user you have the unique ability to create events. You can do this by selecting the create events button from the drop down menu. You will presented with a screen that allows you to enter all of the information of the event. This includes: What day it is on; What times on those days is it on; What tasks need to be done for this event; and you can add a description of the event. After you do this you click submit, the event will be created, and all of the other users can now vote on when they are available. 
 ![alt text][creatingEventScreen]
 
-[//] # (References for pictures)
 
-
-[landingPage]: file/path/here.png
-[loginScreen]: file/path/here.png
-[calendarPage]: file/path/here.png
-[votingScreen]: file/path/here.png
+[landingPage]: resources/readmePics/menuBar.png
+[loginScreen]: resources/readmePics/loginScreen.png
+[eventInfo]: resources/readmePics/calendarSelected.png
+[votingScreen]: resources/readmePics/selectingEvent.png
 [taskScreen]: file/path/here.png
-[creatingUserScreen]: file/path/here.png
-[creatingEventScreen]: file/path/here.png
-[eventInfo]: file/path/here.png
+[creatingUserScreen]: resources/readmePics/createUser.png
+[creatingEventScreen]: resources/readmePics/createEventScreen.png
+[calendarPage]: resources/readmePics/viewEventScreen.png
