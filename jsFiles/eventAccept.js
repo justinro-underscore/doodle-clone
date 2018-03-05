@@ -57,7 +57,7 @@ function populateDiv(id) {
     information.innerHTML += "<br><b><u> Event Date</u></b>: " + eventSelected.date + "<br>";
     information.innerHTML += "<br><b><u> Event Time Slots</u></b>: " + showTimes(eventSelected.timeSlots) + "<br>";
     information.innerHTML += "<br><b><u> Event Attendees</u></b>: " + printNames(eventSelected.attendees) + " Total Attendees: " + eventSelected.numOfattendees + "<br>";
-    divTag.append(information)
+    divTag.append(information);
     divElem.append(divTag);
 
     if(!isUserAttending(getCurrUser(), id))
@@ -85,9 +85,9 @@ function populateDiv(id) {
 function printNames(attendees) {
   let result = "<ul>";
   for (let i in attendees) {
-    result += "<li>" + attendees[i].personsName + "</li>";
+    result += "<li>" + attendees[i].personsName + " - " + showTimes(attendees[i].personsAvailability) + "</li>";
   }
-  result += "</ul>"
+  result += "</ul>";
   return result;
 }
 
