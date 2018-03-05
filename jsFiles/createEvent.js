@@ -133,7 +133,7 @@ function removeTime()
  * Sorts two times
  * @param  {string} a a time
  * @param  {string} b a time
- * @return {string}   a time
+ * @return {boolean}   How to sort the elements
  */
 function sortTimes(a, b)
 {
@@ -209,6 +209,11 @@ function addTask()
   }
 }
 
+/**
+ * Checks to see if the task exists in the task list
+ * @param  {task} taskParam The task which may or may not be in the list
+ * @return {boolean}        Whether or not the task exists in the list
+ */
 function taskExists(taskParam)
 {
   let taskExists = false;

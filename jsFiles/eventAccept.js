@@ -3,6 +3,10 @@ let chosenTimesListEvent = [];
 let taskListEvent = [];
 let dateChosen;
 
+/**
+ * Prints the list of events on a certain date
+ * @param  {string} date The current date
+ */
 function listOfEvents(date) {
   dateChosen = date;
   let eventsListing = document.getElementById('EventsListing');
@@ -118,6 +122,10 @@ function populateDiv(eventNameDateId) {
   }
 }
 
+/**
+ * Populates the task list with the tasks of the event
+ * @param  {Number} id The id of the event
+ */
 function populateTasks(id)
 {
   let eventChosen = findEventsByIdAndDate(id, dateChosen);
@@ -160,6 +168,10 @@ function populateTasks(id)
   }
 }
 
+/**
+ * Toggles whether the task is assigned or not
+ * @param  {String} taskId The id of the task
+ */
 function chooseTaskEvent(taskId)
 {
   let task = document.getElementById("task" + taskId);
@@ -185,6 +197,10 @@ function chooseTaskEvent(taskId)
   }
 }
 
+/**
+ * Submits the tasks to the database
+ * @param  {Number} id The id of the event
+ */
 function submitTasks(id)
 {
   let errorMessage = document.getElementById("errorMessageEvent");
@@ -221,6 +237,11 @@ function submitTasks(id)
   }
 }
 
+/**
+ * Prints the names of the attendees along with the times
+ * @param  {[users]} attendees The attendees for the given event
+ * @return {String}           The formatted output of this array
+ */
 function printNames(attendees) {
   let result = "<ul>";
   for (let i in attendees) {
