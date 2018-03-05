@@ -1,80 +1,109 @@
-let taskList = [];
+let dateList = [];
 
 function addTask() {
-  let task = document.forms["eventMaker"]["evDate"].value;
+  let date = document.forms["eventMaker"]["evDate"].value;
   let multiDayListDisplay = document.getElementById("multiDayList");
   let errorMessage = document.getElementById("errorMessage");
-  console.log(task);
-  if (task != "") {
-    if (!taskList.includes(task)) {
+
+  if (date != "") {
+    if (!dateList.includes(date)) {
+      if (dateList.lenght != 0 && Date.parse(date) < Date.parse(dateList[0])) {
+        errorMessage.innerHTML = "Error: Please enter date after start day.";
+        return;
+      }
       errorMessage.innerHTML = "";
 
-      taskList.push(task);
+      dateList.push(date);
+      dateList.sort(function(a, b) {
+        return Date.parse(a) - Date.parse(b);
+      });
 
-      let newTask = document.createElement("a");
-      newTask.setAttribute("href", "javascript:void(0);");
+      let newDate = document.createElement("a");
+      newDate.setAttribute("href", "javascript:void(0);");
 
-      newTask.setAttribute("id", "task" + task);
-      newTask.setAttribute("name", "unassigned"); // Hidden attribute to test if the task has been assigned
-      newTask.innerHTML = task;
+      newDate.setAttribute("id", "date" + date);
+      newDate.setAttribute("name", "unassigned"); // Hidden attribute to test if the date has been assigned
+      newDate.innerHTML = date;
 
       let button = document.createElement("button");
       button.setAttribute("style", "text-align: right");
       button.setAttribute("type", "button");
-      button.setAttribute("onclick", "removeTask('" + task + "')");
+      button.setAttribute("onclick", "removeDate('" + date + "')");
       button.innerHTML = "<b>-</b>";
-      newTask.append(button);
-      multiDayListDisplay.appendChild(newTask);
+      newDate.append(button);
+
+      let nextNodeIndex = dateList.indexOf(date) + 1;
+      if (nextNodeIndex == dateList.length) {
+        multiDayListDisplay.appendChild(newDate);
+      } else {
+        let nextNode = document.getElementById('date' + dateList[nextNodeIndex]);
+        multiDayListDisplay.insertBefore(newDate, nextNode);
+      }
+
     } else {
-      errorMessage.innerHTML = "Error: Task already exists!";
+      errorMessage.innerHTML = "Error: date already exists!";
     }
   } else {
-    errorMessage.innerHTML = "Error: Please enter a task.";
+    errorMessage.innerHTML = "Error: Please enter a date.";
   }
 }
 
-function chooseTask() {
-  let task = document.activeElement;
-  if (task.getAttribute("name") == "unassigned") {
-    task.innerHTML += "<span style='color: darkgray;'><i><b> Assigned to Creator</b></i></span>";
-    task.setAttribute("style", "background-color: lightgray");
-    task.setAttribute("name", "assigned");
+function chooseDate() {
+  let date = document.activeElement;
+  if (date.getAttribute("name") == "unassigned") {
+    date.innerHTML += "<span style='color: darkgray;'><i><b> Assigned to Creator</b></i></span>";
+    date.setAttribute("style", "background-color: lightgray");
+    date.setAttribute("name", "assigned");
   } else {
-    task.innerHTML = task.innerHTML.substring(0, task.innerHTML.indexOf("<span"));
-    task.setAttribute("style", "");
-    task.setAttribute("name", "unassigned");
+    date.innerHTML = date.innerHTML.substring(0, date.innerHTML.indexOf("<span"));
+    date.setAttribute("style", "");
+    date.setAttribute("name", "unassigned");
   }
 }
 
-function removeTask(task) {
-  console.log(task);
-  let taskEntry = document.getElementById("task" + task);
+function removeDate(date) {
+  let taskEntry = document.getElementById("date" + date);
   taskEntry.setAttribute("style", "background-color: darkgray");
-  taskList.splice(taskList.indexOf(task), 1);
+  dateList.splice(dateList.indexOf(date), 1);
   taskEntry.parentNode.removeChild(taskEntry);
 }
 
 function addMultiEventBox() {
-  // if ($('#multidayEvent').is(':checked')) {
-  //   let multiBreak = $('<br id="multiBreak"/>');
-  //   let multiLabel = $('<label id="multiLabel" for"evDate2">End Date</label>');
-  //   let multiEvent = $('<input type="date" name="date" maxlength="10" required=true type=string id="evDate2">');
-  //   $('#dates').append(multiBreak, multiLabel, multiEvent);
-  // } else {
-  //   $('#evDate2').remove();
-  //   $('#multiLabel').remove();
-  //   $('#multiBreak').remove();
-  // }
-
   if ($('#multidayEvent').is(':checked')) {
-    let multiButton = $('<button id="multiButton" type="button" onclick="addTask();">Add Date</button>');
-     $('#multiDayList').append(multiButton);
-     $('#eventDateLabel').text("Add Date");
+    $('#eventDateLabel').text("Add Date");
+    $('#multiDayListDisplay').removeAttr('hidden');
   } else {
-    $('#multiButton').remove();
     $('#eventDateLabel').text("Start Date");
-    for (let i in taskList) {
-      $('#task' + taskList[i]).remove();
+    for (let i in dateList) {
+      $('#date' + dateList[i]).remove();
     }
+
+    $('#multiDayListDisplay').prop('hidden', 'hidden');
+  }
+}
+
+function addMultiEvent() {
+  let dates = $('#multiDayList').children();
+  let datesList = [];
+  let validDates = true;
+
+  dates.each(function() {
+    datesList.push($(this).attr("id").replace('date', ''));
+  });
+
+  for (let i in datesList) {
+    if (!checkDate(datesList[i])) {
+      $('#date' + datesList[i]).css('background-color', '#d51010');
+      validDates = false;
+    }
+  }
+
+  if (!validDates)
+    return validDates;
+
+  let eventId = new Date().getTime();
+
+  for (let i in datesList) {
+    addSingleEvent(datesList[i], eventId);
   }
 }

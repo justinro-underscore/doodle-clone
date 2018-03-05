@@ -64,11 +64,11 @@ function getEvent(eventName, eventDate) {
 }
 
 function findEventsById(eventId) {
-    return events.filter(function (event) {
-        if (event.id == eventId) {
-            return event;
-        }
-    });
+  return events.filter(function(event) {
+    if (event.id == eventId) {
+      return event;
+    }
+  });
 }
 
 // https://stackoverflow.com/questions/23641525/javascript-date-object-from-input-type-date
@@ -108,11 +108,6 @@ function checkEventData() {
     alert("Error: Please enter an event name!");
     return false;
   }
-  if (getEvent(nEvent, eDate) != undefined) // Check for duplicates
-  {
-    alert("Error: Event already exists!")
-    return (false);
-  }
   if (maker.length == 0) // Check for creator name
   {
     alert("Error: Please enter a creator name!");
@@ -122,46 +117,22 @@ function checkEventData() {
     alert("Error: Please select time(s) for event!");
     return false;
   }
-  return (checkDate(eDate)); // Checks the date
-}
-
-function checkMultiData() {
-  let evDate1 = $('#evDate').val();
-  let evDate2 = $('#evDate2').val();
-
-  let nEvent = $('#evName').val();
-
-  if (!checkDate(evDate1) || !checkDate(evDate2)) {
-    alert("Please choose valid dates.");
-    return false;
-  }
-
-  let start = Date.parse(evDate1);
-  let end = Date.parse(evDate2);
-
-  if (start > end) {
-    alert("Invalid start date.");
-    return false;
-  }
-
-  if (nEvent.length == 0) // Check event name
-  {
-    alert("Error: Please enter an event name!");
-    return false;
-  }
-  if (getEventTimes().length == 0) {
-    alert("Error: Please select time(s) for event!");
-    return false;
-  }
-
+  // return (checkDate(eDate)); // Checks the date
   return true;
 }
 
 // Checks the date
 function checkDate(date) {
+  let nEvent = $('#evName').val();
+
   if (date.length == 0) // If user enters in an invalid date, the date variable will be empty
   {
     alert("Error: Please choose a valid date.");
+    return (false);
+  }
+  if (getEvent(nEvent, date) != undefined) // Check for duplicates
+  {
+    alert("Error: Event already exists!")
     return (false);
   }
   if (date.slice(5, 7) == "01" && date.slice(8, 10) == "01") {
@@ -184,55 +155,27 @@ function checkDate(date) {
 function enteringEvent() {
   let startDate = $('#evDate').val();
 
-  if ($('#multidayEvent').is(':checked')) {
-    if (checkMultiData()) {
-      let start = parseDate($('#evDate').val());
-      let end = parseDate($('#evDate2').val());
-
-      let eventId = new Date().getTime();
-      while (start <= end) {
-        addSingleEvent(startDate, eventId);
-
-        start.setDate(start.getDate() + 1);
-
-        let month = (parseInt(start.getUTCMonth()) + 1);
-        let day = start.getDate();
-
-        if (day < 10 && day.toString().length == 1) {
-          day = '0' + day.toString();
-        }
-
-        if (month < 10 && month.toString().length == 1) {
-          month = '0' + month.toString();
-        }
-
-        startDate = start.getUTCFullYear() + "-" + month + "-" + day;
-      }
-      valid = true;
+  if (checkEventData()) // Check user input
+  {
+    if ($('#multidayEvent').is(':checked')) {
+        addMultiEvent();
     } else {
-      valid = false;
+      if (checkDate(startDate)) {
+        addSingleEvent(startDate); // Add the event
+        alert('The Event was created!');
+        valid = true;
+      } else {
+        valid = false;
+      }
     }
   } else {
-    if (checkEventData()) // Check user input
-    {
-      addSingleEvent(startDate); // Add the event
-      alert('The Event was created!');
-      valid = true;
-    } else {
-      valid = false;
-    }
+    valid = false;
   }
 }
 
 function addSingleEvent(eventDate, eventId = new Date().getTime()) {
   maker = getCurrUser().username;
   eventName = $('#evName').val();
-
-  if (getEvent(eventName, eventDate) != undefined) // Check for duplicates
-  {
-    alert("Error: event with same name exists on " + eventDate);
-    return false;
-  }
 
   let eventInfo = {
     creator: maker,
@@ -243,6 +186,7 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
     numOfattendees: 0,
     id: eventId
   };
+  //TODO: do we need person Info
   let personInfo = {
     personsName: eventInfo.creator,
     personsAvailability: getEventTimes()
@@ -251,14 +195,4 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
   eventInfo.numOfattendees++;
 
   postEvent(eventInfo);
-}
-
-function sendAvail(person, evName, array) {
-  var eventIndex = searchingForEvents(evName);
-  var personInfo = {
-    personsName: person,
-    personsAvailability: array
-  };
-
-  alert('Person added to ' + evName + ' event.');
 }
