@@ -61,7 +61,7 @@ button:hover {
   text-decoration: none;
 }
 
-.tasksListHTML a {
+.tasksListHTML a, .multiDayListHTML a {
   cursor: default;
 }
 

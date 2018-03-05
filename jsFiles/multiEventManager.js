@@ -1,17 +1,17 @@
 let dateList = [];
 
-function addTask() {
+function addDate() {
   let date = document.forms["eventMaker"]["evDate"].value;
   let multiDayListDisplay = document.getElementById("multiDayList");
-  let errorMessage = document.getElementById("errorMessage");
+  let errorMessageDate = document.getElementById("errorMessageDate");
 
   if (date != "") {
     if (!dateList.includes(date)) {
       if (dateList.lenght != 0 && Date.parse(date) < Date.parse(dateList[0])) {
-        errorMessage.innerHTML = "Error: Please enter date after start day.";
+        errorMessageDate.innerHTML = "Error: Please enter date after start day.";
         return;
       }
-      errorMessage.innerHTML = "";
+      errorMessageDate.innerHTML = "";
 
       dateList.push(date);
       dateList.sort(function(a, b) {
@@ -41,10 +41,10 @@ function addTask() {
       }
 
     } else {
-      errorMessage.innerHTML = "Error: date already exists!";
+      errorMessageDate.innerHTML = "Error: date already exists!";
     }
   } else {
-    errorMessage.innerHTML = "Error: Please enter a date.";
+    errorMessageDate.innerHTML = "Error: Please enter a date.";
   }
 }
 

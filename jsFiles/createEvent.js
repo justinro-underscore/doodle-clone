@@ -143,12 +143,12 @@ function addTask()
     assignedTo : undefined
   }
   let tasksListDisplay = document.getElementById("tasksList");
-  let errorMessage = document.getElementById("errorMessage");
+  let errorMessageTask = document.getElementById("errorMessageTask");
   if(taskObj.task != "")
   {
     if(!taskList.includes(taskObj.task))
     {
-      errorMessage.innerHTML = "";
+      errorMessageTask.innerHTML = "";
 
       taskList.push(taskObj);
 
@@ -174,12 +174,12 @@ function addTask()
     }
     else
     {
-      errorMessage.innerHTML = "Error: Task already exists!";
+      errorMessageTask.innerHTML = "Error: Task already exists!";
     }
   }
   else
   {
-    errorMessage.innerHTML = "Error: Please enter a task.";
+    errorMessageTask.innerHTML = "Error: Please enter a task.";
   }
 }
 
@@ -215,7 +215,7 @@ function removeTask(task)
   taskEntry.setAttribute("style", "background-color: darkgray");
   taskList.splice(taskList.indexOf(task), 1);
   taskEntry.parentNode.removeChild(taskEntry);
-  document.getElementById("errorMessage").innerHTML = "";
+  document.getElementById("errorMessageTask").innerHTML = "";
 }
 
 function getTasks()

@@ -72,7 +72,8 @@
             <div class="multiDayListHTML" id="multiDayList">
           </div>
           <br>
-          <button id="multiButton" type="button" onclick="addTask();">Add Date</button>
+          <button id="multiButton" type="button" onclick="addDate();">Add Date</button>
+          <p id="errorMessageDate" style="color: red"></p><br>
         </div>
         <div>
           <h3>Add Tasks:</h3>
@@ -80,7 +81,7 @@
           </div>
           <input type="text" name="task" placeholder="Task" maxlength="064" required=true type=string id="task" style="width: 75%">
           <button type="button" onclick="addTask()">+</button>
-          <p id="errorMessage" style="color: red">
+          <p id="errorMessageTask" style="color: red"></p>
         </div>
         <button type="button" onclick="enteringEvent();">Create Event</button>
         <br><br><br><br><br><br><br>
