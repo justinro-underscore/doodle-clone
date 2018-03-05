@@ -5,20 +5,20 @@
 function init() {
   let user = getCurrUser();
   let welcome = document.getElementById("welcome");
-  welcome.innerHTML = "Welcome, " + user.username + "!";
+  welcome.innerHTML = "Welcome, " + user.username + "!"; //Displays the Username to the User
 
 
   let usersName = document.getElementById("theKing");
   usersName.innerHTML = user.username;
   let theAdmin = document.getElementById('adminPossibly');
-  if (user.isAdmin) {
+  if (user.isAdmin) { // Checks to see if the user is an admin or not
     theAdmin.innerHTML = "Administrator";
   } else {
     theAdmin.innerHTML = "User";
   }
 
-  populateCreatedEvents(user);
-  populateAttendingEvents(user);
+  populateCreatedEvents(user); //Begin to check if user has created the event
+  populateAttendingEvents(user); // Checks to see if the user is attending events
 }
 
 /**
@@ -32,14 +32,14 @@ function populateCreatedEvents(user) {
   //(getCreatedEventsByUser(user));
   if (createdEventsList.length != 0) {
     divElem.innerHTML += "<h3>Created Events</h3>";
-    for (let i in createdEventsList) {
+    for (let i in createdEventsList) { //cycles through the event in the list of created Events
       let eventCreate = createdEventsList[i];
 
-      let eventCreateTag = document.createElement("a");
+      let eventCreateTag = document.createElement("a"); // Creates the anchor tag for the event
       eventCreateTag.setAttribute("href", "javascript:void(0);");
       eventCreateTag.setAttribute("onclick", "openCreateInfo('" + eventCreate.id + "," + eventCreate.date + "," + eventCreate.name + "')");
 
-      if (!divElem.innerHTML.includes(eventCreate.id)) {
+      if (!divElem.innerHTML.includes(eventCreate.id)) { // checks for multi-day events (Kinda Hacky)
         eventCreateTag.innerHTML = "<h4>" + eventCreate.name + "</h4>";
         divElem.append(eventCreateTag);
         let eventCreateDiv = document.createElement("div");
@@ -57,7 +57,7 @@ function populateCreatedEvents(user) {
  * @return none
  */
 function openCreateInfo(theID) {
-  let eventData = theID.split(',');
+  let eventData = theID.split(',');// Splits up the information received from the eventCreate Tag
   //(eventData);
   let eventNAME = eventData[2];
   let eventDATE = eventData[1];
@@ -68,7 +68,7 @@ function openCreateInfo(theID) {
     let eventInfo = document.createElement("p");
     eventInfo.innerHTML += "<b>Name: </b>" + eventNAME + "<br>";
 
-    for (let i in eventSelected) {
+    for (let i in eventSelected) { //Cycles through the event and puts it into a readable table
       eventInfo.innerHTML += "<b>Date: </b>" + eventSelected[i].date + "<br>";
       let attendees = eventSelected[i].attendees;
       eventInfo.innerHTML += "<b>Attendees:</b><br>";
@@ -103,14 +103,14 @@ function populateAttendingEvents(user) {
   let divElem = document.getElementById("attendingEvents");
   let attendingEventsList = getAttendingEventsByUserWithoutCreator(user);
   //(attendingEventsList)
-  if (attendingEventsList.length != 0) {
+  if (attendingEventsList.length != 0) { // checks to see if the list even exists
     divElem.innerHTML += "<h3>Attending Events</h3>";
-    for (let i in attendingEventsList) {
+    for (let i in attendingEventsList) { //Cycles through the list of attending events
       let eventAttend = attendingEventsList[i];
       let eventAttendTag = document.createElement("a");
       eventAttendTag.setAttribute("href", "javascript:void(0);");
       eventAttendTag.setAttribute("onclick", "openAttendInfo('" + eventAttend.id + "," + eventAttend.date + "," + eventAttend.name + "')");
-      if (!divElem.innerHTML.includes(eventAttend.id)) {
+      if (!divElem.innerHTML.includes(eventAttend.id)) { //Chekcs for multi-day events
         eventAttendTag.innerHTML = "<h4>" + eventAttend.name + "</h4>";
         divElem.append(eventAttendTag);
         let eventAttendDiv = document.createElement("div");
@@ -122,7 +122,7 @@ function populateAttendingEvents(user) {
 }
 
 function openAttendInfo(theID) {
-  let eventData = theID.split(',');
+  let eventData = theID.split(','); // Breaks up the info
   //(eventData);
   let eventNAME = eventData[2];
   let eventDATE = eventData[1];
@@ -133,7 +133,7 @@ function openAttendInfo(theID) {
     let eventInfo = document.createElement("p");
     eventInfo.innerHTML += "<b>Name: </b>" + eventNAME + "<br>";
 
-    for (let i in eventSelected) {
+    for (let i in eventSelected) { // cyclces through the events that are selected
       eventInfo.innerHTML += "<b>Date: </b>" + eventSelected[i].date + "<br>";
       let attendees = eventSelected[i].attendees;
       eventInfo.innerHTML += "<b>Attendees:</b><br>";
@@ -145,7 +145,7 @@ function openAttendInfo(theID) {
       table.setAttribute("style", "width: 90%");
       table.setAttribute("align", "center");
       table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
-      for (let i in attendees) {
+      for (let i in attendees) { //And the attendees
         table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + showTimes(attendees[i].personsAvailability) + "</td></tr>";
       }
       eventInfo.append(table);
