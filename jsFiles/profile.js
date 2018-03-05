@@ -36,28 +36,35 @@ function populateCreatedEvents(user) {
       let eventCreate = createdEventsList[i];
       let eventCreateTag = document.createElement("a");
       eventCreateTag.setAttribute("href", "javascript:void(0);");
-      eventCreateTag.setAttribute("onclick", "openCreateInfo(" + eventCreate.id + ")");
+      eventCreateTag.setAttribute("onclick", "openCreateInfo('" + eventCreate.id + "," + eventCreate.date+ "," +eventCreate.name+"')");
       eventCreateTag.innerHTML = "<h4>" + eventCreate.name + "</h4>";
       divElem.append(eventCreateTag);
       let eventCreateDiv = document.createElement("div");
-      eventCreateDiv.setAttribute("id", eventCreate.id + "div");
+      eventCreateDiv.setAttribute("id", eventCreate.id + "div" +eventCreate.date);
       divElem.append(eventCreateDiv);
     }
   }
 }
 
 /**
- * Adds event info for each event on click
- * @param  {Number} id id of event
+ * Adds event info for each cerated event on click
+ * @param  {String} theID event Data (id, date, and name)
  * @return none
  */
-function openCreateInfo(id) {
-  let divElem = document.getElementById(id + "div");
-  if (divElem.innerHTML == "") {
-    let eventSelected = findEventsById(id)[0]; // TODO make it so that it gets the current day selected
+function openCreateInfo(theID)
+{
+  let eventData = theID.split(',');
+  console.log(eventData);
+  let eventNAME =eventData[2];
+  let eventDATE = eventData[1];
+  let eventID = eventData[0];
+  let divElem = document.getElementById(eventID + "div" +eventDATE );
+  if(divElem.innerHTML == "")
+  {
+    let eventSelected = getEvent(eventNAME, eventDATE); // TODO make it so that it gets the current day selected
     let eventInfo = document.createElement("p");
     eventInfo.innerHTML += "<b>Name: </b>" + eventSelected.name + "<br>";
-    eventInfo.innerHTML += "<b>Date(s):</b> " + eventSelected.date + "<br>";
+    eventInfo.innerHTML += "<b>Date(s):</b> " + eventDATE + "<br>";
     let attendees = eventSelected.attendees;
     eventInfo.innerHTML += "<b>Attendees:</b><br>";
     let table = document.createElement("table");
