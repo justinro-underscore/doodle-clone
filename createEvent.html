@@ -61,7 +61,7 @@
       <br />
       <br />
       <div id="dates">
-        <label for="evDate">Start Date</label>
+        <label id="eventDateLabel" for="evDate">Start Date</label>
         <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
         <br />
       </div>
@@ -69,9 +69,13 @@
       <input id="multidayEvent" type="checkbox" onclick="addMultiEventBox()" value="multidayEvent">
       <label for="multidayEvent">multiday Event</label>
 
+      <div id="multiDayList">
+
+      </div>
+      <p id=errorMessage></p>
       <br />
       <button type="button" onclick="enteringEvent();">Create Event</button>
-      <!-- appendEvent(valid, nEvent, eDate) -->
+
     </form>
   </div>
   </span>
@@ -87,6 +91,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="jsFiles/database.js"></script>
   <script src="jsFiles/eventManager.js"></script>
+  <script src="jsFiles/multiEventManager.js"></script>
   <script src="jsFiles/userManager.js"></script>
   <script src="functions.js"></script>
   <script src="driver.js"></script>

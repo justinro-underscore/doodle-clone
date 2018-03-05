@@ -71,19 +71,6 @@ function findEventsById(eventId) {
     });
 }
 
-function addMultiEventBox() {
-  if ($('#multidayEvent').is(':checked')) {
-    let multiBreak = $('<br id="multiBreak"/>');
-    let multiLabel = $('<label id="multiLabel" for"evDate2">End Date</label>');
-    let multiEvent = $('<input type="date" name="date" maxlength="10" required=true type=string id="evDate2">');
-    $('#dates').append(multiBreak, multiLabel, multiEvent);
-  } else {
-    $('#evDate2').remove();
-    $('#multiLabel').remove();
-    $('#multiBreak').remove();
-  }
-}
-
 // https://stackoverflow.com/questions/23641525/javascript-date-object-from-input-type-date
 function parseDate(s) {
   var b = s.split(/\D/);
@@ -114,7 +101,7 @@ function getAttendingEventsByUser(user) {
 function checkEventData() {
   let nEvent = $('#evName').val();
   let eDate = $('#evDate').val();
-  let maker = "TODO REPLACE WITH GET CURRENT USER";
+  let maker = getCurrUser().username;
 
   if (nEvent.length == 0) // Check event name
   {
@@ -207,12 +194,19 @@ function enteringEvent() {
         addSingleEvent(startDate, eventId);
 
         start.setDate(start.getDate() + 1);
+
         let month = (parseInt(start.getUTCMonth()) + 1);
-        if (month < 10) {
+        let day = start.getDate();
+
+        if (day < 10 && day.toString().length == 1) {
+          day = '0' + day.toString();
+        }
+
+        if (month < 10 && month.toString().length == 1) {
           month = '0' + month.toString();
         }
 
-        startDate = start.getUTCFullYear() + "-" + month + "-" + start.getDate();
+        startDate = start.getUTCFullYear() + "-" + month + "-" + day;
       }
       valid = true;
     } else {
@@ -231,10 +225,9 @@ function enteringEvent() {
 }
 
 function addSingleEvent(eventDate, eventId = new Date().getTime()) {
-  maker = "TODO: replace with getCurrUser().username";
+  maker = getCurrUser().username;
   eventName = $('#evName').val();
 
-  //TODO: test this with new data loading
   if (getEvent(eventName, eventDate) != undefined) // Check for duplicates
   {
     alert("Error: event with same name exists on " + eventDate);
@@ -266,7 +259,6 @@ function sendAvail(person, evName, array) {
     personsName: person,
     personsAvailability: array
   };
-  // events.arrayOfEvents[eventIndex].attendees.push(personInfo);
-  // events.arrayOfEvents[eventIndex].numOfattendees++;
+
   alert('Person added to ' + evName + ' event.');
 }
