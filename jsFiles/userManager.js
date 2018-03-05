@@ -107,3 +107,9 @@ if (localStorage.getItem("users") == null) {
        document.getElementById("loginErrorMessage").innerHTML = "Incorrect username/password";
    }
  }
+
+function checkAdminStatus() {
+    if(getCurrUser().isAdmin) {
+        window.location.replace("createEvent.html");
+    }
+}
