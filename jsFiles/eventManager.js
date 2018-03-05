@@ -111,6 +111,10 @@ function getAttendingEventsByUser(user) {
 
 // Checks all user input
 function checkEventData() {
+  let nEvent = $('#evName').val();
+  let eDate = $('#evDate').val();
+  let maker = "TODO REPLACE WITH GET CURRENT USER";
+
   if (nEvent.length == 0) // Check event name
   {
     alert("Error: Please enter an event name!");
@@ -137,7 +141,7 @@ function checkMultiData() {
   let evDate1 = $('#evDate').val();
   let evDate2 = $('#evDate2').val();
 
-  nEvent = $('#evName').val();
+  let nEvent = $('#evName').val();
 
   if (!checkDate(evDate1) || !checkDate(evDate2)) {
     alert("Please choose valid dates.");
@@ -232,7 +236,7 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
   //TODO: test this with new data loading
   if (getEvent(eventName, eventDate) != undefined) // Check for duplicates
   {
-    alert("Error: event with same name exists on " + eventData);
+    alert("Error: event with same name exists on " + eventDate);
     return false;
   }
 
