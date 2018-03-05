@@ -212,10 +212,11 @@ function enteringEvent() {
   {
     if ($('#multidayEvent').is(':checked')) {
         addMultiEvent();
+        window.location.replace("createUserSuccessful.html");
     } else {
       if (checkDate(startDate)) {
         addSingleEvent(startDate); // Add the event
-        alert('The Event was created!');
+        window.location.replace("createUserSuccessful.html");
         valid = true;
       } else {
         valid = false;
