@@ -29,7 +29,7 @@ function init() {
 function populateCreatedEvents(user) {
   let divElem = document.getElementById("createdEvents");
   let createdEventsList = getCreatedEventsByUser(user);
-  console.log(getCreatedEventsByUser(user));
+  //(getCreatedEventsByUser(user));
   if (createdEventsList.length != 0) {
     divElem.innerHTML += "<h3>Created Events</h3>";
     for (let i in createdEventsList) {
@@ -39,7 +39,7 @@ function populateCreatedEvents(user) {
       let eventCreateTag = document.createElement("a");
       eventCreateTag.setAttribute("href", "javascript:void(0);");
       eventCreateTag.setAttribute("onclick", "openCreateInfo('" + eventCreate.id + "," + eventCreate.date+ "," + eventCreate.name+"')");
-      console.log(divElem.innerHTML);
+      //(divElem.innerHTML);
       if(!divElem.innerHTML.includes(eventCreate.name))
       {
       eventCreateTag.innerHTML = "<h4>" + eventCreate.name + "</h4>";
@@ -61,7 +61,7 @@ function populateCreatedEvents(user) {
 function openCreateInfo(theID)
 {
   let eventData = theID.split(',');
-  console.log(eventData);
+  //(eventData);
   let eventNAME =eventData[2];
   let eventDATE = eventData[1];
   let eventID = eventData[0];
@@ -109,7 +109,7 @@ function openCreateInfo(theID)
 function populateAttendingEvents(user) {
   let divElem = document.getElementById("attendingEvents");
   let attendingEventsList = getAttendingEventsByUser(user);
-  console.log(attendingEventsList)
+  //(attendingEventsList)
   if (attendingEventsList.length != 0) {
     divElem.innerHTML += "<h3>Attending Events</h3>";
     for (let i in attendingEventsList) {
@@ -132,7 +132,7 @@ function populateAttendingEvents(user) {
 function openAttendInfo(theID)
 {
   let eventData = theID.split(',');
-  console.log(eventData);
+  //(eventData);
   let eventNAME =eventData[2];
   let eventDATE = eventData[1];
   let eventID = eventData[0];

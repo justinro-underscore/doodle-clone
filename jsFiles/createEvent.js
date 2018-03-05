@@ -245,7 +245,7 @@ function chooseTask(taskId)
  */
 function removeTask(task)
 {
-  console.log(task);
+  //(task);
   let taskEntry = document.getElementById("task" + task);
   taskEntry.setAttribute("style", "background-color: darkgray");
   taskList.splice(taskList.indexOf(task), 1);

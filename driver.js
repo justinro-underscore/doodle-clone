@@ -1,4 +1,4 @@
-//NOTE: There are some console.log()'s commented out below they can be handy for debugging purposes.
+//NOTE: There are some //()'s commented out below they can be handy for debugging purposes.
 
 //pull from event list in diego's file.  when meeting is clicked...
 //get array of times, for each one, find which attendees can go at that time.
@@ -24,7 +24,7 @@ function findAttendees(index)
             }
         }
     }
-    console.log(meeting.timeSlots);
+    //(meeting.timeSlots);
 }
 
 var driver =
@@ -63,12 +63,12 @@ var driver =
         var startMin = Number(stime.slice(3, 5));
         var endHr = Number(etime.slice(0, 2));
         var endMin = Number(etime.slice(3, 5));
-        //console.log(startHr, startMin, endHr, endMin);
+        ////(startHr, startMin, endHr, endMin);
 
         meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
 
         meeting.numTimeSlots = ( meeting.totalMins / 20 );
-        //console.log("TimeSlots = " + meeting.numTimeSlots);
+        ////("TimeSlots = " + meeting.numTimeSlots);
 
         //TODO: see if this would be a good place to ensure meeting
         //      attendees as well as timeslot attendees are populated.
@@ -98,7 +98,7 @@ var driver =
             }
         person.isAttendee = true;
         }
-        console.log(person.lastname + " is an attendee of meeting " + meeting.name + " on " + meeting.date + ". It's " + person.isAttendee + " driver.js:72 *DBG");
+        //(person.lastname + " is an attendee of meeting " + meeting.name + " on " + meeting.date + ". It's " + person.isAttendee + " driver.js:72 *DBG");
         this.meetings.push(meeting);
         this.meetings[this.numMeetings].attendees.push(person);
         for(i = 0; i < this.meetings[this.numMeetings].numTimeSlots; i++)
