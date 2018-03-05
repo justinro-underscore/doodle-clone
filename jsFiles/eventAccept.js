@@ -1,6 +1,11 @@
 let availableTimesListEvent = [];
 let chosenTimesListEvent = [];
 let theDate;
+/**
+ * Shows the events that are on a given day when selected
+ * @param  {string} date the day that was clicked on the calendar
+ * @return {None}      returns nothing
+ */
 function listOfEvents(date) {
   let eventsListing = document.getElementById('EventsListing');
   let eventsList;
@@ -35,7 +40,11 @@ function listOfEvents(date) {
     eventsList.append(divElem2);
   }
 }
-
+/**
+ * Generates the spot for the event information to be presented
+ * @param  {string} eventNameDateId the event name+date+id so we avoid making duplicate divs
+ * @return {none}                 returns nothing
+ */
 function populateDiv(eventNameDateId) {
   let eventData = eventNameDateId.split(',');
   let eventDate = eventData[1];
@@ -85,6 +94,11 @@ function populateDiv(eventNameDateId) {
   }
 }
 
+/**
+ * Lists the attendees in the event information
+ * @param  {array of user objects} attendees all users
+ * @return {array of user objects}           people in the event
+ */
 function printNames(attendees) {
   let result = "<ul>";
   for (let i in attendees) {
@@ -94,6 +108,11 @@ function printNames(attendees) {
   return result;
 }
 
+/**
+ * Shows the times accepted by users
+ * @param  {string} idEvent event id
+ * @return {None}         returns nothing
+ */
 function populateAccept(idEvent) {
   let eventData = idEvent.split(',');
   let eventDate = eventData[2];
@@ -147,7 +166,10 @@ function populateAccept(idEvent) {
     availableTimesList.appendChild(newTime);
   }
 }
-
+/**
+ * Removes lists from the event page
+ * @return {None} returns nothing
+ */
 function removeLists() {
   let lists = document.getElementsByName("lists");
   if (lists.length != 0) {
@@ -175,6 +197,9 @@ function removeLists() {
 }
 
 // Yes, I know I'm basically just copying this from chooseTimes.js but it's late and I'm tired
+/**
+ * Adds the time from the available time list and puts it in the chosen time list
+ */
 function addTimeEvent() {
   let chosenTime = document.activeElement;
   let time = chosenTime.name;
@@ -212,7 +237,10 @@ function addTimeEvent() {
   lastChosen.style.color = "green"; // Green for added
   lastChosen.innerHTML = "--- " + id + " -->    ";
 }
-
+/**
+ * Removes the time from the voting list of times
+ * @return {string} the sorted times
+ */
 function removeTimeEvent() {
   let chosenTime = document.activeElement;
   let time = chosenTime.name;
@@ -249,6 +277,11 @@ function removeTimeEvent() {
   lastChosen.innerHTML = "<-- " + id + " ---";
 }
 
+/**
+ * Adds the chosen times to the list of available times
+ * @param  {string} id the events id
+ * @return {none}    returns nothing
+ */
 function submitAvailability(id) {
   let eventChosen = findEventsById(id)[0]; // TODO fix for mult days
   let newAttendee = {
