@@ -1,5 +1,8 @@
 let dateList = [];
 
+/**
+ * Adds selected dates to multiDayList
+ */
 function addDate() {
   let date = document.forms["eventMaker"]["evDate"].value;
   let multiDayListDisplay = document.getElementById("multiDayList");
@@ -48,6 +51,10 @@ function addDate() {
   }
 }
 
+/**
+ * Selects dates
+ * @return none
+ */
 function chooseDate() {
   let date = document.activeElement;
   if (date.getAttribute("name") == "unassigned") {
@@ -61,6 +68,11 @@ function chooseDate() {
   }
 }
 
+/**
+ * Remove selected date from multiDayList
+ * @param  {String} date date to be removed
+ * @return none
+ */
 function removeDate(date) {
   let taskEntry = document.getElementById("date" + date);
   taskEntry.setAttribute("style", "background-color: darkgray");
@@ -68,6 +80,9 @@ function removeDate(date) {
   taskEntry.parentNode.removeChild(taskEntry);
 }
 
+/**
+ * Add addDate button and multiDayList when multiDay option is selected
+ */
 function addMultiEventBox() {
   if ($('#multidayEvent').is(':checked')) {
     $('#eventDateLabel').text("Add Date");
@@ -82,6 +97,9 @@ function addMultiEventBox() {
   }
 }
 
+/**
+ * Validate multiday events and creates events
+ */
 function addMultiEvent() {
   let dates = $('#multiDayList').children();
   let datesList = [];
