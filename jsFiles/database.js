@@ -13,7 +13,27 @@ function postEvent(eventObj) {
     }
   });
   request.always(() => {
-    addEventToEvents(eventObj);
+    loadEvents();
+  });
+}
+
+function updateEvent(rowId, eventObj) {
+  'use strict';
+  let request;
+  let eventData = JSON.stringify(eventObj);
+
+  request = $.ajax({
+    url: "https://script.google.com/macros/s/AKfycbx5YzphchZuPi_D0U8FsleFgj8ngyDYb_nOkRCLh9iDZz4louOk/exec",
+    type: "post",
+    data: {
+      'EventDate': eventObj.date,
+      'EventName': eventObj.name,
+      'EventData': eventData,
+      'row_num': rowId
+    }
+  });
+  request.always(() => {
+    loadEvents();
   });
 }
 
@@ -31,6 +51,6 @@ function postUser(userObj) {
     }
   });
   request.always(() => {
-    addUserToUsers(userObj);
+    loadUsers();
   });
 }
