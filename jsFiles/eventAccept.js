@@ -1,12 +1,11 @@
 let availableTimesListEvent = [];
 let chosenTimesListEvent = [];
-let theDate;
-/**
- * Shows the events that are on a given day when selected
- * @param  {string} date the day that was clicked on the calendar
- * @return {None}      returns nothing
- */
+
+let taskListEvent = [];
+let dateChosen;
+
 function listOfEvents(date) {
+  dateChosen = date;
   let eventsListing = document.getElementById('EventsListing');
   let eventsList;
   let eventsByDate = getEventsByDate(date);
@@ -18,7 +17,6 @@ function listOfEvents(date) {
 
   for (let i in eventsByDate) {
     theDate = date;
-    console.log(date);
 
     let divElem2 = document.createElement("div");
     divElem2.innerHTML += "<hr>";
@@ -66,20 +64,39 @@ function populateDiv(eventNameDateId) {
     information.innerHTML += "<b><u> Event Name</u></b>: " + eventSelected.name + "<br>";
     information.innerHTML += "<br><b><u> Event Creator</u></b>: " + eventSelected.creator + "<br>";
     information.innerHTML += "<br><b><u> Event Date</u></b>: " + eventSelected.date + "<br>";
+    let dates = findEventsById(id);
+    if(dates.length != 1)
+    {
+      information.innerHTML += "<br><b><u> Other Dates</u></b>: "
+      for(let i in dates)
+      {
+        information.innerHTML += dates[i].date;
+        if(i != dates.length-1)
+          information.innerHTML += ", ";
+      }
+      information.innerHTML += "<br>";
+    }
     information.innerHTML += "<br><b><u> Event Time Slots</u></b>: " + showTimes(eventSelected.timeSlots) + "<br>";
     information.innerHTML += "<br><b><u> Event Attendees</u></b>: " + printNames(eventSelected.attendees) + " Total Attendees: " + eventSelected.numOfattendees + "<br>";
+    information.innerHTML += "<br><b><u> Tasks</u></b>: ";
+    if(eventSelected.tasks.length != 0)
+    {
+      information.innerHTML += "<br><div class='tasksListHTML' id='tasksListEvent' style='width: 100%'></div><br>";
+      information.innerHTML += "<button type='button' onclick='submitTasks(" + id + ")'>Submit Task Change</button>"
+      information.innerHTML += "<p id='errorMessageEvent' style='padding-right: 10px; float: right; color: red; text-decoration: underline'></p>"
+    }
+    else
+      information.innerHTML += "There are no tasks for this event!<br>"
+
     divTag.append(information);
     divElem.append(divTag);
+    populateTasks(id);
 
     if (!isUserAttending(getCurrUser(), id)) {
       let informationAccept = document.createElement("button");
-      if(eventSelected.creator == getCurrUser().username)
-      {
-        informationAccept.setAttribute('disabled', 'disabled');
-      }
       informationAccept.setAttribute("id", eventSelected.id + "button");
       informationAccept.setAttribute("class", "btn btn-success");
-      informationAccept.setAttribute("onclick", "populateAccept('" + eventSelected.id + "," + eventSelected.name +"," + eventSelected.date+ "')");
+      informationAccept.setAttribute("onclick", "populateAccept('" + eventSelected.id + "')");
       informationAccept.setAttribute("style", "display: block; margin-left: auto; margin-right: auto;");
       informationAccept.innerHTML += "Accept Event";
       information.append(informationAccept);
@@ -94,11 +111,111 @@ function populateDiv(eventNameDateId) {
   }
 }
 
-/**
- * Lists the attendees in the event information
- * @param  {array of user objects} attendees all users
- * @return {array of user objects}           people in the event
- */
+function populateTasks(id)
+{
+  console.log(dateChosen);
+  let eventChosen = findEventsByIdAndDate(id, dateChosen);
+  if(eventChosen.length != 0)
+  {
+    let tasksListDisplay = document.getElementById("tasksListEvent");
+    let tasks = eventChosen.tasks;
+    for(let i in tasks)
+    {
+      if(tasks[i].assignedTo == undefined)
+      {
+        taskListEvent.push({task: tasks[i].task, assignedTo: undefined});
+
+        let newTask = document.createElement("a");
+        newTask.setAttribute("href", "javascript:void(0);");
+        newTask.setAttribute("id", "task" + tasks[i].task);
+        newTask.setAttribute("name", "unassigned"); // Hidden attribute to test if the task has been assigned
+        newTask.innerHTML = tasks[i].task;
+
+        let buttonChoose = document.createElement("button");
+        buttonChoose.setAttribute("type", "button");
+        buttonChoose.setAttribute("onclick", "chooseTaskEvent('" + tasks[i].task + "')");
+        buttonChoose.setAttribute("id", tasks[i].task + "button");
+        buttonChoose.innerHTML = "<b>Assign to Self</b>";
+        newTask.append(buttonChoose);
+        tasksListDisplay.appendChild(newTask);
+      }
+      else
+      {
+        let newTask = document.createElement("a");
+        newTask.setAttribute("href", "javascript:void(0);");
+        newTask.setAttribute("style", "background-color: lightgray");
+        newTask.setAttribute("id", "task" + tasks[i].task);
+        newTask.setAttribute("name", "assigned"); // Hidden attribute to test if the task has been assigned
+        newTask.innerHTML = tasks[i].task;
+        newTask.innerHTML += "<span style='color: darkgray;'><i><b> Assigned to " + tasks[i].assignedTo.username + "</b></i></span>";
+        tasksListDisplay.appendChild(newTask);
+      }
+    }
+  }
+}
+
+function chooseTaskEvent(taskId)
+{
+  let task = document.getElementById("task" + taskId);
+  if(task.getAttribute("name") == "unassigned")
+  {
+    task.innerHTML += "<span style='color: darkgray;'><i><b> Assigned to " + getCurrUser().username + "</b></i></span>";
+    task.setAttribute("style", "background-color: lightgray");
+    task.setAttribute("name", "assigned");
+    task.childNodes[1].innerHTML = "<b>Unassign Self</b>";
+    taskListEvent.find((t) => {
+      return taskId == t.task;
+    }).assignedTo = getCurrUser();
+  }
+  else
+  {
+    task.innerHTML = task.innerHTML.substring(0, task.innerHTML.indexOf("<span"));
+    task.setAttribute("style", "");
+    task.setAttribute("name", "unassigned");
+    task.childNodes[1].innerHTML = "<b>Assign to Self</b>"
+    taskListEvent.find((t) => {
+      return taskId == t.task;
+    }).assignedTo = undefined;
+  }
+}
+
+function submitTasks(id)
+{
+  let errorMessage = document.getElementById("errorMessageEvent");
+  let changedTasks = [];
+  taskListEvent.forEach((task) => {
+    if(task.assignedTo != undefined)
+      changedTasks.push(task);
+  });
+  if(changedTasks.length == 0)
+    errorMessage.innerHTML = "Error: No tasks changed!";
+  else
+  {
+    errorMessage.setAttribute("style", "color: white")
+    errorMessage.innerHTML = "Successfully assigned the following events to " + getCurrUser().username + ":";
+    let resultStr = "<ul>";
+    changedTasks.forEach((task) => {
+      resultStr += "<li>" + task.task + "</li>";
+      let button = document.getElementById(task.task + "button");
+      button.parentNode.removeChild(button);
+    });
+    errorMessage.innerHTML += resultStr + "</ul>";
+    let chosenEvents = findEventsById(id);
+    chosenEvents.forEach((e) => {
+      for(let t in e.tasks)
+      {
+        for(let changed in changedTasks)
+        {
+          if(e.tasks[t].task == changedTasks[changed].task)
+            e.tasks[t].assignedTo = getCurrUser();
+        }
+      }
+      console.log(e);
+      updateEvent(e.rowId, e);
+    });
+  }
+}
+
 function printNames(attendees) {
   let result = "<ul>";
   for (let i in attendees) {
@@ -124,6 +241,7 @@ function populateAccept(idEvent) {
   if (idEvent.indexOf("para") != -1)
     idEvent = parseInt("" + idEvent.substring(0, idEvent.indexOf("para")));
 
+  console.log(idEvent);
   let button = document.getElementById(idEvent + "button");
   button.parentNode.removeChild(button);
 
@@ -283,7 +401,7 @@ function removeTimeEvent() {
  * @return {none}    returns nothing
  */
 function submitAvailability(id) {
-  let eventChosen = findEventsById(id)[0]; // TODO fix for mult days
+  let eventChosen = findEventsByIdAndDate(id, dateChosen); // TODO fix for mult days
   let newAttendee = {
     personsName: getCurrUser().username,
     personsAvailability: chosenTimesListEvent

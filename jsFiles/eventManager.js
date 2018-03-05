@@ -117,17 +117,30 @@ function getEvent(eventName, eventDate) {
   })[0];
 }
 
+function findEventsByIdAndDate(eventId, date) {
+    let arr = findEventsById(eventId);
+    return events.filter(function (event) {
+        if (event.date == date) {
+            return event;
+        }
+    })[0];
+}
+
 /**
  * Returns array of events with same id
  * @param  {Number} eventId id of event
  * @return {Array}         array of events with id
  */
 function findEventsById(eventId) {
-    return events.filter(function (event) {
+    let arr = events.filter(function (event) {
         if (event.id == eventId) {
             return event;
         }
     });
+    arr.sort(function(a, b) {
+      return Date.parse(a.date) - Date.parse(b.date);
+    });
+    return arr;
 }
 
 /**
@@ -191,7 +204,7 @@ function getAttendingEventsByUser(user) {
   return events.filter(function(event) {
     let attendees = event.attendees;
     if (attendees.filter(function(attendee) {
-        if (attendee.personsName == user.username && event.creator != user.username) {
+        if (attendee.personsName == user.username) {
           return event;
         }
       }).length != 0)
