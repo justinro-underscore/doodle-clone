@@ -135,7 +135,5 @@ function login(event) {
  * @return none
  */
 function checkAdminStatus() {
-  if (getCurrUser().isAdmin) {
-    window.location.replace("createEvent.html");
-  }
+    return getCurrUser().isAdmin;
 }

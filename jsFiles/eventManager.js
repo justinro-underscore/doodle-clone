@@ -212,11 +212,11 @@ function enteringEvent() {
   {
     if ($('#multidayEvent').is(':checked')) {
         addMultiEvent();
-        window.location.replace("createUserSuccessful.html");
+        replaceWindow();
     } else {
       if (checkDate(startDate)) {
         addSingleEvent(startDate); // Add the event
-        window.location.replace("createUserSuccessful.html");
+        replaceWindow();
         valid = true;
       } else {
         valid = false;
@@ -225,6 +225,12 @@ function enteringEvent() {
   } else {
     valid = false;
   }
+}
+
+function replaceWindow()
+{
+  let doc = document.getElementById("bodyHTML");
+  doc.innerHTML = "<h1 style='color: #3498DB'>Event created!</h1><p style='text-align: center'><a href='home.html'>Click here</a> to return to the home page.</p>";
 }
 
 function addSingleEvent(eventDate, eventId = new Date().getTime()) {
