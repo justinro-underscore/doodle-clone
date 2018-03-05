@@ -15,7 +15,12 @@ function listOfEvents(date) {
     eventsListing.innerHTML = "<h3>No events are scheduled on this date!</h3>";
 
   for (let i in eventsByDate) {
+    let divElem2 = document.createElement("div");
+    divElem2.innerHTML += "<hr>";
+    eventsList.append(divElem2);
+
     let eventTitle = document.createElement("a");
+
     eventTitle.setAttribute("href", "javascript:void(0);");
     eventTitle.setAttribute("onclick", "populateDiv('" + eventsByDate[i]["id"] + "')");
     // TODO Might want to change name to id later
@@ -26,6 +31,11 @@ function listOfEvents(date) {
     let divElem = document.createElement("div");
     divElem.setAttribute("id", eventsByDate[i]["id"] + "div"); // TODO Might want to change name to id later
     eventsList.append(divElem);
+
+
+    eventsList.append(divElem2);
+
+
   }
 }
 
@@ -34,20 +44,27 @@ function populateDiv(id) {
 
   if (divElem.innerHTML == "") {
     let eventSelected = findEventsById(id)[0];
+    let divTag = document.createElement("div");
+    divTag.setAttribute("id" , "thedivTag");
+
     let information = document.createElement("p");
     information.setAttribute("class", "infoEvent");
+    information.setAttribute("align", "left");
+
     information.setAttribute("id", id + "para");
     information.innerHTML += "<b><u> Event Name</u></b>: " + eventSelected.name + "<br>";
     information.innerHTML += "<br><b><u> Event Creator</u></b>: " + eventSelected.creator + "<br>";
     information.innerHTML += "<br><b><u> Event Date</u></b>: " + eventSelected.date + "<br>";
     information.innerHTML += "<br><b><u> Event Time Slots</u></b>: " + eventSelected.timeSlots + "<br>";
     information.innerHTML += "<br><b><u> Event Attendees</u></b>: " + printNames(eventSelected.attendees) + " Total Attendees: " + eventSelected.numOfattendees + "<br>";
-    divElem.append(information);
+    divTag.append(information)
+    divElem.append(divTag);
 
     if(!isUserAttending(getCurrUser(), id))
     {
       let informationAccept = document.createElement("button");
       informationAccept.setAttribute("id", eventSelected.id + "button");
+      informationAccept.setAttribute("class", "btn btn-success");
       informationAccept.setAttribute("onclick", "populateAccept('" + eventSelected.id + "')");
       informationAccept.setAttribute("style", "display: block; margin-left: auto; margin-right: auto;");
       informationAccept.innerHTML += "Accept Event";
@@ -88,11 +105,15 @@ function populateAccept(idEvent)
   removeLists();
 
   let eventChosen = findEventsById(idEvent)[0]; // TODO change for mult days
+
   let information = document.getElementById(idEvent + "para");
-  information.innerHTML += "<br><div class='timesList' name='lists'><h3>Available Times:</h3><div class='availableTimesListHTML' id='availableTimesList'></div></div>";
-  information.innerHTML += "<div class='timesList' name='lists'><h3 class='lastChosen'>Last time chosen:<br><span id='chosen'><br></span></h3></div>";
-  information.innerHTML += "<div class='timesList' name='lists'><h3>Chosen Times:</h3><div class='chosenTimesListHTML' id='chosenTimesList'></div></div>";
-  information.innerHTML += "<div name='lists'><button type='button' onclick='submitAvailability(" + idEvent + ")'>Submit Availability</button></div>"
+  let newDivElem = document.createElement("div");
+  newDivElem.setAttribute("class", "times");
+  newDivElem.innerHTML += "<br><div class='timesList' name='lists'><h3>Available Times:</h3><div class='availableTimesListHTML' id='availableTimesList'></div></div>";
+  newDivElem.innerHTML += "<div class='timesList' name='lists'><h3 class='lastChosen'>Last time chosen:<br><span id='chosen'><br></span></h3></div>";
+  newDivElem.innerHTML += "<div class='timesList' name='lists'><h3>Chosen Times:</h3><div class='chosenTimesListHTML' id='chosenTimesList'></div></div>";
+  newDivElem.innerHTML += "<div name='lists'><button type='button' class= 'btn btn-info' onclick='submitAvailability(" + idEvent + ")'>Submit Availability</button></div>"
+  information.append(newDivElem);
 
   let availableTimesList = document.getElementById("availableTimesList"); // Only have to fill this list
   let times = eventChosen.timeSlots
@@ -168,6 +189,8 @@ function addTimeEvent()
   chosenTimesListEvent.sort(function(a, b) {return(sortTimes(a, b))}); // Sort the array
 
   let chosenTimesList = document.getElementById("chosenTimesList");
+
+
   // Create the new time anchor
   let newTime = document.createElement("a");
   newTime.setAttribute("href", "javascript:void(0);");
@@ -190,7 +213,7 @@ function addTimeEvent()
 
   let lastChosen = document.getElementById("chosen"); // Show the user what they selected
   lastChosen.style.color = "green"; // Green for added
-  lastChosen.innerHTML = "--- " + id + " -->";
+  lastChosen.innerHTML = "--- " + id + " -->    ";
 }
 
 function removeTimeEvent()
