@@ -71,6 +71,12 @@ function findEventsById(eventId) {
     });
 }
 
+function isUserAttending(user, eventId) {
+    let eventsAttending = getAttendingEventsByUser(user);
+    let eventChosen = findEventsById(eventId)[0];
+    return(eventsAttending.includes(eventChosen));
+}
+
 function addMultiEventBox() {
   if ($('#multidayEvent').is(':checked')) {
     let multiBreak = $('<br id="multiBreak"/>');

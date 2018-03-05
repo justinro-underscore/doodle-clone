@@ -4,6 +4,18 @@ function init()
   let welcome = document.getElementById("welcome");
   welcome.innerHTML = "Welcome, " + user.username + "!";
 
+
+  let usersName = document.getElementById("theKing");
+  usersName.innerHTML= user.username;
+  let theAdmin = document.getElementById('adminPossibly');
+  if(user.isAdmin)
+  {
+    theAdmin.innerHTML = "Administrator";
+  }
+  else {
+      theAdmin.innerHTML = "User";
+  }
+
   populateCreatedEvents(user);
   populateAttendingEvents(user);
 }
@@ -22,7 +34,7 @@ function populateCreatedEvents(user)
       let eventCreateTag = document.createElement("a");
       eventCreateTag.setAttribute("href", "javascript:void(0);");
       eventCreateTag.setAttribute("onclick", "openCreateInfo(" + eventCreate.id + ")");
-      eventCreateTag.innerHTML = eventCreate.date + ":" + eventCreate.name;
+      eventCreateTag.innerHTML = "<h4>" + eventCreate.name + "</h4>";
       divElem.append(eventCreateTag);
       let eventCreateDiv = document.createElement("div");
       eventCreateDiv.setAttribute("id", eventCreate.id + "div");
@@ -38,15 +50,19 @@ function openCreateInfo(id)
   {
     let eventSelected = findEventsById(id)[0]; // TODO make it so that it gets the current day selected
     let eventInfo = document.createElement("p");
-    eventInfo.setAttribute("style", "color: white")
-    eventInfo.innerHTML += "Name: " + eventSelected.name + "<br>";
-    eventInfo.innerHTML += "Date(s): " + eventSelected.date + "<br>";
+    eventInfo.innerHTML += "<b>Name: </b>" + eventSelected.name + "<br>";
+    eventInfo.innerHTML += "<b>Date(s):</b> " + eventSelected.date + "<br>";
     let attendees = eventSelected.attendees;
-    eventInfo.innerHTML += "Attendees:<br>";
+    eventInfo.innerHTML += "<b>Attendees:</b><br>";
+    let table = document.createElement("table");
+    table.setAttribute("style", "width: 90%");
+    table.setAttribute("align", "center");
+    table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
     for(let i in attendees)
     {
-      eventInfo.innerHTML += "&emsp;" + attendees[i].personsName + ": " + attendees[i].personsAvailability + "<br>";
+      table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + attendees[i].personsAvailability + "</td></tr>";
     }
+    eventInfo.append(table);
     divElem.append(eventInfo);
   }
   else
@@ -69,7 +85,7 @@ function populateAttendingEvents(user)
       let eventAttendTag = document.createElement("a");
       eventAttendTag.setAttribute("href", "javascript:void(0);");
       eventAttendTag.setAttribute("onclick", "openAttendInfo(" + eventAttend.id + ")");
-      eventAttendTag.innerHTML = eventAttend.date + ":" + eventAttend.name;
+      eventAttendTag.innerHTML = eventAttend.name;
       divElem.append(eventAttendTag);
       let eventAttendDiv = document.createElement("div");
       eventAttendDiv.setAttribute("id", eventAttend.id + "div");
@@ -85,15 +101,20 @@ function openAttendInfo(id)
   {
     let eventSelected = findEventsById(id)[0]; // TODO make it so that it gets the current day selected
     let eventInfo = document.createElement("p");
-    eventInfo.setAttribute("style", "color: white")
-    eventInfo.innerHTML += "Name: " + eventSelected.name + "<br>";
-    eventInfo.innerHTML += "Date(s): " + eventSelected.date + "<br>";
+    eventInfo.innerHTML += "<b>Name: </b>" + eventSelected.name + "<br>";
+    eventInfo.innerHTML += "<b>Date(s): </b>" + eventSelected.date + "<br>";
     let attendees = eventSelected.attendees;
-    eventInfo.innerHTML += "Attendees:<br>";
+    eventInfo.innerHTML += "<b>Attendees:</b><br>";
+
+    let table = document.createElement("table");
+    table.setAttribute("style", "width: 90%");
+    table.setAttribute("align", "center");
+    table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
     for(let i in attendees)
     {
-      eventInfo.innerHTML += "&emsp;" + attendees[i].personsName + ": " + attendees[i].personsAvailability + "<br>";
+      table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + attendees[i].personsAvailability + "</td></tr>";
     }
+    eventInfo.append(table);
     divElem.append(eventInfo);
   }
   else
