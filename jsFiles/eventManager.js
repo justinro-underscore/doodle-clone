@@ -1,19 +1,27 @@
 let events = [];
 let currRowNum = 0;
 let twentyFourMode;
+
+//Check if we have a setting stroed for twenty four hour mode
 if(localStorage.getItem("twentyFourModeLS") != undefined)
   twentyFourMode = (localStorage.getItem("twentyFourModeLS") == "true");
 else
   twentyFourMode = true;
+
 //TODO: do we need valid?
 var valid = true;
 
+//Check if we have existing events stored in local storage, else load events
 if (localStorage.getItem("events") == null) {
   loadEvents();
 } else {
   events = JSON.parse(localStorage.getItem("events"));
 }
 
+/**
+ * Querrys the google sheet for events via google charts api
+ * @return none
+ */
 function loadEvents() {
   events = [];
   google.charts.load('current', {
@@ -46,6 +54,10 @@ function loadEvents() {
   }
 }
 
+/**
+ * Toggles twenty four hour mode
+ * @return none
+ */
 function twentyfourSwitch()
 {
   twentyFourMode = document.getElementById("twentyfour").checked;
@@ -53,7 +65,11 @@ function twentyfourSwitch()
   window.location.reload();
 }
 
-// Takes an array of 24-hour times
+/**
+ * Takes an array of 24-hour times and converts to 12 hour if twentyFourMode is false
+ * @param  {Array} arrTimes array of times to be converted
+ * @return {Array}          returns converted times
+ */
 function showTimes(arrTimes)
 {
   if(!twentyFourMode)
@@ -74,13 +90,11 @@ function showTimes(arrTimes)
   return arrTimes;
 }
 
-//TODO: do we need this if we just call loadEvents after posting? (then we can just make currRowNum local to loadEvents rather than global)
-function addEventToEvents(eventObj) {
-  currRowNum++;
-  eventObj.rowId = currRowNum;
-  events.push(eventObj);
-}
-
+/**
+ * Filters events by a date key
+ * @param  {String} eventDate date to filter events by
+ * @return {Array}           array of events on eventDate
+ */
 function getEventsByDate(eventDate) {
   return events.filter(function(event) {
     if (event.date == eventDate) {
@@ -89,6 +103,12 @@ function getEventsByDate(eventDate) {
   });
 }
 
+/**
+ * Returns specific event based on name and date
+ * @param  {String} eventName name of event
+ * @param  {String} eventDate date of event
+ * @return {Event}           returns the event with eventName on eventDate
+ */
 function getEvent(eventName, eventDate) {
   return events.filter(function(event) {
     if (event.date == eventDate && event.name == eventName) {
@@ -97,6 +117,11 @@ function getEvent(eventName, eventDate) {
   })[0];
 }
 
+/**
+ * Returns array of events with same id
+ * @param  {Number} eventId id of event
+ * @return {Array}         array of events with id
+ */
 function findEventsById(eventId) {
     return events.filter(function (event) {
         if (event.id == eventId) {
@@ -105,12 +130,21 @@ function findEventsById(eventId) {
     });
 }
 
+/**
+ * Checks if user is attending specific event
+ * @param  {User}  user    user to check
+ * @param  {Number}  eventId event id to lookup event
+ * @return {Boolean}         true if user is attending
+ */
 function isUserAttending(user, eventId) {
     let eventsAttending = getAttendingEventsByUser(user);
     let eventChosen = findEventsById(eventId)[0];
     return(eventsAttending.includes(eventChosen));
 }
 
+/**
+ * Adds multidayEvent box
+ */
 function addMultiEventBox() {
   if ($('#multidayEvent').is(':checked')) {
     let multiBreak = $('<br id="multiBreak"/>');
@@ -125,11 +159,21 @@ function addMultiEventBox() {
 }
 
 // https://stackoverflow.com/questions/23641525/javascript-date-object-from-input-type-date
+/**
+ * Adapted from stack overflow to turn date string to date object
+ * @param  {String} s date
+ * @return {Date}   date object of string
+ */
 function parseDate(s) {
   var b = s.split(/\D/);
   return new Date(b[0], --b[1], b[2]);
 }
 
+/**
+ * Returns array of events created by specific user
+ * @param  {User} user user to check
+ * @return {Array}      array of events by user
+ */
 function getCreatedEventsByUser(user) {
   return events.filter(function(event) {
     if (event.creator == user.username) {
@@ -138,6 +182,11 @@ function getCreatedEventsByUser(user) {
   });
 }
 
+/**
+ * Returns array of events attended by user
+ * @param  {User} user user to check
+ * @return {Array}      array of events attended by user
+ */
 function getAttendingEventsByUser(user) {
   return events.filter(function(event) {
     let attendees = event.attendees;
@@ -150,7 +199,10 @@ function getAttendingEventsByUser(user) {
   });
 }
 
-// Checks all user input
+/**
+ * Validates user input for creating event
+ * @return {Boolean} true if all user input is valid
+ */
 function checkEventData() {
   let nEvent = $('#evName').val();
   let eDate = $('#evDate').val();
@@ -174,7 +226,11 @@ function checkEventData() {
   return true;
 }
 
-// Checks the date
+/**
+ * Validates date of event
+ * @param  {String} date date to check
+ * @return {Boolean}      true if valid date
+ */
 function checkDate(date) {
   let nEvent = $('#evName').val();
 
@@ -205,6 +261,10 @@ function checkDate(date) {
 }
 
 // Enters the event into the event array
+/**
+ * Starts event creation
+ * @return none
+ */
 function enteringEvent() {
   let startDate = $('#evDate').val();
 
@@ -227,12 +287,21 @@ function enteringEvent() {
   }
 }
 
+/**
+ * Replaces window with event creation screen
+ * @return none
+ */
 function replaceWindow()
 {
   let doc = document.getElementById("bodyHTML");
   doc.innerHTML = "<h1 style='color: #3498DB'>Event created!</h1><p style='text-align: center'><a href='home.html'>Click here</a> to return to the home page.</p>";
 }
 
+/**
+ * Adds a new event
+ * @param {String} eventDate    date of event
+ * @param {Number}   eventId       id of event which can be overriden
+ */
 function addSingleEvent(eventDate, eventId = new Date().getTime()) {
   maker = getCurrUser().username;
   eventName = $('#evName').val();
