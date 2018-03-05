@@ -23,13 +23,24 @@
   overflow-y: auto;
 }
 
-.tasksListHTML {
+.tasksListHTML, .multiDayListHTML {
   display: inline-block;
-  text-align: left;
   background-color: #eee;
   width: 80%;
   height: 300px;
   overflow-y: auto;
+}
+
+.tasksListHTML {
+  text-align: left;
+}
+
+.multiDayListHTML {
+  width: 40%;
+}
+
+.multiDayListHTML button {
+  float: right;
 }
 
 .tasksListHTML button {
@@ -41,7 +52,7 @@ button:hover {
   cursor: pointer;
 }
 
-.availableTimesListHTML a, .chosenTimesListHTML a, .tasksListHTML a {
+.availableTimesListHTML a, .chosenTimesListHTML a, .tasksListHTML a, .multiDayListHTML a {
   background-color: #eee;
   border-bottom: 0.5px solid black;
   color: black;
@@ -54,6 +65,6 @@ button:hover {
   cursor: default;
 }
 
-.availableTimesListHTML a:hover, .chosenTimesListHTML a:hover {
+.availableTimesListHTML a:hover, .chosenTimesListHTML a:hover, .multiDayListHTML a {
   background-color: #ccc;
 }
