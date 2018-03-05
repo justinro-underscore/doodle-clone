@@ -63,11 +63,11 @@ function getEvent(eventName, eventDate) {
 }
 
 function findEventsById(eventId) {
-  return events.filter(function(event) {
-    if (event.id == id) {
-      return event;
-    }
-  });
+    return events.filter(function (event) {
+        if (event.id == eventId) {
+            return event;
+        }
+    });
 }
 
 function addMultiEventBox() {
