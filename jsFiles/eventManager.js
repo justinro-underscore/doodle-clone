@@ -64,11 +64,30 @@ function getEvent(eventName, eventDate) {
 }
 
 function findEventsById(eventId) {
-  return events.filter(function(event) {
-    if (event.id == eventId) {
-      return event;
-    }
-  });
+    return events.filter(function (event) {
+        if (event.id == eventId) {
+            return event;
+        }
+    });
+}
+
+function isUserAttending(user, eventId) {
+    let eventsAttending = getAttendingEventsByUser(user);
+    let eventChosen = findEventsById(eventId)[0];
+    return(eventsAttending.includes(eventChosen));
+}
+
+function addMultiEventBox() {
+  if ($('#multidayEvent').is(':checked')) {
+    let multiBreak = $('<br id="multiBreak"/>');
+    let multiLabel = $('<label id="multiLabel" for"evDate2">End Date</label>');
+    let multiEvent = $('<input type="date" name="date" maxlength="10" required=true type=string id="evDate2">');
+    $('#dates').append(multiBreak, multiLabel, multiEvent);
+  } else {
+    $('#evDate2').remove();
+    $('#multiLabel').remove();
+    $('#multiBreak').remove();
+  }
 }
 
 // https://stackoverflow.com/questions/23641525/javascript-date-object-from-input-type-date
@@ -184,7 +203,8 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
     timeSlots: getEventTimes(),
     attendees: [],
     numOfattendees: 0,
-    id: eventId
+    id: eventId,
+    tasks: getTasks()
   };
   //TODO: do we need person Info
   let personInfo = {

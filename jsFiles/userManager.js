@@ -90,8 +90,9 @@ if (localStorage.getItem("users") == null) {
    };
    //post it to the google sheets
    postUser(inputUserObject);
-   //go back to the login page after successful create user
-   location.href = 'index.html';
+   // Tell user that the new user was created
+   let page = document.getElementById("createUserHTML");
+   page.innerHTML = "<h1><br>User \"" + inputUsername + "\" successfully created!<br><a href='index.html'>Click here</a> to go back to the login page!</h1>";
  }
 
  function login(event) {

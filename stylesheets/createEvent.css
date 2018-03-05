@@ -31,6 +31,10 @@
   overflow-y: auto;
 }
 
+.tasksListHTML {
+  text-align: left;
+}
+
 .multiDayListHTML {
   width: 40%;
 }
@@ -39,7 +43,16 @@
   float: right;
 }
 
-.availableTimesListHTML a, .chosenTimesListHTML a, .tasksListHTML a, .multiDayListHTML a{
+.tasksListHTML button {
+  margin-right: 5px;
+  float: right;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.availableTimesListHTML a, .chosenTimesListHTML a, .tasksListHTML a, .multiDayListHTML a {
   background-color: #eee;
   border-bottom: 0.5px solid black;
   color: black;
@@ -48,6 +61,10 @@
   text-decoration: none;
 }
 
-.availableTimesListHTML a:hover, .chosenTimesListHTML a:hover, .tasksListHTML a, .multiDayListHTML a {
+.tasksListHTML a {
+  cursor: default;
+}
+
+.availableTimesListHTML a:hover, .chosenTimesListHTML a:hover, .multiDayListHTML a {
   background-color: #ccc;
 }
