@@ -1,6 +1,7 @@
 let twentyFourMode = true; // TODO Add this functionality
 let availableTimes = [];
 let chosenTimes = [];
+let taskList = [];
 
 // Initializes the times lists
 function initTimes()
@@ -133,4 +134,91 @@ function sortTimes(a, b)
 function getEventTimes()
 {
   return chosenTimes;
+}
+
+function addTask()
+{
+  let taskObj = {
+    task : document.forms["eventMaker"]["task"].value,
+    assignedTo : undefined
+  }
+  let tasksListDisplay = document.getElementById("tasksList");
+  let errorMessage = document.getElementById("errorMessage");
+  if(taskObj.task != "")
+  {
+    if(!taskList.includes(taskObj.task))
+    {
+      errorMessage.innerHTML = "";
+
+      taskList.push(taskObj);
+
+      let newTask = document.createElement("a");
+      newTask.setAttribute("href", "javascript:void(0);");
+      newTask.setAttribute("id", "task" + taskObj.task);
+      newTask.setAttribute("name", "unassigned"); // Hidden attribute to test if the task has been assigned
+      newTask.innerHTML = taskObj.task;
+
+      let buttonDelete = document.createElement("button");
+      buttonDelete.setAttribute("type", "button");
+      buttonDelete.setAttribute("onclick", "removeTask('" + taskObj.task + "')");
+      buttonDelete.innerHTML = "<b>-</b>";
+      newTask.append(buttonDelete);
+
+      let buttonChoose = document.createElement("button");
+      buttonChoose.setAttribute("type", "button");
+      buttonChoose.setAttribute("onclick", "chooseTask('" + taskObj.task + "')");
+      buttonChoose.setAttribute("id", taskObj.task + "button");
+      buttonChoose.innerHTML = "<b>Assign to Self</b>";
+      newTask.append(buttonChoose);
+      tasksListDisplay.appendChild(newTask);
+    }
+    else
+    {
+      errorMessage.innerHTML = "Error: Task already exists!";
+    }
+  }
+  else
+  {
+    errorMessage.innerHTML = "Error: Please enter a task.";
+  }
+}
+
+function chooseTask(taskId)
+{
+  let task = document.getElementById("task" + taskId);
+  if(task.getAttribute("name") == "unassigned")
+  {
+    task.innerHTML += "<span style='color: darkgray;'><i><b> Assigned to Creator</b></i></span>";
+    task.setAttribute("style", "background-color: lightgray");
+    task.setAttribute("name", "assigned");
+    task.childNodes[2].innerHTML = "<b>Unassign Self</b>";
+    taskList.find((t) => {
+      return taskId == t.task;
+    }).assignedTo = getCurrUser();
+  }
+  else
+  {
+    task.innerHTML = task.innerHTML.substring(0, task.innerHTML.indexOf("<span"));
+    task.setAttribute("style", "");
+    task.setAttribute("name", "unassigned");
+    task.childNodes[2].innerHTML = "<b>Assign to Self</b>"
+    taskList.find((t) => {
+      return taskId == t.task;
+    }).assignedTo = undefined;
+  }
+}
+
+function removeTask(task)
+{
+  console.log(task);
+  let taskEntry = document.getElementById("task" + task);
+  taskEntry.setAttribute("style", "background-color: darkgray");
+  taskList.splice(taskList.indexOf(task), 1);
+  taskEntry.parentNode.removeChild(taskEntry);
+  document.getElementById("errorMessage").innerHTML = "";
+}
+
+function getTasks()
+{
+  return taskList;
 }

@@ -5,7 +5,7 @@
   <title>Create Event - Doodle Clone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-  <link rel="stylesheet" type="text/css" href="stylesheets/chooseTimesStyle.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/createEvent.css">
 </head>
 
 <body onload="init(); initTimes();">
@@ -16,8 +16,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event Actions</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="eventView.html">View Events</a>
-              <a class="dropdown-item" href="setavail.html">Set Availability</a>
+              <a class="dropdown-item" href="eventAccept.html">View Events</a>
               <a class="dropdown-item" href="profile.html">See Profile</a>
             </div>
           </li>
@@ -40,6 +39,7 @@
 
   <div>
     <span class="availability">
+      <form name="eventMaker">
         <div class="times">
           <div class="timesList">
             <h3>Available Times:</h3>
@@ -48,38 +48,40 @@
           </div>
           <div class="timesList">
             <h3 class="lastChosen">Last time chosen:<br><span id="chosen"><br></span></h3>
-  </div>
-  <div class="timesList">
-    <h3>Chosen Times:</h3>
-    <div class="chosenTimesListHTML" id="chosenTimesList">
-    </div>
-  </div>
-  </div>
-  <div>
-    <form name="eventMaker">
-      <input type="text" name="eventName" placeholder="Event name" maxlength="064" required=true type=string id="evName">
-      <br />
-      <br />
-      <div id="dates">
-        <label for="evDate">Start Date</label>
-        <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
-        <br />
-      </div>
-      <br />
-      <input id="multidayEvent" type="checkbox" onclick="addMultiEventBox()" value="multidayEvent">
-      <label for="multidayEvent">multiday Event</label>
-
-      <br />
-      <button type="button" onclick="enteringEvent();">Create Event</button>
-      <!-- appendEvent(valid, nEvent, eDate) -->
-    </form>
-  </div>
-  </span>
-  </div>
-  <div>
-    <ul id="avail_List">
-
-    </ul>
+          </div>
+          <div class="timesList">
+            <h3>Chosen Times:</h3>
+            <div class="chosenTimesListHTML" id="chosenTimesList">
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="text" name="eventName" placeholder="Event name" maxlength="064" required=true type=string id="evName">
+          <br>
+          <br>
+          <div id="dates">
+            <label for="evDate">Start Date</label>
+            <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
+            <br>
+          </div>
+          <br>
+          <input id="multidayEvent" type="checkbox" onclick="addMultiEventBox()" value="multidayEvent">
+          <label for="multidayEvent">multiday Event</label>
+          <br>
+          <!-- appendEvent(valid, nEvent, eDate) -->
+        </div>
+        <div>
+          <h3>Add Tasks:</h3>
+          <div class="tasksListHTML" id="tasksList">
+          </div>
+          <input type="text" name="task" placeholder="Task" maxlength="064" required=true type=string id="task" style="width: 75%">
+          <button type="button" onclick="addTask()">+</button>
+          <p id="errorMessage" style="color: red">
+        </div>
+        <button type="button" onclick="enteringEvent();">Create Event</button>
+        <br><br><br><br><br><br><br>
+      </form>
+    </span>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -90,7 +92,7 @@
   <script src="jsFiles/userManager.js"></script>
   <script src="functions.js"></script>
   <script src="driver.js"></script>
-  <script src="jsFiles/chooseTimes.js"></script>
+  <script src="jsFiles/createEvent.js"></script>
 </body>
 
 </html>

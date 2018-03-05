@@ -254,7 +254,8 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
     timeSlots: getEventTimes(),
     attendees: [],
     numOfattendees: 0,
-    id: eventId
+    id: eventId,
+    tasks: getTasks()
   };
   let personInfo = {
     personsName: eventInfo.creator,
@@ -264,15 +265,4 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
   eventInfo.numOfattendees++;
 
   postEvent(eventInfo);
-}
-
-function sendAvail(person, evName, array) {
-  var eventIndex = searchingForEvents(evName);
-  var personInfo = {
-    personsName: person,
-    personsAvailability: array
-  };
-  // events.arrayOfEvents[eventIndex].attendees.push(personInfo);
-  // events.arrayOfEvents[eventIndex].numOfattendees++;
-  alert('Person added to ' + evName + ' event.');
 }

@@ -23,13 +23,35 @@
   overflow-y: auto;
 }
 
-.availableTimesListHTML a, .chosenTimesListHTML a {
+.tasksListHTML {
+  display: inline-block;
+  text-align: left;
+  background-color: #eee;
+  width: 80%;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.tasksListHTML button {
+  margin-right: 5px;
+  float: right;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.availableTimesListHTML a, .chosenTimesListHTML a, .tasksListHTML a {
   background-color: #eee;
   border-bottom: 0.5px solid black;
   color: black;
   display: block;
   padding: 10px;
   text-decoration: none;
+}
+
+.tasksListHTML a {
+  cursor: default;
 }
 
 .availableTimesListHTML a:hover, .chosenTimesListHTML a:hover {
