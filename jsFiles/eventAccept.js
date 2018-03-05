@@ -1,11 +1,10 @@
 let availableTimesListEvent = [];
 let chosenTimesListEvent = [];
-
+let theDate;
 function listOfEvents(date) {
   let eventsListing = document.getElementById('EventsListing');
   let eventsList;
   let eventsByDate = getEventsByDate(date);
-
   if (eventsByDate.length != 0) {
     eventsListing.innerHTML = "<h3>Choose An Event:</h3><div class='Event_list' id='EventListDisplay'></div>";
     eventsList = document.getElementById('EventListDisplay');
@@ -13,6 +12,9 @@ function listOfEvents(date) {
     eventsListing.innerHTML = "<h3>No events are scheduled on this date!</h3>";
 
   for (let i in eventsByDate) {
+    theDate = date;
+    console.log(date);
+
     let divElem2 = document.createElement("div");
     divElem2.innerHTML += "<hr>";
     eventsList.append(divElem2);
@@ -62,9 +64,13 @@ function populateDiv(eventNameDateId) {
 
     if (!isUserAttending(getCurrUser(), id)) {
       let informationAccept = document.createElement("button");
+      if(eventSelected.creator == getCurrUser().username)
+      {
+        informationAccept.setAttribute('disabled', 'disabled');
+      }
       informationAccept.setAttribute("id", eventSelected.id + "button");
       informationAccept.setAttribute("class", "btn btn-success");
-      informationAccept.setAttribute("onclick", "populateAccept('" + eventSelected.id + "')");
+      informationAccept.setAttribute("onclick", "populateAccept('" + eventSelected.id + "," + eventSelected.name +"," + eventSelected.date+ "')");
       informationAccept.setAttribute("style", "display: block; margin-left: auto; margin-right: auto;");
       informationAccept.innerHTML += "Accept Event";
       information.append(informationAccept);
@@ -89,6 +95,10 @@ function printNames(attendees) {
 }
 
 function populateAccept(idEvent) {
+  let eventData = idEvent.split(',');
+  let eventDate = eventData[2];
+  let eventName = eventData[1];
+  let eventId = eventData[0];
   availableTimesListEvent = [];
   chosenTimesListEvent = [];
 
@@ -100,7 +110,8 @@ function populateAccept(idEvent) {
 
   removeLists();
 
-  let eventChosen = findEventsById(idEvent)[0]; // TODO change for mult days
+  let eventChosen = getEvent(eventName, eventDate);
+ // TODO change for mult days
 
   let information = document.getElementById(idEvent + "para");
   let newDivElem = document.createElement("div");
