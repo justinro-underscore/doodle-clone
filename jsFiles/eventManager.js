@@ -116,7 +116,7 @@ function getEvent(eventName, eventDate) {
 
 function findEventsByIdAndDate(eventId, date) {
     let arr = findEventsById(eventId);
-    return events.filter(function (event) {
+    return arr.filter(function (event) {
         if (event.date == date) {
             return event;
         }

@@ -53,6 +53,10 @@ function populateDiv(eventNameDateId) {
 
   if (divElem.innerHTML == "") {
     let eventSelected = getEvent(eventName, eventDate);
+    let remove = document.getElementById("thedivTag");
+    if(remove != undefined)
+      remove.parentNode.removeChild(remove);
+
     let divTag = document.createElement("div");
     divTag.setAttribute("id", "thedivTag");
 
@@ -84,6 +88,9 @@ function populateDiv(eventNameDateId) {
       information.innerHTML += "<br><div class='tasksListHTML' id='tasksListEvent' style='width: 100%'></div><br>";
       information.innerHTML += "<button type='button' onclick='submitTasks(" + id + ")'>Submit Task Change</button>"
       information.innerHTML += "<p id='errorMessageEvent' style='padding-right: 10px; float: right; color: red; text-decoration: underline'></p>"
+      let removeTask = document.getElementById("tasksListEvent");
+      if(removeTask != undefined)
+        removeTask.innerHTML = "";
     }
     else
       information.innerHTML += "There are no tasks for this event!<br>"
@@ -113,9 +120,8 @@ function populateDiv(eventNameDateId) {
 
 function populateTasks(id)
 {
-  console.log(dateChosen);
   let eventChosen = findEventsByIdAndDate(id, dateChosen);
-  if(eventChosen.length != 0)
+  if(eventChosen != undefined)
   {
     let tasksListDisplay = document.getElementById("tasksListEvent");
     let tasks = eventChosen.tasks;

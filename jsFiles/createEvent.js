@@ -171,7 +171,7 @@ function addTask()
   let errorMessageTask = document.getElementById("errorMessageTask");
   if(taskObj.task != "")
   {
-    if(!taskList.includes(taskObj.task))
+    if(!taskExists(taskObj))
     {
       errorMessageTask.innerHTML = "";
 
@@ -201,11 +201,22 @@ function addTask()
     {
       errorMessageTask.innerHTML = "Error: Task already exists!";
     }
+    document.forms["eventMaker"]["task"].value = "";
   }
   else
   {
     errorMessageTask.innerHTML = "Error: Please enter a task.";
   }
+}
+
+function taskExists(taskParam)
+{
+  let taskExists = false;
+  taskList.forEach((e) => {
+    if(e.task == taskParam.task)
+      taskExists = true;
+  });
+  return taskExists;
 }
 
 /**
