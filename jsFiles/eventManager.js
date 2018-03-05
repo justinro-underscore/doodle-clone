@@ -1,6 +1,10 @@
 let events = [];
 let currRowNum = 0;
-let twentyFourMode = false;
+let twentyFourMode;
+if(localStorage.getItem("twentyFourModeLS") != undefined)
+  twentyFourMode = (localStorage.getItem("twentyFourModeLS") == "true");
+else
+  twentyFourMode = true;
 //TODO: do we need valid?
 var valid = true;
 
@@ -38,7 +42,15 @@ function loadEvents() {
     }
 
     localStorage.setItem("events", JSON.stringify(events));
+    localStorage.setItem("twentyFourModeLS", document.getElementById("twentyfour").checked);
   }
+}
+
+function twentyfourSwitch()
+{
+  twentyFourMode = document.getElementById("twentyfour").checked;
+  localStorage.setItem("twentyFourModeLS", twentyFourMode);
+  window.location.reload();
 }
 
 // Takes an array of 24-hour times
