@@ -40,6 +40,7 @@ function loadEvents() {
   }
 }
 
+//TODO: do we need this if we just call loadEvents after posting? (then we can just make currRowNum local to loadEvents rather than global)
 function addEventToEvents(eventObj) {
   currRowNum++;
   eventObj.rowId = currRowNum;
