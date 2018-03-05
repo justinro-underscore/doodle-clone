@@ -16,6 +16,7 @@ General Users are anyone who uses the Doodle-Clone service. They will be able to
 > If this is the first time using the doodle-clone service, please see the [Creating Users](#createUser) section on how to set up a first time user.
 
 When you first open the page you will be prompted with a screen that has an entry field for both a username and a password. This is where you'll enter the credentials provided to you by your [admin](#admin).
+
 ![Alt text][loginScreen]
 
 After you type them in you will be presented with the landing page where you have full access to all of the sites functionality. At the top is where you will find the navigation bar and the drop down menu. 
