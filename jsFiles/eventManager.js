@@ -8,9 +8,6 @@ if(localStorage.getItem("twentyFourModeLS") != undefined)
 else
   twentyFourMode = true;
 
-//TODO: do we need valid?
-var valid = true;
-
 //Check if we have existing events stored in local storage, else load events
 if (localStorage.getItem("events") == null) {
   loadEvents();
@@ -290,13 +287,8 @@ function enteringEvent() {
       if (checkDate(startDate)) {
         addSingleEvent(startDate); // Add the event
         replaceWindow();
-        valid = true;
-      } else {
-        valid = false;
       }
     }
-  } else {
-    valid = false;
   }
 }
 
@@ -329,7 +321,7 @@ function addSingleEvent(eventDate, eventId = new Date().getTime()) {
     id: eventId,
     tasks: getTasks()
   };
-  //TODO: do we need person Info
+
   let personInfo = {
     personsName: eventInfo.creator,
     personsAvailability: getEventTimes()
