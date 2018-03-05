@@ -1,5 +1,6 @@
 let events = [];
 let currRowNum = 0;
+let twentyFourMode = false;
 //TODO: do we need valid?
 var valid = true;
 
@@ -38,6 +39,27 @@ function loadEvents() {
 
     localStorage.setItem("events", JSON.stringify(events));
   }
+}
+
+// Takes an array of 24-hour times
+function showTimes(arrTimes)
+{
+  if(!twentyFourMode)
+  {
+    let resultTimes = [];
+    arrTimes.forEach((time) => {
+      let timeResult;
+      let hr = parseInt(time.substring(0, time.indexOf(":")));
+      let min = time.substring(time.indexOf(":")+1);
+      if(hr < 12)
+        timeResult = hr + ":" + min + " AM";
+      else
+        timeResult = (hr-12) + ":" + min + " PM";
+      resultTimes.push(timeResult);
+    });
+    return resultTimes;
+  }
+  return arrTimes;
 }
 
 //TODO: do we need this if we just call loadEvents after posting? (then we can just make currRowNum local to loadEvents rather than global)

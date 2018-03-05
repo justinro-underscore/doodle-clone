@@ -1,4 +1,3 @@
-let twentyFourMode = true; // TODO Add this functionality
 let availableTimes = [];
 let chosenTimes = [];
 let taskList = [];
@@ -15,7 +14,7 @@ function initTimes()
       {
         let id; // This will be what the user sees
         let time = hr + ":" + min + "0"; // This will be the time stamp
-        if(twentyFourMode)
+        if(!twentyFourMode)
         {
           if(hr < 12)
             id = hr + ":" + min + "0 AM";

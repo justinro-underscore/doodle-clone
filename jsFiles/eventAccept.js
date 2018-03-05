@@ -40,7 +40,7 @@ function populateDiv(id) {
     information.innerHTML += "<b><u> Event Name</u></b>: " + eventSelected.name + "<br>";
     information.innerHTML += "<br><b><u> Event Creator</u></b>: " + eventSelected.creator + "<br>";
     information.innerHTML += "<br><b><u> Event Date</u></b>: " + eventSelected.date + "<br>";
-    information.innerHTML += "<br><b><u> Event Time Slots</u></b>: " + eventSelected.timeSlots + "<br>";
+    information.innerHTML += "<br><b><u> Event Time Slots</u></b>: " + showTimes(eventSelected.timeSlots) + "<br>";
     information.innerHTML += "<br><b><u> Event Attendees</u></b>: " + printNames(eventSelected.attendees) + " Total Attendees: " + eventSelected.numOfattendees + "<br>";
     divElem.append(information);
 
@@ -102,7 +102,7 @@ function populateAccept(idEvent)
     let min = times[i].substring(times[i].indexOf(":")+1);
     let id; // This will be what the user sees
     let time = hr + ":" + min; // This will be the time stamp
-    if(twentyFourMode)
+    if(!twentyFourMode)
     {
       if(hr < 12)
         id = hr + ":" + min + " AM";

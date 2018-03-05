@@ -60,7 +60,7 @@ function openCreateInfo(id)
     table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
     for(let i in attendees)
     {
-      table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + attendees[i].personsAvailability + "</td></tr>";
+      table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + showTimes(attendees[i].personsAvailability) + "</td></tr>";
     }
     eventInfo.append(table);
     divElem.append(eventInfo);
@@ -112,7 +112,7 @@ function openAttendInfo(id)
     table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
     for(let i in attendees)
     {
-      table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + attendees[i].personsAvailability + "</td></tr>";
+      table.innerHTML += "<tr><td>" + attendees[i].personsName + "</td><td> " + showTimes(attendees[i].personsAvailability) + "</td></tr>";
     }
     eventInfo.append(table);
     divElem.append(eventInfo);
