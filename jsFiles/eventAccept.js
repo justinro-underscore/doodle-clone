@@ -6,12 +6,10 @@ function listOfEvents(date) {
   let eventsList;
   let eventsByDate = getEventsByDate(date);
 
-  if(eventsByDate.length != 0)
-  {
+  if (eventsByDate.length != 0) {
     eventsListing.innerHTML = "<h3>Choose An Event:</h3><div class='Event_list' id='EventListDisplay'></div>";
     eventsList = document.getElementById('EventListDisplay');
-  }
-  else
+  } else
     eventsListing.innerHTML = "<h3>No events are scheduled on this date!</h3>";
 
   for (let i in eventsByDate) {
@@ -22,30 +20,32 @@ function listOfEvents(date) {
     let eventTitle = document.createElement("a");
 
     eventTitle.setAttribute("href", "javascript:void(0);");
-    eventTitle.setAttribute("onclick", "populateDiv('" + eventsByDate[i]["id"] + "')");
+    eventTitle.setAttribute("onclick", "populateDiv('" + eventsByDate[i].name + "," + eventsByDate[i].date + "," + eventsByDate[i].id + "')");
     // TODO Might want to change name to id later
-    eventTitle.setAttribute("id", eventsByDate[i]["id"]);
+    eventTitle.setAttribute("id", eventsByDate[i].date + "/" + eventsByDate[i].name);
     eventTitle.innerHTML = "<font size= 6><b>" + eventsByDate[i]["name"] + "</b>";
     eventsList.append(eventTitle);
     eventsList.innerHTML += "<br><br>";
     let divElem = document.createElement("div");
-    divElem.setAttribute("id", eventsByDate[i]["id"] + "div"); // TODO Might want to change name to id later
+    divElem.setAttribute("id", eventsByDate[i].date + "/" + eventsByDate[i].name + "div"); // TODO Might want to change name to id later
     eventsList.append(divElem);
 
-
     eventsList.append(divElem2);
-
-
   }
 }
 
-function populateDiv(id) {
-  let divElem = document.getElementById(id + "div");
+function populateDiv(eventNameDateId) {
+  let eventData = eventNameDateId.split(',');
+  let eventDate = eventData[1];
+  let eventName = eventData[0];
+  let id = eventData[2];
+
+  let divElem = document.getElementById(eventDate + "/" + eventName + "div");
 
   if (divElem.innerHTML == "") {
-    let eventSelected = findEventsById(id)[0];
+    let eventSelected = getEvent(eventName, eventDate);
     let divTag = document.createElement("div");
-    divTag.setAttribute("id" , "thedivTag");
+    divTag.setAttribute("id", "thedivTag");
 
     let information = document.createElement("p");
     information.setAttribute("class", "infoEvent");
@@ -60,8 +60,7 @@ function populateDiv(id) {
     divTag.append(information);
     divElem.append(divTag);
 
-    if(!isUserAttending(getCurrUser(), id))
-    {
+    if (!isUserAttending(getCurrUser(), id)) {
       let informationAccept = document.createElement("button");
       informationAccept.setAttribute("id", eventSelected.id + "button");
       informationAccept.setAttribute("class", "btn btn-success");
@@ -69,9 +68,7 @@ function populateDiv(id) {
       informationAccept.setAttribute("style", "display: block; margin-left: auto; margin-right: auto;");
       informationAccept.innerHTML += "Accept Event";
       information.append(informationAccept);
-    }
-    else
-    {
+    } else {
       let informationMessage = document.createElement("p");
       informationMessage.setAttribute("style", "text-align: center; border-style: none; font-size: 20px");
       informationMessage.innerHTML += "<b>Already accepted event!</b>";
@@ -91,12 +88,11 @@ function printNames(attendees) {
   return result;
 }
 
-function populateAccept(idEvent)
-{
+function populateAccept(idEvent) {
   availableTimesListEvent = [];
   chosenTimesListEvent = [];
 
-  if(idEvent.indexOf("para") != -1)
+  if (idEvent.indexOf("para") != -1)
     idEvent = parseInt("" + idEvent.substring(0, idEvent.indexOf("para")));
 
   let button = document.getElementById(idEvent + "button");
@@ -117,20 +113,17 @@ function populateAccept(idEvent)
 
   let availableTimesList = document.getElementById("availableTimesList"); // Only have to fill this list
   let times = eventChosen.timeSlots
-  for(let i in times)
-  {
-    let hr = parseInt(times[i].substring(0,times[i].indexOf(":")));
-    let min = times[i].substring(times[i].indexOf(":")+1);
+  for (let i in times) {
+    let hr = parseInt(times[i].substring(0, times[i].indexOf(":")));
+    let min = times[i].substring(times[i].indexOf(":") + 1);
     let id; // This will be what the user sees
     let time = hr + ":" + min; // This will be the time stamp
-    if(!twentyFourMode)
-    {
-      if(hr < 12)
+    if (!twentyFourMode) {
+      if (hr < 12)
         id = hr + ":" + min + " AM";
       else
-        id = (hr-12) + ":" + min + " PM";
-    }
-    else
+        id = (hr - 12) + ":" + min + " PM";
+    } else
       id = time;
     // Adds the time to the array and the HTML list
     availableTimesListEvent.push(time);
@@ -144,41 +137,34 @@ function populateAccept(idEvent)
   }
 }
 
-function removeLists()
-{
+function removeLists() {
   let lists = document.getElementsByName("lists");
-  if(lists.length != 0)
-  {
+  if (lists.length != 0) {
     let parent = lists[0].parentNode;
     let parentId = parent.id;
-    if(parentId.indexOf("para") != -1)
+    if (parentId.indexOf("para") != -1)
       parentId = parseInt("" + parentId.substring(0, parentId.indexOf("para")));
-    if(!isUserAttending(getCurrUser(), parentId))
-    {
+    if (!isUserAttending(getCurrUser(), parentId)) {
       let informationAccept = document.createElement("button");
       informationAccept.setAttribute("id", parentId + "button");
       informationAccept.setAttribute("onclick", "populateAccept('" + parentId + "')");
       informationAccept.setAttribute("style", "display: block; margin-left: auto; margin-right: auto;");
       informationAccept.innerHTML += "Accept Event";
       parent.append(informationAccept);
-    }
-    else
-    {
+    } else {
       let informationMessage = document.createElement("p");
       informationMessage.setAttribute("style", "text-align: center; border-style: none; font-size: 20px");
       informationMessage.innerHTML += "<b>Already accepted event!</b>";
       parent.append(informationMessage);
     }
   }
-  while(lists.length != 0)
-  {
+  while (lists.length != 0) {
     lists[0].parentNode.removeChild(lists[0]);
   }
 }
 
 // Yes, I know I'm basically just copying this from chooseTimes.js but it's late and I'm tired
-function addTimeEvent()
-{
+function addTimeEvent() {
   let chosenTime = document.activeElement;
   let time = chosenTime.name;
   let id = chosenTime.id;
@@ -186,7 +172,9 @@ function addTimeEvent()
 
   availableTimesListEvent.splice(availableTimesListEvent.indexOf(time), 1); // Take chosen time out of availble times
   chosenTimesListEvent.push(time); // Add the chosen time to the end of chosenTimes
-  chosenTimesListEvent.sort(function(a, b) {return(sortTimes(a, b))}); // Sort the array
+  chosenTimesListEvent.sort(function(a, b) {
+    return (sortTimes(a, b))
+  }); // Sort the array
 
   let chosenTimesList = document.getElementById("chosenTimesList");
 
@@ -201,12 +189,10 @@ function addTimeEvent()
 
   // Add it into the chosen times list (sorted)
   let nextNodeIndex = chosenTimesListEvent.indexOf(time) + 1;
-  if(nextNodeIndex == chosenTimesListEvent.length) // If it should be added to the end
+  if (nextNodeIndex == chosenTimesListEvent.length) // If it should be added to the end
   {
     chosenTimesList.appendChild(newTime);
-  }
-  else
-  {
+  } else {
     let nextNode = document.getElementsByName(chosenTimesListEvent[nextNodeIndex])[0]; // getElementsByName returns an array, which is why we get at index 0
     chosenTimesList.insertBefore(newTime, nextNode);
   }
@@ -216,8 +202,7 @@ function addTimeEvent()
   lastChosen.innerHTML = "--- " + id + " -->    ";
 }
 
-function removeTimeEvent()
-{
+function removeTimeEvent() {
   let chosenTime = document.activeElement;
   let time = chosenTime.name;
   let id = chosenTime.id;
@@ -225,7 +210,9 @@ function removeTimeEvent()
 
   chosenTimesListEvent.splice(chosenTimesListEvent.indexOf(time), 1); // Take chosen time out of chosen times
   availableTimes.push(time); // Add the chosen time to the end of availableTimes
-  availableTimes.sort(function(a, b) {return(sortTimes(a, b))}); // Sort the array
+  availableTimes.sort(function(a, b) {
+    return (sortTimes(a, b))
+  }); // Sort the array
 
   let chosenTimesList = document.getElementById("availableTimesList");
   // Create the new time anchor
@@ -238,12 +225,10 @@ function removeTimeEvent()
 
   // Add it into the available times list (sorted)
   let nextNodeIndex = availableTimesListEvent.indexOf(time) + 1;
-  if(nextNodeIndex == availableTimesListEvent.length) // If it should be added to the end
+  if (nextNodeIndex == availableTimesListEvent.length) // If it should be added to the end
   {
     availableTimesList.appendChild(newTime);
-  }
-  else
-  {
+  } else {
     let nextNode = document.getElementsByName(availableTimesListEvent[nextNodeIndex])[0];
     availableTimesList.insertBefore(newTime, nextNode);
   }
@@ -253,12 +238,11 @@ function removeTimeEvent()
   lastChosen.innerHTML = "<-- " + id + " ---";
 }
 
-function submitAvailability(id)
-{
+function submitAvailability(id) {
   let eventChosen = findEventsById(id)[0]; // TODO fix for mult days
   let newAttendee = {
-    personsName : getCurrUser().username,
-    personsAvailability : chosenTimesListEvent
+    personsName: getCurrUser().username,
+    personsAvailability: chosenTimesListEvent
   }
   eventChosen.attendees.push(newAttendee);
   eventChosen.numOfattendees++;
