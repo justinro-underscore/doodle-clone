@@ -4,11 +4,15 @@ body {
     background: -webkit-linear-gradient(to top, #232526, #232526);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #232526, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    height: 1080px;
+    padding-top: 70px;
 }
 
 form {
     width=100%;
+}
+
+label {
+  color: white;
 }
 
 input {
@@ -29,6 +33,11 @@ input {
 .nav {
   width: 50%;
   text-align: center;
+}
+
+.bg-primary-blue {
+
+  background-color: #104e77
 }
 
 h2 {
@@ -55,7 +64,7 @@ h3 {
 }
 
 p {
-  line-height: 80%;
+  color: white;
 }
 
 #credits {
@@ -83,17 +92,6 @@ p {
   margin-top: 20px;
   float: left;
   list-style: none;
-}
-
-#evName {
-  margin: 0;
-  width: 49%;
-  float: left;
-}
-
-#evDate {
-  float: left;
-  width: 49%;
 }
 
 #lName {

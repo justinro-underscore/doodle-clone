@@ -32,12 +32,12 @@ events:
 
 eventInfo:
 	.creator
-	.nameOfEvent
-	.dateOfEvent
+	.name
+	.date
 	.timeSlots: []
 	.numOfTimeSlots
-	.peopleAttending: []
-	.numOfPeopleAttending:
+	.attendees: []
+	.numOfattendees:
 
 personInfo:
 	.personsName

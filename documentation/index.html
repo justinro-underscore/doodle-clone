@@ -1,19 +1,41 @@
 <!-- HTML documentaiton page can be found through documentation folder on GitHub and is also linked to in the web application's landing page.-->
 <!DOCTYPE html>
 <html>
-
-
   <head>
     <title>HTML Documentation</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
   </head>
 
-
   <body>
-    <div class="header">
-      <h1>Doodle-Clone Documentation</h1>
-    </div>
+    <header>
+      <nav class="navbar navbar-expand-md fixed-top bg-primary-blue">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event Actions</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="../createEvent.html">Create Event</a>
+                <a class="dropdown-item" href="../eventView.html">View Events</a>
+                <a class="dropdown-item" href="../setavail.html">Set Availability</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Documnentation <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Log Out <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <a class="navbar-brand" href="../home.html"><img src="../res/logo_full.png"></a>
+        </div>
+      </nav>
+
+      <h1 class="kHeaders">Doodle clone documentation!</h1>
+    </header>
+
     <h2>Overview:</h2>
     <div class="textBody">Welcome to our documentation! This doodle-clone utilized CSS, HTML, and JavsScript as the programming languages. Our platform was a client-side web application. It includes four HTML pages: Create Event, Set Availability,
       Welcome Page/Landing Page, and Documentation. The user is quickly able to navigate through these pages from the drop down menu present on all of them. Event creation and availability population is made interactive through the user interface.
@@ -73,4 +95,7 @@
     <div class="textBody">Team 1 code documented through private GitHub repository. Process model explanation and cited references are included in the documentation folder on GitHub as text files.<div>
 
   </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </html>
