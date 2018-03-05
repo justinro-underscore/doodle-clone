@@ -17,7 +17,7 @@ Team Members: Varun Chadha, Justin Roderman, Noah Brabec, Harrison Luo, Alex Kun
     • Move Harry to frontend after seeing his fantastic Lab 3 websites
     • Tasks:
         ◦ Plan meeting to start implementing together on Sunday, 2/25/18 (completed)
-#### Meeting 3: 2/25/18, 12:00pm, Justin’s Apartment
+#### Meeting 3: 2/25/18, 12:00-6:00pm, Justin’s Apartment
     • Discuss further breakdown of code base and necessary requirements
         ◦ Getting rid of unnecessary files in the code base
         ◦ Varun shows us how to store information in Google Sheets
@@ -33,7 +33,7 @@ Team Members: Varun Chadha, Justin Roderman, Noah Brabec, Harrison Luo, Alex Kun
 	◦ Create Create user page (Alex) (completed)
         ◦ Finish review of previous team’s code base (Alex and Noah) (completed)
 
-#### Meeting 4: 3/4/18, 12:15pm, Justin’s Apartment
+#### Meeting 4: 3/4/18, 12:15pm-1:00am, Justin’s Apartment
 
 	Discuss even futher breakdown of tasks
 	Harry working on view events, profile page
