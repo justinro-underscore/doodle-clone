@@ -144,11 +144,12 @@ function findEventsById(eventId) {
  * Checks if user is attending specific event
  * @param  {User}  user    user to check
  * @param  {Number}  eventId event id to lookup event
+ * @param  {Number}  date event date to lookup event
  * @return {Boolean}         true if user is attending
  */
-function isUserAttending(user, eventId) {
+function isUserAttending(user, eventId, date) {
     let eventsAttending = getAttendingEventsByUser(user);
-    let eventChosen = findEventsById(eventId)[0];
+    let eventChosen = findEventsByIdAndDate(eventId, date);
     return(eventsAttending.includes(eventChosen));
 }
 

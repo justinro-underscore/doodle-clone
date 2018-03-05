@@ -5,6 +5,7 @@ let dateChosen;
 
 function listOfEvents(date) {
   dateChosen = date;
+  console.log(dateChosen);
   let eventsListing = document.getElementById('EventsListing');
   let eventsList;
   let eventsByDate = getEventsByDate(date);
@@ -99,7 +100,7 @@ function populateDiv(eventNameDateId) {
     divElem.append(divTag);
     populateTasks(id);
 
-    if (!isUserAttending(getCurrUser(), id)) {
+    if (!isUserAttending(getCurrUser(), id, dateChosen)) {
       let informationAccept = document.createElement("button");
       informationAccept.setAttribute("id", eventSelected.id + "button");
       informationAccept.setAttribute("class", "btn btn-success");
