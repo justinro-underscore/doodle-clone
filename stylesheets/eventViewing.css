@@ -14,7 +14,9 @@ a:hover {
     background-color: transparent;
     text-decoration: none;
 }
-
+hr {
+  border-top: 3px double #8c8b8b;
+}
 
 p{
   border: 13px solid black;
@@ -26,6 +28,17 @@ h3{
   font-size: 25px;
 text-align: center;
 }
+
+.infoEvent .timesList {
+  align-content: center;
+  text-align: center;
+}
+
+.times {
+  align-content: center;
+  text-align: center;
+}
+
 .Event_list
 {
   margin: auto;
