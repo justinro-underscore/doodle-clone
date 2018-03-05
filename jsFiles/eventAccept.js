@@ -5,7 +5,6 @@ let dateChosen;
 
 function listOfEvents(date) {
   dateChosen = date;
-  console.log(dateChosen);
   let eventsListing = document.getElementById('EventsListing');
   let eventsList;
   let eventsByDate = getEventsByDate(date);
@@ -217,7 +216,6 @@ function submitTasks(id)
             e.tasks[t].assignedTo = getCurrUser();
         }
       }
-      console.log(e);
       updateEvent(e.rowId, e);
     });
   }
