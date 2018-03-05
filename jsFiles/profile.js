@@ -109,7 +109,9 @@ function openAttendInfo(id)
     eventInfo.innerHTML += "<b>Attendees:</b><br>";
 
     let table = document.createElement("table");
-    table.setAttribute("class","table table-bordered table-striped")
+    table.setAttribute("class","table table-bordered");
+    table.setAttribute("class" , "table table-striped");
+
     table.setAttribute("style", "width: 90%");
     table.setAttribute("align", "center");
     table.innerHTML += "<tr><th>Name</th><th>Availability</th></tr>";
