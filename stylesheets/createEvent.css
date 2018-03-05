@@ -1,0 +1,74 @@
+h3 {
+  font-size: 25px;
+}
+
+.times {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.timesList {
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.lastChosen {
+  color: white;
+  margin-top: 100%;
+}
+
+/* https://www.w3schools.com/howto/howto_css_vertical_menu.asp */
+.availableTimesListHTML, .chosenTimesListHTML {
+  display: inline-block;
+  background-color: #eee;
+  width: 100px;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.tasksListHTML, .multiDayListHTML {
+  display: inline-block;
+  background-color: #eee;
+  width: 80%;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.tasksListHTML {
+  text-align: left;
+}
+
+.multiDayListHTML {
+  width: 40%;
+}
+
+.multiDayListHTML button {
+  float: right;
+}
+
+.tasksListHTML button {
+  margin-right: 5px;
+  float: right;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.availableTimesListHTML a, .chosenTimesListHTML a, .tasksListHTML a, .multiDayListHTML a {
+  background-color: #eee;
+  border-bottom: 0.5px solid black;
+  color: black;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.tasksListHTML a, .multiDayListHTML a {
+  cursor: default;
+}
+
+.availableTimesListHTML a:hover, .chosenTimesListHTML a:hover, .multiDayListHTML a {
+  background-color: #ccc;
+}

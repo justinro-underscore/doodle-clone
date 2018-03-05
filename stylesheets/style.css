@@ -1,0 +1,209 @@
+body {
+    /*Background gradients created by https://uigradients.com/# */
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #232526, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #232526, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    padding-top: 70px;
+}
+
+form {
+    width=100%;
+}
+
+label {
+  color: white;
+}
+
+input {
+    font-family: "Georgia", Times, serif;
+    margin: 0 auto;
+}
+
+.header {
+    font-family: "Georgia", Times, serif;
+    display: inline;
+    color: white;
+    text-align: inherit;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 80%;
+}
+
+.nav {
+  width: 50%;
+  text-align: center;
+}
+
+.bg-primary-blue {
+
+  background-color: #104e77
+}
+
+h2 {
+  font-family: "Georgia", Times, serif;
+  color: #3498DB;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.kHeaders {
+  color: white;
+  font-size: 1.5em;
+
+}
+
+h3 {
+  font-family: "Georgia", Times, serif;
+  color: #3498DB;
+}
+
+
+p {
+  color: white;
+}
+
+#credits {
+  font-size: 18.5px;
+  font-family: "Georgia", Times, serif;
+  margin: auto;
+  text-align: center;
+  border-radius: 5px;
+  max-width: 150px;
+  color: white;
+}
+
+/* Dropdown Menu*/
+.dropmenu {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#avail_List {
+  margin-top: 20px;
+  float: left;
+  list-style: none;
+}
+
+#lName {
+  margin: 0;
+  width: 49%;
+  float: right;
+}
+
+#aNameBox {
+  margin: 0;
+  width: 60%;
+}
+
+#Avail {
+  width: 49%;
+  float: right;
+}
+
+#setAvail {
+  margin: 0;
+  width: 30%;
+}
+
+a {
+  color: white;
+}
+
+.Event_list {
+  /*width: 50%;*/
+  width: 800px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.highlighted {
+  color: #3498DB;
+}
+
+h3 {
+  color: #3498DB;
+  font-family: "Georgia", Times, serif;
+  font-size: 50px;
+}
+
+h4 {
+  font-family: "Georgia", Times, serif;
+  color: white;
+}
+
+.availability {
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.time {
+  width: 80px;
+  background-color: rgba(200, 210, 250, .9);
+  margin: 5px 5px;
+  border-radius: 3px;
+}
+
+.dropmenu:hover, .dropmenu:focus {
+    background-color: #2980B9;
+}
+
+.menu {
+    position: relative;
+    display: inline-block;
+}
+
+.button_container {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+
+.dd-items {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dd-items a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dd-items a:hover {background-color: #ddd}
+
+.show {display: block;}
+
+.selected {
+  background-color: green;
+}
+
+.textBody {
+  font-size: 17px;
+  font-family: "Georgia", Times, serif;
+  color: white
+}
+
+.chosen {
+  border: solid 2px #3498DB;
+  color: black;
+}

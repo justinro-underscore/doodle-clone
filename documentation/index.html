@@ -1,0 +1,4164 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#inittimes'
+                  class="">
+                  initTimes
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addtime'
+                  class="">
+                  addTime
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removetime'
+                  class="">
+                  removeTime
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#sorttimes'
+                  class="">
+                  sortTimes
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#geteventtimes'
+                  class="">
+                  getEventTimes
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addtask'
+                  class="">
+                  addTask
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#taskexists'
+                  class="">
+                  taskExists
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#choosetask'
+                  class="">
+                  chooseTask
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removetask'
+                  class="">
+                  removeTask
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#gettasks'
+                  class="">
+                  getTasks
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#postevent'
+                  class="">
+                  postEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updateevent'
+                  class="">
+                  updateEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#postuser'
+                  class="">
+                  postUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#listofevents'
+                  class="">
+                  listOfEvents
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populatediv'
+                  class="">
+                  populateDiv
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populatetasks'
+                  class="">
+                  populateTasks
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#choosetaskevent'
+                  class="">
+                  chooseTaskEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#submittasks'
+                  class="">
+                  submitTasks
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#printnames'
+                  class="">
+                  printNames
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populateaccept'
+                  class="">
+                  populateAccept
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removelists'
+                  class="">
+                  removeLists
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addtimeevent'
+                  class="">
+                  addTimeEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removetimeevent'
+                  class="">
+                  removeTimeEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#submitavailability'
+                  class="">
+                  submitAvailability
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loadevents'
+                  class="">
+                  loadEvents
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#twentyfourswitch'
+                  class="">
+                  twentyfourSwitch
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#showtimes'
+                  class="">
+                  showTimes
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#geteventsbydate'
+                  class="">
+                  getEventsByDate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getevent'
+                  class="">
+                  getEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findeventsbyid'
+                  class="">
+                  findEventsById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isuserattending'
+                  class="">
+                  isUserAttending
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addmultieventbox'
+                  class="">
+                  addMultiEventBox
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addmultieventbox'
+                  class="">
+                  addMultiEventBox
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#parsedate'
+                  class="">
+                  parseDate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcreatedeventsbyuser'
+                  class="">
+                  getCreatedEventsByUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getattendingeventsbyuser'
+                  class="">
+                  getAttendingEventsByUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getattendingeventsbyuserwithoutcreator'
+                  class="">
+                  getAttendingEventsByUserWithoutCreator
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#checkeventdata'
+                  class="">
+                  checkEventData
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#checkdate'
+                  class="">
+                  checkDate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#enteringevent'
+                  class="">
+                  enteringEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#replacewindow'
+                  class="">
+                  replaceWindow
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addsingleevent'
+                  class="">
+                  addSingleEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#adddate'
+                  class="">
+                  addDate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#choosedate'
+                  class="">
+                  chooseDate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removedate'
+                  class="">
+                  removeDate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addmultievent'
+                  class="">
+                  addMultiEvent
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#init'
+                  class="">
+                  init
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populatecreatedevents'
+                  class="">
+                  populateCreatedEvents
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#opencreateinfo'
+                  class="">
+                  openCreateInfo
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populateattendingevents'
+                  class="">
+                  populateAttendingEvents
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loadusers'
+                  class="">
+                  loadUsers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getuser'
+                  class="">
+                  getUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#validatelogin'
+                  class="">
+                  validateLogin
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcurruser'
+                  class="">
+                  getCurrUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createuser'
+                  class="">
+                  createUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#login'
+                  class="">
+                  login
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#checkadminstatus'
+                  class="">
+                  checkAdminStatus
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='inittimes'>
+      initTimes
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Initializes the times list</p>
+
+
+  <div class='pre p1 fill-light mt0'>initTimes(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/null">Null</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/null">Null</a></code>:
+        Return nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addtime'>
+      addTime
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Removes the time from the available time list and puts it in the chosen time list</p>
+
+
+  <div class='pre p1 fill-light mt0'>addTime()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removetime'>
+      removeTime
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Removes the time from the chosen time list and puts it in the available time list</p>
+
+
+  <div class='pre p1 fill-light mt0'>removeTime(): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        Returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='sorttimes'>
+      sortTimes
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Sorts two times</p>
+
+
+  <div class='pre p1 fill-light mt0'>sortTimes(a: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, b: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>a</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    a time
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>b</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    a time
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        How to sort the elements
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='geteventtimes'>
+      getEventTimes
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets the chosen times</p>
+
+
+  <div class='pre p1 fill-light mt0'>getEventTimes(): time</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>time</code>:
+        Returns the list of chosenTimes
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addtask'>
+      addTask
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Allows users to add tasks to events</p>
+
+
+  <div class='pre p1 fill-light mt0'>addTask()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='taskexists'>
+      taskExists
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Checks to see if the task exists in the task list</p>
+
+
+  <div class='pre p1 fill-light mt0'>taskExists(taskParam: task): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>taskParam</span> <code class='quiet'>(task)</code>
+	    The task which may or may not be in the list
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        Whether or not the task exists in the list
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='choosetask'>
+      chooseTask
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Lets the user click on the task on the create screen</p>
+
+
+  <div class='pre p1 fill-light mt0'>chooseTask(taskId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>taskId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the id of the task
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        a id value
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removetask'>
+      removeTask
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Lets the user remove the task on the create screen</p>
+
+
+  <div class='pre p1 fill-light mt0'>removeTask(task: any): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>task</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        return nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='gettasks'>
+      getTasks
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets the list of tasks</p>
+
+
+  <div class='pre p1 fill-light mt0'>getTasks()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='postevent'>
+      postEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Sends the event to google sheets</p>
+
+
+  <div class='pre p1 fill-light mt0'>postEvent(eventObj: any): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventObj</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updateevent'>
+      updateEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Overwrites the event that is stored in the google sheet</p>
+
+
+  <div class='pre p1 fill-light mt0'>updateEvent(rowId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, eventObj: any): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rowId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The index of the row where the event is stored
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventObj</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='postuser'>
+      postUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Writes the user to the google sheet</p>
+
+
+  <div class='pre p1 fill-light mt0'>postUser(userObj: any): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userObj</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='listofevents'>
+      listOfEvents
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Prints the list of events on a certain date</p>
+
+
+  <div class='pre p1 fill-light mt0'>listOfEvents(date: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>date</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The current date
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populatediv'>
+      populateDiv
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Generates the spot for the event information to be presented</p>
+
+
+  <div class='pre p1 fill-light mt0'>populateDiv(eventNameDateId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): none</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventNameDateId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the event name+date+id so we avoid making duplicate divs
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>none</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populatetasks'>
+      populateTasks
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Populates the task list with the tasks of the event</p>
+
+
+  <div class='pre p1 fill-light mt0'>populateTasks(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The id of the event
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='choosetaskevent'>
+      chooseTaskEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Toggles whether the task is assigned or not</p>
+
+
+  <div class='pre p1 fill-light mt0'>chooseTaskEvent(taskId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>taskId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    The id of the task
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='submittasks'>
+      submitTasks
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Submits the tasks to the database</p>
+
+
+  <div class='pre p1 fill-light mt0'>submitTasks(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The id of the event
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='printnames'>
+      printNames
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Prints the names of the attendees along with the times</p>
+
+
+  <div class='pre p1 fill-light mt0'>printNames(attendees: [users]): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>attendees</span> <code class='quiet'>([users])</code>
+	    The attendees for the given event
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
+        The formatted output of this array
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populateaccept'>
+      populateAccept
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Shows the times accepted by users</p>
+
+
+  <div class='pre p1 fill-light mt0'>populateAccept(idEvent: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>idEvent</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    event id
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removelists'>
+      removeLists
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Removes lists from the event page</p>
+
+
+  <div class='pre p1 fill-light mt0'>removeLists(): None</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>None</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addtimeevent'>
+      addTimeEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds the time from the available time list and puts it in the chosen time list</p>
+
+
+  <div class='pre p1 fill-light mt0'>addTimeEvent()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removetimeevent'>
+      removeTimeEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Removes the time from the voting list of times</p>
+
+
+  <div class='pre p1 fill-light mt0'>removeTimeEvent(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        the sorted times
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='submitavailability'>
+      submitAvailability
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds the chosen times to the list of available times</p>
+
+
+  <div class='pre p1 fill-light mt0'>submitAvailability(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): none</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the events id
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>none</code>:
+        returns nothing
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loadevents'>
+      loadEvents
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Querrys the google sheet for events via google charts api</p>
+
+
+  <div class='pre p1 fill-light mt0'>loadEvents(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='twentyfourswitch'>
+      twentyfourSwitch
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Toggles twenty four hour mode</p>
+
+
+  <div class='pre p1 fill-light mt0'>twentyfourSwitch(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='showtimes'>
+      showTimes
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Takes an array of 24-hour times and converts to 12 hour if twentyFourMode is false</p>
+
+
+  <div class='pre p1 fill-light mt0'>showTimes(arrTimes: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>arrTimes</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+	    array of times to be converted
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        returns converted times
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='geteventsbydate'>
+      getEventsByDate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Filters events by a date key</p>
+
+
+  <div class='pre p1 fill-light mt0'>getEventsByDate(eventDate: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventDate</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    date to filter events by
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        array of events on eventDate
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getevent'>
+      getEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns specific event based on name and date</p>
+
+
+  <div class='pre p1 fill-light mt0'>getEvent(eventName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, eventDate: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/API/Event">Event</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    name of event
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventDate</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    date of event
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/API/Event">Event</a></code>:
+        returns the event with eventName on eventDate
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findeventsbyid'>
+      findEventsById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns array of events with same id</p>
+
+
+  <div class='pre p1 fill-light mt0'>findEventsById(eventId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    id of event
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        array of events with id
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isuserattending'>
+      isUserAttending
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Checks if user is attending specific event</p>
+
+
+  <div class='pre p1 fill-light mt0'>isUserAttending(user: User, eventId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, date: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(User)</code>
+	    user to check
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    event id to lookup event
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>date</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    event date to lookup event
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>:
+        true if user is attending
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addmultieventbox'>
+      addMultiEventBox
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds multidayEvent box</p>
+
+
+  <div class='pre p1 fill-light mt0'>addMultiEventBox()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addmultieventbox'>
+      addMultiEventBox
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add addDate button and multiDayList when multiDay option is selected</p>
+
+
+  <div class='pre p1 fill-light mt0'>addMultiEventBox()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='parsedate'>
+      parseDate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adapted from stack overflow to turn date string to date object</p>
+
+
+  <div class='pre p1 fill-light mt0'>parseDate(s: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>s</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    date
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></code>:
+        date object of string
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcreatedeventsbyuser'>
+      getCreatedEventsByUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns array of events created by specific user</p>
+
+
+  <div class='pre p1 fill-light mt0'>getCreatedEventsByUser(user: User): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(User)</code>
+	    user to check
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        array of events by user
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getattendingeventsbyuser'>
+      getAttendingEventsByUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns array of events attended by user</p>
+
+
+  <div class='pre p1 fill-light mt0'>getAttendingEventsByUser(user: User): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(User)</code>
+	    user to check
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        array of events attended by user
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getattendingeventsbyuserwithoutcreator'>
+      getAttendingEventsByUserWithoutCreator
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns array of events attended by user</p>
+
+
+  <div class='pre p1 fill-light mt0'>getAttendingEventsByUserWithoutCreator(user: User): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(User)</code>
+	    user to check
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+        array of events attended by user
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='checkeventdata'>
+      checkEventData
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Validates user input for creating event</p>
+
+
+  <div class='pre p1 fill-light mt0'>checkEventData(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>:
+        true if all user input is valid
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='checkdate'>
+      checkDate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Validates date of event</p>
+
+
+  <div class='pre p1 fill-light mt0'>checkDate(date: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>date</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    date to check
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>:
+        true if valid date
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='enteringevent'>
+      enteringEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Starts event creation</p>
+
+
+  <div class='pre p1 fill-light mt0'>enteringEvent(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='replacewindow'>
+      replaceWindow
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Replaces window with event creation screen</p>
+
+
+  <div class='pre p1 fill-light mt0'>replaceWindow(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addsingleevent'>
+      addSingleEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds a new event</p>
+
+
+  <div class='pre p1 fill-light mt0'>addSingleEvent(eventDate: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, eventId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventDate</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    date of event
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
+            = <code>new Date().getTime()</code>)</code>
+	    id of event which can be overriden
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='adddate'>
+      addDate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds selected dates to multiDayList</p>
+
+
+  <div class='pre p1 fill-light mt0'>addDate()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='choosedate'>
+      chooseDate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Selects dates</p>
+
+
+  <div class='pre p1 fill-light mt0'>chooseDate(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removedate'>
+      removeDate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Remove selected date from multiDayList</p>
+
+
+  <div class='pre p1 fill-light mt0'>removeDate(date: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>date</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    date to be removed
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addmultievent'>
+      addMultiEvent
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Validate multiday events and creates events</p>
+
+
+  <div class='pre p1 fill-light mt0'>addMultiEvent()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='init'>
+      init
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>initializes the user profile page with user</p>
+
+
+  <div class='pre p1 fill-light mt0'>init(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populatecreatedevents'>
+      populateCreatedEvents
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add user events to profile page</p>
+
+
+  <div class='pre p1 fill-light mt0'>populateCreatedEvents(user: Users): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(Users)</code>
+	    current user
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='opencreateinfo'>
+      openCreateInfo
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds event info for each cerated event on click</p>
+
+
+  <div class='pre p1 fill-light mt0'>openCreateInfo(theID: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>theID</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    event Data (id, date, and name)
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populateattendingevents'>
+      populateAttendingEvents
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add events being attended by user</p>
+
+
+  <div class='pre p1 fill-light mt0'>populateAttendingEvents(user: User): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(User)</code>
+	    current user object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loadusers'>
+      loadUsers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Loads users from google spreadsheet via Google charts api</p>
+
+
+  <div class='pre p1 fill-light mt0'>loadUsers(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getuser'>
+      getUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>returns user based on username</p>
+
+
+  <div class='pre p1 fill-light mt0'>getUser(username: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): User</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>username</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    username
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>User</code>:
+        user object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='validatelogin'>
+      validateLogin
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Validate user login with users object</p>
+
+
+  <div class='pre p1 fill-light mt0'>validateLogin(username: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, password: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>username</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    username to be validated
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>password</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    password to be validated
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        returns true if valid user credentials were entered
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcurruser'>
+      getCurrUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets current user from localStorage</p>
+
+
+  <div class='pre p1 fill-light mt0'>getCurrUser(): User</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>User</code>:
+        returns user object representing current user
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createuser'>
+      createUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Creates a new user</p>
+
+
+  <div class='pre p1 fill-light mt0'>createUser(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='login'>
+      login
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Directs user to home page if login is successful</p>
+
+
+  <div class='pre p1 fill-light mt0'>login(event: <a href="https://developer.mozilla.org/docs/Web/API/Event">Event</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/API/Event">Event</a>)</code>
+	    event object of form
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='checkadminstatus'>
+      checkAdminStatus
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Checks current user's admin status</p>
+
+
+  <div class='pre p1 fill-light mt0'>checkAdminStatus(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        none
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

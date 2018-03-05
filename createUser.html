@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Doodle Clone - Create User</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+    </head>
+    <body>
+        <div class="header" id="createUserHTML">
+            <h1>Create User</h1>
+            <form action="/action_page.php"> <!-- influenced by https://www.w3schools.com/tags/tag_input.asp// -->
+              Username:<br>
+              <input style="color: black" type="text" id="username"><br>
+              Password:<br>
+              <input style="color: black" type="password" id="password"><br>
+              <input type="checkbox" id="isAdmin" value="true">Is admin<br>
+              <input style="color: black" type="button" onclick="createUser()" value="Create">
+              <input style="color: black" type="reset"><br>
+              <input class="button" style="color: black" type="button" onclick="location.href = 'index.html';" value="Login">
+            </form>
+            <p style="color: red" id="createUserErrorMessage"></p>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="jsFiles/database.js"></script>
+        <script src="jsFiles/userManager.js"></script>
+    </body>
+</html>
