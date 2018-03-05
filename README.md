@@ -4,7 +4,7 @@ A collaborative project to create a Doodle Poll clone.
 Creators: Justin Roderman, Alex Kuntz, Harrison Luo, Varun Chadha, and Noah Brabec.
 
 ## Getting Started
-Our doodle clone is based from a webserver so there is no need for any installation. All you need to do is click [here](#someweblink) and take a look around. 
+To access our doodle clone, clone the repository and open index.html within the project folder. 
 
 ## How to Use Doodle Clone
 Doodle-Clone is a scheduling service that allows users to view upcoming events and vote on when they are availible to attend. You can also set tasks that need to be completed for each event and users can sign up to complete those tasks. This allows managers and admins to accurately plan when to host group events. 
