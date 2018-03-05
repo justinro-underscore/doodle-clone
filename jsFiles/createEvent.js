@@ -5,6 +5,13 @@ let taskList = [];
 // Initializes the times lists
 function initTimes()
 {
+  if(!checkAdminStatus())
+  {
+    let doc = document.getElementById("bodyHTML");
+    doc.innerHTML = "<h1 style='color: red'>Error: You are not an administrator</h1>"
+    doc.innerHTML += "<p style='text-align: center'>You need administrator status to create an event. <a href='home.html'>Click here</a> to return to the home page.</p>";
+    return;
+  }
   let availableTimesList = document.getElementById("availableTimesList"); // Only have to fill this list
   for(let hr = 5; hr < 24; hr++)
   {

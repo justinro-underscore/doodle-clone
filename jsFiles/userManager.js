@@ -109,7 +109,5 @@ if (localStorage.getItem("users") == null) {
  }
 
 function checkAdminStatus() {
-    if(getCurrUser().isAdmin) {
-        window.location.replace("createEvent.html");
-    }
+    return getCurrUser().isAdmin;
 }
